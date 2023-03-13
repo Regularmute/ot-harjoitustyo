@@ -1,4 +1,4 @@
-# Ohjelmistotekniikan kurssi 2023
+# Ohjelmistotekniikan kurssi 2023 - Harjoitustyö
 
 **Laskareita** tulee useana viikkona, ja ne kannattaa tehdä _nopeasti_
 projektin ohella.
