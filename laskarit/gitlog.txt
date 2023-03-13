@@ -1,0 +1,153 @@
+commit 55295f173197e8567d7b691eaa41e79fc4b5a83e
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:57:19 2023 +0200
+
+    chore: rename file2 and delete file1
+    
+    It seems that the commit message thinks I am renaming file1 instead,
+    but I trust that the exercise was designed with this in mind.
+    
+    This is for ohte course's task 11.
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 664b048a6ce70a75ff40611f3bdc37743baa67e9
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:52:55 2023 +0200
+
+    chore: create files for ohte task 11
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 1ecf99fd3e5594c67980bda16ed3ed181e1c2cf6
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:45:23 2023 +0200
+
+    docs: remove and add text from files
+    
+    This is for ohte course's task 9.
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit eaf03a8377b4df7ac10eb36e760ce221a1544e17
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:38:22 2023 +0200
+
+    docs: rename tiedosto to eka
+    
+    This is for ohte course's task 8.
+    Git handles renaming by deleting the original file
+    then creating a new identical file with the new name.
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 18c06e10caf79dd49bffd1cdd2be88c4fa367ce5
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:36:40 2023 +0200
+
+    docs: delete toinen.txt for ohte task8
+
+ toinen.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit 9de3496bdb98dfc4f2667a75c12e0426035bd260
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:34:02 2023 +0200
+
+    docs: remove a paragraph and add new text
+    
+    This is for ohte courses task7.
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit f2c86fa2fe7d1ca90e39c1a052a3cc2379a25f6a
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:32:40 2023 +0200
+
+    docs: paste long text for task7
+
+ tiedosto.txt | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit a93f24c8f0d72a56a45b1181186c746982b90618
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:09:20 2023 +0200
+
+    chore: create file in stuff
+    
+    This is part of task 6 of the ohte course.
+
+ stuff/another_treasure | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 46460380c901fad8eef58f663d946e9fdbf83b0f
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:05:36 2023 +0200
+
+    docs: modify files for task6
+
+ kolmas.txt | 2 ++
+ toinen.txt | 2 ++
+ 2 files changed, 4 insertions(+)
+
+commit bd643a19a0d03ba8594fffcbb022718a0dbe3965
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:02:05 2023 +0200
+
+    Feat: create kolmas.txt for ohte task6
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 70e50e7313bc6c11bc7231c88aeb413d9b41323b
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 11:01:14 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 2 ++
+ toinen.txt   | 0
+ 2 files changed, 2 insertions(+)
+
+commit b43bd5ce5cfabcd77177b84b19996365c73cca1a
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 10:59:28 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 65f44db3330a44451edc2273f71e1923a16f96a7
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 10:57:14 2023 +0200
+
+    Revert "git add tiedosto.txt"
+    
+    This reverts commit c916302795cece3dc85b149cdffdbbf16e94d519.
+    Accidentally commited with the wrong commit message. Revert commit to
+    try again and also take this opportunity to grow more comfortable with
+    git revert.
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit c916302795cece3dc85b149cdffdbbf16e94d519
+Author: regularmute <93884347+Regularmute@users.noreply.github.com>
+Date:   Mon Mar 13 10:56:02 2023 +0200
+
+    git add tiedosto.txt
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+Joonatans-MBP:tiedostoja Jonttu$ 
+
