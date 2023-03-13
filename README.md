@@ -10,3 +10,5 @@ projektin ohella.
 [gitlog.txt](https://github.com/Regularmute/ot-harjoitustyo/blob/main/laskarit/gitlog.txt)
 
 [komentorivi.txt](https://github.com/Regularmute/ot-harjoitustyo/blob/main/laskarit/komentorivi.txt)
+
+## Viikko2
