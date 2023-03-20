@@ -6,6 +6,7 @@ class TestKassapaate(unittest.TestCase):
     def setUp(self):
         self.kassapaate = Kassapaate()
         self.maksukortti = Maksukortti(1000)
+        self.koyha_kortti = Maksukortti(20)
 
     def test_luodun_kassapaatteen_rahat_on_oikein(self):
         self.assertEqual(self.kassapaate.kassassa_rahaa, 100000)
