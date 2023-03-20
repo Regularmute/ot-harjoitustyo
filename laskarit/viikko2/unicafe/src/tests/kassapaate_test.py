@@ -1,9 +1,11 @@
 import unittest
 from kassapaate import Kassapaate
+from maksukortti import Maksukortti
 
 class TestKassapaate(unittest.TestCase):
     def setUp(self):
         self.kassapaate = Kassapaate()
+        self.maksukortti = Maksukortti(1000)
 
     def test_luodun_kassapaatteen_rahat_on_oikein(self):
         self.assertEqual(self.kassapaate.kassassa_rahaa, 100000)
@@ -69,3 +71,5 @@ class TestKassapaate(unittest.TestCase):
         self.kassapaate.syo_maukkaasti_kateisella(200)
 
         self.assertEqual(self.kassapaate.maukkaat, maukkaat_myynnit_alussa)
+
+# Korttiostot
