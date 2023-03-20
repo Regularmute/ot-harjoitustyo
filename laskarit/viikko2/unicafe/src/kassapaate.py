@@ -40,5 +40,6 @@ class Kassapaate:
         if summa >= 0:
             kortti.lataa_rahaa(summa)
             self.kassassa_rahaa += summa
+            return True
         else:
-            return
+            return False
