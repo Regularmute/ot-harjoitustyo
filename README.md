@@ -14,3 +14,5 @@ projektin ohella.
 ## Viikko2
 
 [Sovelluksen vaatimusmäärittely: Pathfinder 2e Hahmolomake](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+
+[Sovelluksen tuntikirjanpito](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
