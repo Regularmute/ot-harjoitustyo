@@ -12,3 +12,5 @@ projektin ohella.
 [komentorivi.txt](https://github.com/Regularmute/ot-harjoitustyo/blob/main/laskarit/komentorivi.txt)
 
 ## Viikko2
+
+[Sovelluksen vaatimusmäärittely: Pathfinder 2e Hahmolomake](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
