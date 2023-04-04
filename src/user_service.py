@@ -1,6 +1,7 @@
 from user_repository import (
     user_repository as default_user_repository
 )
+from user import User
 
 class UserService:
     def __init__(
@@ -11,6 +12,6 @@ class UserService:
         self._user_repository = user_repository
 
     def create_user(self, username, password):
-        self._user_repository.create(username, password)
+        self._user_repository.create(User(username, password))
 
 user_service = UserService()
