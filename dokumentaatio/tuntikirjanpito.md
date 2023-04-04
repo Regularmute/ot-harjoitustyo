@@ -8,3 +8,4 @@
 |4.4|1h|Kirjautumis- ja rekisteröintinäkymien alustus|
 |4.4|3h|Käyttäjätunnuksen rekisteröintitoiminnallisuus|
 |4.4|1h|Testaus ja dokumentaatio|
+|4.4|1h|Kirjautumistoiminto ja linttaus|
