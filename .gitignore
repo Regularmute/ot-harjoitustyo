@@ -10,4 +10,4 @@ htmlcov
 .env
 
 #data files
-data/*
+data/
