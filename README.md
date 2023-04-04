@@ -6,6 +6,7 @@ The application will allow users to create characters according to the ruleset u
 ---
   * The user can see the login and registration pages.
   * The user can create an account and store it into the database.
+  * A registered user can login and logout.
 
 ## Documentation
 ---

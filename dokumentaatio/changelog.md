@@ -9,3 +9,4 @@
 * Added class user_service, which handles the logic of creating an account
   * user_service also salts and hashes the user's password before storing it into the database
 * Tested that the user_service stores the usernames
+* A registered user can login and logout
