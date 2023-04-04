@@ -6,6 +6,16 @@ class UserRepository:
     def __init__(self, connection):
         self._connection = connection
 
+    def get_all(self):
+        # fetch a list of all users
+
+        cursor = self._connection()
+
+        cursor.execute("SELECT * FROM users;")
+        rows = cursor.fetchall()
+
+        return list(map(User(["username"],["password"]), rows))
+
     def create(self, user):
         # convert password to bytes and generate salt for hashing
         byte_password = user.password.encode('utf-8')
