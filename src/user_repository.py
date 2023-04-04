@@ -16,6 +16,16 @@ class UserRepository:
 
         return list(map(User(["username"],["password"]), rows))
 
+    def get_one_by_username(self, username):
+        cursor = self._connection.cursor()
+
+        sql = "SELECT * FROM users WHERE username = :username"
+        cursor.execute(sql, {"username": username})
+        row = cursor.fetchone()
+
+        return User(row["Username"], row["Password"]) if row else None
+
+
     def create(self, user):
         # convert password to bytes and generate salt for hashing
         byte_password = user.password.encode('utf-8')
