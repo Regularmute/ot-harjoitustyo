@@ -2,8 +2,6 @@ from tkinter import Tk
 from login_view import LoginView
 from register_view import RegisterView
 from sheet_view import SheetView
-from user_repository import UserRepository
-from initialize_database import initialize_database
 
 class UI:
     def __init__(self, root):
