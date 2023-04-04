@@ -1,18 +1,56 @@
-# Ohjelmistotekniikan kurssi 2023 - Harjoitustyö
+# Pathfinder 2E Character Generation Sheet
 
-**Laskareita** tulee useana viikkona, ja ne kannattaa tehdä _nopeasti_
-projektin ohella.
+The application will allow users to create characters according to the ruleset used in the tabletop role-playing game, Pathfinder 2nd Edition.
 
-# Tehtävät
+## Current Features
+---
+  * The user can see the login and registration pages.
+  * The user can create an account and store it into the database.
 
-## Viikko1
+## Documentation
+---
+  * [Sovelluksen vaatimusmäärittely: Pathfinder 2e Hahmolomake](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
-[gitlog.txt](https://github.com/Regularmute/ot-harjoitustyo/blob/main/laskarit/gitlog.txt)
+  * [Sovelluksen tuntikirjanpito](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
 
-[komentorivi.txt](https://github.com/Regularmute/ot-harjoitustyo/blob/main/laskarit/komentorivi.txt)
+  * [Changelog](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 
-## Viikko2
+## Installation
+---
+  1. Install the dependencies with the command:
+    ```console
+      poetry install
+    ```
 
-[Sovelluksen vaatimusmäärittely: Pathfinder 2e Hahmolomake](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+  2. Initialize the user database with the command:
+    ```console
+      poetry run invoke create-database
+    ```
 
-[Sovelluksen tuntikirjanpito](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+  3. Run the application with the command:
+    ```console
+      poetry run invoke start
+    ```
+
+## Console commands
+---
+### Running the application
+
+You can run the application with the command:
+  ```console
+    poetry run invoke start
+  ```
+
+### Testing
+
+You can run the tests with the command:
+  ```console
+    poetry run invoke test
+  ```
+
+### Coverage report
+
+You can check the test coverage and generate a .html form coverage report with the command:
+  ```console
+    poetry run invoke coverage-report
+  ```
