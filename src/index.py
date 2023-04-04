@@ -37,7 +37,7 @@ class UI:
         self._current_view.pack()
 
 window = Tk()
-window.title("Pathdinder 2e Character Sheet")
+window.title("Pathfinder 2e Character Sheet")
 
 ui = UI(window)
 ui.start()
