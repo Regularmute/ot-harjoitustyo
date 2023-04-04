@@ -31,5 +31,5 @@ class SheetView:
             row=3, column=0, columnspan=2,
             sticky=(constants.E, constants.W), padx=5, pady=5
         )
-       
+
         self._root.grid_columnconfigure(1, weight=1, minsize=300)

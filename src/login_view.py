@@ -21,7 +21,6 @@ class LoginView:
     def _login_handler(self):
         username = self._username_entry.get()
         password = self._password_entry.get()
-
         user = user_service.login(username, password)
 
         if user:
@@ -29,7 +28,6 @@ class LoginView:
 
         else:
             print("something went wrong")
-        return
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
