@@ -3,3 +3,6 @@ __pycache__
 
 .coverage
 htmlcov
+
+# Macbook ignore
+.DS_Store
