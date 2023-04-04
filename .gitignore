@@ -6,3 +6,8 @@ htmlcov
 
 # Macbook ignore
 .DS_Store
+
+.env
+
+#data files
+data/*
