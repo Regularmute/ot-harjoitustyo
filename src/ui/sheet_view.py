@@ -7,6 +7,7 @@ class SheetView:
         self._root = root
         self._frame = None
         self._show_login_view = show_login_view
+        self._user = user_service.get_current_user()
 
         self._initialize()
 
@@ -25,7 +26,7 @@ class SheetView:
         heading_label = ttk.Label(
             master=self._frame, text="Pathfinder 2E Sheet")
         username_label = ttk.Label(
-            master=self._frame, text="You're logged in!")
+            master=self._frame, text=f"You're logged in as {self._user.username}!")
         logout_button = ttk.Button(
             master=self._frame, text="Logout", command=self._logout_handler)
 
