@@ -12,11 +12,11 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli _pelaaja_. Sovel
 
 ### Ennen kirjautumista
 
-* Käyttäjä voi luoda järjestelmään oman tunnuksen.
-  * Käyttäjätunnuksen tulee olla uniikki ja vähintään 3 merkkiä pitkä.
-* Käyttäjä voi kirjautua sisään järjestelmään omalla tunnuksellaan.
-  * Käyttäjän tulee kirjautua omalla käyttäjätunnuksellaan sekä oikealla salasanalla.
-    * Virheellisellä syötteellä sovellus palauttaa virheilmoituksen.
+* Käyttäjä voi luoda järjestelmään oman tunnuksen. (tehty)
+  * Käyttäjätunnuksen tulee olla uniikki ja vähintään 3 merkkiä pitkä. (tehty)
+* Käyttäjä voi kirjautua sisään järjestelmään omalla tunnuksellaan. (tehty)
+  * Käyttäjän tulee kirjautua omalla käyttäjätunnuksellaan sekä oikealla salasanalla. (tehty)
+    * Virheellisellä syötteellä sovellus palauttaa virheilmoituksen. (tehty)
 
 ### Kirjautumisen jälkeen
 
@@ -25,7 +25,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli _pelaaja_. Sovel
     * Merkkijonoja: esim. hahmon nimi, pelaajan nimi, kykyjen (featien) nimet ja selitykset, kosmeettiset tiedot
     * Kokonaislukuja: esim. hahmon attribuuttipisteet, hahmon taso
 * Käyttäjä voi muokata hahmolomakettaan ja tallentaa muutokset
-* Käyttäjä voi kirjautua ulos järjestelmästä
+* Käyttäjä voi kirjautua ulos järjestelmästä (tehty)
 
 ### Jatkokehitysmahdollisuuksia
 
