@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar
-from user_service import user_service
+from user_service import user_service, InvalidCredentialsError
 
 
 class LoginView:
@@ -24,12 +24,11 @@ class LoginView:
     def _login_handler(self):
         username = self._username_entry.get()
         password = self._password_entry.get()
-        user = user_service.login(username, password)
 
-        if user:
+        try:
+            user_service.login(username, password)
             self._on_login()
-
-        else:
+        except InvalidCredentialsError:
             self._show_error("Wrong credentials")
 
     def _show_error(self, message):
