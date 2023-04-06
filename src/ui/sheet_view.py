@@ -28,6 +28,6 @@ class SheetView:
                            sticky=constants.W, padx=5, pady=5)
         username_label.grid(row=1, column=0, padx=5, pady=5)
         logout_button.grid(row=3, column=0, columnspan=2,
-                           sticky=(constants.E, constants.W), padx=5, pady=5)
+                           sticky=(constants.EW), padx=5, pady=5)
 
         self._root.grid_columnconfigure(1, weight=1, minsize=300)
