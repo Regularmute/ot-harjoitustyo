@@ -4,6 +4,11 @@ from user_repository import (
 )
 from user import User
 
+class InvalidCredentialsError:
+    pass
+
+class UsernameExistsError:
+    pass
 
 class UserService:
     def __init__(
@@ -25,7 +30,7 @@ class UserService:
         user = self._user_repository.get_one_by_username(username)
 
         if not user or not bcrypt.checkpw(byte_password, user.password):
-            print("Error: wrong credentials")
+            raise InvalidCredentialsError("Invalid username or password")
 
         self._user = user
 
