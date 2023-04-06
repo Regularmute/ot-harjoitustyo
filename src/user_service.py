@@ -4,10 +4,10 @@ from user_repository import (
 )
 from user import User
 
-class InvalidCredentialsError:
+class InvalidCredentialsError(Exception):
     pass
 
-class UsernameExistsError:
+class UsernameExistsError(Exception):
     pass
 
 class UserService:
