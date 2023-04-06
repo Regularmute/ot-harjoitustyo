@@ -4,6 +4,7 @@ from user_repository import (
 )
 from user import User
 
+
 class UserService:
     def __init__(
         self,
@@ -29,5 +30,6 @@ class UserService:
         self._user = user
 
         return user
+
 
 user_service = UserService()

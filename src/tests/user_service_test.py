@@ -2,6 +2,7 @@ import unittest
 from user_service import UserService
 from user import User
 
+
 class FakeUserRepository:
     def __init__(self):
         self.users = []
@@ -13,6 +14,7 @@ class FakeUserRepository:
         self.users.append(user)
 
         return user
+
 
 class TestUserRepository(unittest.TestCase):
     def setUp(self):
