@@ -1,4 +1,4 @@
-from tkinter import ttk, constants
+from tkinter import ttk, constants, StringVar
 from user_service import user_service
 
 
@@ -9,6 +9,8 @@ class RegisterView:
         self._show_login_view = show_login_view
         self._username_entry = None
         self._password_entry = None
+        self._error_label = None
+        self._error_message = None
 
         self._initialize()
 
@@ -22,10 +24,29 @@ class RegisterView:
         username = self._username_entry.get()
         password = self._password_entry.get()
 
+        if len(username) < 3:
+            self._show_error("Username must be at least 3 characters long")
+            return
+
+        if len(password) < 6:
+            self._show_error("Password must be at least 6 characters long")
+            return
+
         user_service.create_user(username, password)
+
+    def _show_error(self, message):
+        self._error_message.set(message)
+        self._error_label.grid()
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
+        self._error_message = StringVar(self._frame)
+        self._error_label = ttk.Label(master=self._frame,
+                                      textvariable=self._error_message, foreground="red")
+
         heading_label = ttk.Label(master=self._frame, text="Create an account")
 
         username_label = ttk.Label(master=self._frame, text="Username")
@@ -53,3 +74,5 @@ class RegisterView:
                              sticky=(constants.E, constants.W), padx=5, pady=5)
 
         self._root.grid_columnconfigure(1, weight=1, minsize=300)
+
+        self._hide_error()
