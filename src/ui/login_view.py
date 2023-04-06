@@ -1,4 +1,4 @@
-from tkinter import ttk, constants
+from tkinter import ttk, constants, StringVar
 from user_service import user_service
 
 
@@ -10,6 +10,8 @@ class LoginView:
         self._username_entry = None
         self._password_entry = None
         self._on_login = on_login
+        self._error_label = None
+        self._error_message = None
 
         self._initialize()
 
@@ -28,10 +30,20 @@ class LoginView:
             self._on_login()
 
         else:
-            print("something went wrong")
+            self._show_error("Wrong credentials")
+
+    def _show_error(self, message):
+        self._error_message.set(message)
+        self._error_label.grid()
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
+        self._error_message = StringVar(self._frame)
+        self._error_label = ttk.Label(master=self._frame,
+                                      textvariable=self._error_message, foreground="red")
         heading_label = ttk.Label(
             master=self._frame, text="Pathfinder 2E Character Sheet")
 
