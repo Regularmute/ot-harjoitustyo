@@ -1,4 +1,5 @@
 from tkinter import ttk, constants
+from user_service import user_service
 
 
 class SheetView:
@@ -15,6 +16,10 @@ class SheetView:
     def destroy(self):
         self._frame.destroy()
 
+    def _logout_handler(self):
+        user_service.logout
+        self._show_login_view()
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         heading_label = ttk.Label(
@@ -22,7 +27,7 @@ class SheetView:
         username_label = ttk.Label(
             master=self._frame, text="You're logged in!")
         logout_button = ttk.Button(
-            master=self._frame, text="Logout", command=self._show_login_view)
+            master=self._frame, text="Logout", command=self._logout_handler)
 
         heading_label.grid(row=0, column=0, columnspan=2,
                            sticky=constants.W, padx=5, pady=5)

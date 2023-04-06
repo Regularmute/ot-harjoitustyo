@@ -41,5 +41,8 @@ class UserService:
 
         return user
 
+    def logout(self):
+        self._user = None
+
 
 user_service = UserService()
