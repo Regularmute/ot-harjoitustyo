@@ -20,7 +20,12 @@ class UserService:
         self._user = None
 
     def create_user(self, username, password):
-        self._user_repository.create(User(username, password))
+        duplicate_username = self._user_repository.get_one_by_username(username)
+
+        if not duplicate_username:
+            self._user_repository.create(User(username, password))
+        else:
+            raise UsernameExistsError(f"Username {username} is already taken")
 
     def get_users(self):
         return self._user_repository.get_all()

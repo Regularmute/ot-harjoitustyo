@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar
-from user_service import user_service
+from user_service import user_service, UsernameExistsError
 
 
 class RegisterView:
@@ -31,8 +31,10 @@ class RegisterView:
         if len(password) < 6:
             self._show_error("Password must be at least 6 characters long")
             return
-
-        user_service.create_user(username, password)
+        try:
+            user_service.create_user(username, password)
+        except UsernameExistsError:
+            self._show_error(f"Username {username} is already taken")
 
     def _show_error(self, message):
         self._error_message.set(message)
