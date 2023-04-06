@@ -30,6 +30,9 @@ class UserService:
     def get_users(self):
         return self._user_repository.get_all()
 
+    def get_current_user(self):
+        return self._user
+
     def login(self, username, password):
         byte_password = password.encode('utf-8')
         user = self._user_repository.get_one_by_username(username)
