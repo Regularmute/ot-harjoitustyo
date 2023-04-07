@@ -29,7 +29,11 @@ class UserService:
         if duplicate_username:
             raise UsernameExistsError(f"Username {username} is already taken")
 
-        user = self._user_repository.create(User(username, password))
+        byte_password = password.encode('utf-8')
+        password_salt = bcrypt.gensalt()
+        password_hash = bcrypt.hashpw(byte_password, password_salt)
+
+        user = self._user_repository.create(User(username, password_hash))
 
         if login:
             self._user = user

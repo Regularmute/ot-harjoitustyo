@@ -1,4 +1,3 @@
-import bcrypt
 from database_connection import get_database_connection
 from user import User
 
@@ -27,16 +26,13 @@ class UserRepository:
         return User(row["Username"], row["Password"]) if row else None
 
     def create(self, user):
-        # convert password to bytes and generate salt for hashing
-        byte_password = user.password.encode('utf-8')
-        password_salt = bcrypt.gensalt()
-        hash_value = bcrypt.hashpw(byte_password, password_salt)
+        # store username and hashed password to the database
 
         cursor = self._connection.cursor()
         sql = "INSERT INTO users (username, password) VALUES (:username, :password)"
 
         cursor.execute(
-            sql, {"username": user.username, "password": hash_value})
+            sql, {"username": user.username, "password": user.password})
 
         self._connection.commit()
 
