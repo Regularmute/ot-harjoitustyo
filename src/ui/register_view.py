@@ -3,12 +3,13 @@ from user_service import user_service, UsernameExistsError
 
 
 class RegisterView:
-    def __init__(self, root, show_login_view):
+    def __init__(self, root, show_login_view, on_registration):
         self._root = root
         self._frame = None
         self._show_login_view = show_login_view
         self._username_entry = None
         self._password_entry = None
+        self._on_registration = on_registration
         self._error_label = None
         self._error_message = None
 
@@ -33,6 +34,7 @@ class RegisterView:
             return
         try:
             user_service.create_user(username, password)
+            self._on_registration()
         except UsernameExistsError:
             self._show_error(f"Username {username} is already taken")
 
