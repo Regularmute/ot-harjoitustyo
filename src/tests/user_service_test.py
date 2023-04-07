@@ -30,7 +30,10 @@ class FakeUserRepository:
 class TestUserService(unittest.TestCase):
     def setUp(self):
         self.user_steve = User("Steve", "hunter2")
+        self.user_kyle = User("Kyle", "password1")
         self.user_service = UserService(FakeUserRepository())
+        self.user_service.create_user(self.user_kyle.username, self.user_kyle.password)
+
 
     def test_create_user_stores_username_correctly(self):
         username = self.user_steve.username
@@ -40,8 +43,8 @@ class TestUserService(unittest.TestCase):
 
         users = self.user_service.get_users()
 
-        self.assertEqual(len(users), 1)
-        self.assertEqual(users[0].username, self.user_steve.username)
+        self.assertEqual(len(users), 2)
+        self.assertEqual(users[1].username, self.user_steve.username)
 
     def test_create_user_does_not_store_password_in_plain_text(self):
         username = self.user_steve.username
@@ -51,8 +54,8 @@ class TestUserService(unittest.TestCase):
 
         users = self.user_service.get_users()
 
-        self.assertEqual(len(users), 1)
-        self.assertNotEqual(users[0].password, self.user_steve.password)
+        self.assertEqual(len(users), 2)
+        self.assertNotEqual(users[1].password, self.user_steve.password)
 
     def test_create_user_stores_hashed_password_correctly(self):
         username = self.user_steve.username
@@ -63,5 +66,5 @@ class TestUserService(unittest.TestCase):
         byte_password = password.encode('utf-8')
         users = self.user_service.get_users()
 
-        self.assertEqual(len(users), 1)
-        self.assertTrue(bcrypt.checkpw(byte_password, users[0].password))
+        self.assertEqual(len(users), 2)
+        self.assertTrue(bcrypt.checkpw(byte_password, users[1].password))
