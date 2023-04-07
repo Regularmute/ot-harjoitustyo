@@ -26,7 +26,7 @@ class FakeUserRepository:
         return user
 
 
-class TestUserRepository(unittest.TestCase):
+class TestUserService(unittest.TestCase):
     def setUp(self):
         self.user_steve = User("Steve", "hunter2")
         self.user_service = UserService(FakeUserRepository())
