@@ -49,6 +49,13 @@ You can run the tests with the command:
     poetry run invoke test
   ```
 
+### Linting
+
+You can run pylint on src/ files with the command:
+  ```console
+    poetry run invoke lint
+  ```
+
 ### Coverage report
 
 You can check the test coverage and generate a .html form coverage report with the command:
