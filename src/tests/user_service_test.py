@@ -1,6 +1,7 @@
 import unittest
 import bcrypt
-from user_service import UserService, InvalidCredentialsError, UsernameExistsError
+from user_service import (UserService,
+    InvalidCredentialsError, UsernameExistsError)
 from user import User
 
 
@@ -12,7 +13,8 @@ class FakeUserRepository:
         return self.users
 
     def get_one_by_username(self, username):
-        target_users = filter(lambda user: user.username == username, self.users)
+        target_users = filter(
+            lambda user: user.username == username, self.users)
 
         target_users_list = list(target_users)
 
@@ -32,7 +34,8 @@ class TestUserService(unittest.TestCase):
         self.user_steve = User("Steve", "hunter2")
         self.user_kyle = User("Kyle", "password1")
         self.user_service = UserService(FakeUserRepository())
-        self.user_service.create_user(self.user_kyle.username, self.user_kyle.password, False)
+        self.user_service.create_user(
+            self.user_kyle.username, self.user_kyle.password, False)
 
 
     def test_create_user_stores_username_correctly(self):
@@ -73,7 +76,8 @@ class TestUserService(unittest.TestCase):
         self.assertIsNone(self.user_service._user)
 
     def test_valid_login_updates_current_user_property_correctly(self):
-        user = self.user_service.login(self.user_kyle.username, self.user_kyle.password)
+        user = self.user_service.login(
+            self.user_kyle.username, self.user_kyle.password)
 
         self.assertEqual(self.user_service._user, user)
 
@@ -81,13 +85,14 @@ class TestUserService(unittest.TestCase):
         self.assertIsNone(self.user_service.get_current_user())
 
     def test_get_current_user_returns_logged_user(self):
-        self.user_service.login(self.user_kyle.username, self.user_kyle.password)
+        self.user_service.login(
+            self.user_kyle.username, self.user_kyle.password)
 
         self.assertEqual(
             self.user_service._user, self.user_service.get_current_user())
 
     def test_logout_sets_current_user_property_to_None(self):
-        #Log in and check to see that the user property is set before logging out
+        #Log in to check that the user property is set before logging out
         user = self.user_service.login(
             self.user_kyle.username, self.user_kyle.password)
         self.assertEqual(self.user_service._user, user)
@@ -96,8 +101,9 @@ class TestUserService(unittest.TestCase):
         self.user_service.logout()
         self.assertIsNone(self.user_service._user)
 
-    def test_create_user_logs_in_and_updates_current_user_property_correctly(self):
-        user = self.user_service.create_user(self.user_steve.username, self.user_steve.password)
+    def test_create_user_updates_current_user_property_correctly(self):
+        user = self.user_service.create_user(
+            self.user_steve.username, self.user_steve.password)
 
         self.assertEqual(self.user_service._user, user)
 
@@ -110,5 +116,6 @@ class TestUserService(unittest.TestCase):
     def test_login_throws_error_with_invalid_credentials(self):
         self.assertRaises(
             InvalidCredentialsError,
-            lambda: self.user_service.login(self.user_steve.username, self.user_steve.password)
+            lambda: self.user_service.login(
+                self.user_steve.username, self.user_steve.password)
         )
