@@ -38,6 +38,8 @@ class UserService:
         if login:
             self._user = user
 
+        return user
+
     def get_users(self):
         return self._user_repository.get_all()
 
