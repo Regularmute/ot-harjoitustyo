@@ -14,6 +14,8 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli _pelaaja_. Sovel
 
 * Käyttäjä voi luoda järjestelmään oman tunnuksen. (tehty)
   * Käyttäjätunnuksen tulee olla uniikki ja vähintään 3 merkkiä pitkä. (tehty)
+  * Salasanan tulee olla vähintään 6 merkkiä pitkä (tehty)
+  * Käyttäjä kirjautuu automaattisesti sisään onnistuneen rekisteröitymisen jälkeen (tehty)
 * Käyttäjä voi kirjautua sisään järjestelmään omalla tunnuksellaan. (tehty)
   * Käyttäjän tulee kirjautua omalla käyttäjätunnuksellaan sekä oikealla salasanalla. (tehty)
     * Virheellisellä syötteellä sovellus palauttaa virheilmoituksen. (tehty)

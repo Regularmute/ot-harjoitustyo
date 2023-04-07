@@ -11,4 +11,6 @@
 |4.4|1h|Kirjautumistoiminto ja linttaus|
 |6.4|1h|Linttaus ja koodin muotoilu|
 |6.4|1h|UI:n modulointi ja virhekäsittelyt|
-|Yhteensä käytetty aika:|11h|
+|7.4|1h|Taskien määrittely|
+|7.4|2h|user_service.py testaus|
+|Yhteensä käytetty aika:|14h|
