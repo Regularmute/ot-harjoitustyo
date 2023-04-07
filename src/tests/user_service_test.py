@@ -32,7 +32,7 @@ class TestUserService(unittest.TestCase):
         self.user_steve = User("Steve", "hunter2")
         self.user_kyle = User("Kyle", "password1")
         self.user_service = UserService(FakeUserRepository())
-        self.user_service.create_user(self.user_kyle.username, self.user_kyle.password)
+        self.user_service.create_user(self.user_kyle.username, self.user_kyle.password, False)
 
 
     def test_create_user_stores_username_correctly(self):
