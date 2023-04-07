@@ -9,3 +9,6 @@
 |4.4|3h|Käyttäjätunnuksen rekisteröintitoiminnallisuus|
 |4.4|1h|Testaus ja dokumentaatio|
 |4.4|1h|Kirjautumistoiminto ja linttaus|
+|6.4|1h|Linttaus ja koodin muotoilu|
+|6.4|1h|UI:n modulointi ja virhekäsittelyt|
+|Yhteensä käytetty aika:|11h|
