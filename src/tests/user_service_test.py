@@ -69,6 +69,14 @@ class TestUserService(unittest.TestCase):
         self.assertEqual(len(users), 2)
         self.assertTrue(bcrypt.checkpw(byte_password, users[1].password))
 
+    def test_user_property_is_None_when_not_logged_in(self):
+        self.assertIsNone(self.user_service._user)
+
+    def test_valid_login_updates_current_user_property_correctly(self):
+        user = self.user_service.login(self.user_kyle.username, self.user_kyle.password)
+
+        self.assertEqual(self.user_service._user, user)
+
     def test_create_user_throws_error_with_existing_username(self):
         self.assertRaises(
             UsernameExistsError,
