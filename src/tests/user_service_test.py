@@ -1,6 +1,6 @@
 import unittest
 import bcrypt
-from user_service import UserService
+from user_service import UserService, InvalidCredentialsError, UsernameExistsError
 from user import User
 
 
@@ -68,3 +68,15 @@ class TestUserService(unittest.TestCase):
 
         self.assertEqual(len(users), 2)
         self.assertTrue(bcrypt.checkpw(byte_password, users[1].password))
+
+    def test_create_user_throws_error_with_existing_username(self):
+        self.assertRaises(
+            UsernameExistsError,
+            lambda: self.user_service.create_user("Kyle", "gamer123")
+        )
+
+    def test_login_throws_error_with_invalid_credentials(self):
+        self.assertRaises(
+            InvalidCredentialsError,
+            lambda: self.user_service.login(self.user_steve.username, self.user_steve.password)
+        )
