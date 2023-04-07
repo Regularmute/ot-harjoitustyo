@@ -77,6 +77,11 @@ class TestUserService(unittest.TestCase):
 
         self.assertEqual(self.user_service._user, user)
 
+    def test_create_user_logs_in_and_updates_current_user_property_correctly(self):
+        user = self.user_service.create_user(self.user_steve.username, self.user_steve.password)
+
+        self.assertEqual(self.user_service._user, user)
+
     def test_create_user_throws_error_with_existing_username(self):
         self.assertRaises(
             UsernameExistsError,
