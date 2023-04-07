@@ -1,4 +1,5 @@
 import unittest
+import bcrypt
 from user_service import UserService
 from user import User
 
@@ -52,3 +53,15 @@ class TestUserService(unittest.TestCase):
 
         self.assertEqual(len(users), 1)
         self.assertNotEqual(users[0].password, self.user_steve.password)
+
+    def test_create_user_stores_hashed_password_correctly(self):
+        username = self.user_steve.username
+        password = self.user_steve.password
+
+        self.user_service.create_user(username, password)
+
+        byte_password = password.encode('utf-8')
+        users = self.user_service.get_users()
+
+        self.assertEqual(len(users), 1)
+        self.assertTrue(bcrypt.checkpw(byte_password, users[0].password))
