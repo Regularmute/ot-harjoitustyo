@@ -4,11 +4,14 @@ from user_repository import (
 )
 from user import User
 
+
 class InvalidCredentialsError(Exception):
     pass
 
+
 class UsernameExistsError(Exception):
     pass
+
 
 class UserService:
     def __init__(
@@ -20,7 +23,8 @@ class UserService:
         self._user = None
 
     def create_user(self, username, password):
-        duplicate_username = self._user_repository.get_one_by_username(username)
+        duplicate_username = self._user_repository.get_one_by_username(
+            username)
 
         if not duplicate_username:
             self._user_repository.create(User(username, password))
