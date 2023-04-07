@@ -10,6 +10,16 @@ class FakeUserRepository:
     def get_all(self):
         return self.users
 
+    def get_one_by_username(self, username):
+        target_users = filter(lambda user: user.username == username, self.users)
+
+        target_users_list = list(target_users)
+
+        if len(target_users_list) > 0:
+            return target_users_list[0]
+
+        return None
+
     def create(self, user):
         self.users.append(user)
 
