@@ -13,4 +13,5 @@
 |6.4|1h|UI:n modulointi ja virhekäsittelyt|
 |7.4|1h|Taskien määrittely|
 |7.4|2h|user_service.py testaus|
-|Yhteensä käytetty aika:|14h|
+|7.4|1h|Dokumentaatio|
+|Yhteensä käytetty aika:|15h|

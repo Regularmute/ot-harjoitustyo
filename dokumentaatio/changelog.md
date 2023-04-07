@@ -26,6 +26,8 @@
   * Logging in with invalid credentials throws an error
   * Trying to register with a taken username throws an error
   * Creating an account successfully updates the user-property correctly (as when logging in).
+  * Logging out clears the user property
+  * get_current_user returns the currently logged user
 
 ### Code
 * user_service.py keeps track of the logged user
