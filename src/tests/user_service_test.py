@@ -41,3 +41,14 @@ class TestUserRepository(unittest.TestCase):
 
         self.assertEqual(len(users), 1)
         self.assertEqual(users[0].username, self.user_steve.username)
+
+    def test_create_user_does_not_store_password_in_plain_text(self):
+        username = self.user_steve.username
+        password = self.user_steve.password
+
+        self.user_service.create_user(username, password)
+
+        users = self.user_service.get_users()
+
+        self.assertEqual(len(users), 1)
+        self.assertNotEqual(users[0].password, self.user_steve.password)
