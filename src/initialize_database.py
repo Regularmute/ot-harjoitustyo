@@ -4,8 +4,9 @@ from database_connection import get_database_connection
 def drop_tables(connection):
     cursor = connection.cursor()
 
-    cursor.execute('''
+    cursor.executescript('''
         DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS characters;
     ''')
 
     connection.commit()
@@ -14,11 +15,22 @@ def drop_tables(connection):
 def create_tables(connection):
     cursor = connection.cursor()
 
-    cursor.execute('''
+    cursor.executescript('''
         CREATE TABLE users (
-            username TEXT PRIMARY KEY,
+            user_id INTEGER PRIMARY KEY,
+            username TEXT UNIQUE,
             password TEXT
         );
+        CREATE TABLE characters (
+            character_id INTEGER PRIMARY KEY,
+            name TEXT,
+            level INTEGER,
+            experience INTEGER,
+            hit_points INTEGER,
+            proficiency bonus INTEGER
+        );
+        INSERT INTO characters (name)
+        VALUES ("gamerGUY");
     ''')
 
     connection.commit()
