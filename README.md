@@ -18,6 +18,8 @@ The application will allow users to create characters according to the ruleset u
 
   * [Changelog](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 
+  * [Arkkitehtuurikuvaus](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+
 ## Installation
 ---
 1. Install the dependencies with the command:

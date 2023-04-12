@@ -14,4 +14,6 @@
 |7.4|1h|Taskien määrittely|
 |7.4|2h|user_service.py testaus|
 |7.4|1h|Dokumentaatio|
-|Yhteensä käytetty aika:|15h|
+|12.4|1h|Dokumentaatio|
+|12.4|1h|Hahmotaulukon alustus ja implementaatio|
+|Yhteensä käytetty aika:|17h|

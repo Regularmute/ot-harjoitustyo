@@ -36,3 +36,5 @@
 * Set up new invoke tasks to help with linting and automatic formatting
 * Refactored code for registration and logging in
 * Separated application logic to user_service from user_repository (password hashing)
+* Create and initialize a table for characters
+* Set up files to interact with the character table
