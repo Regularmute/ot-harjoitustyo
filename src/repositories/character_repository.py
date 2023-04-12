@@ -1,5 +1,5 @@
 from database_connection import get_database_connection
-from character import Character
+from entities.character import Character
 
 
 class CharacterRepository:

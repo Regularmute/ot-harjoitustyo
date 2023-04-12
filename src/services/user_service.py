@@ -1,8 +1,8 @@
 import bcrypt
-from user_repository import (
+from repositories.user_repository import (
     user_repository as default_user_repository
 )
-from user import User
+from entities.user import User
 
 
 class InvalidCredentialsError(Exception):

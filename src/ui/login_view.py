@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar
-from user_service import user_service, InvalidCredentialsError
+from services.user_service import user_service, InvalidCredentialsError
 
 
 class LoginView:

@@ -1,6 +1,6 @@
 from tkinter import ttk, constants
-from user_service import user_service
-from character_service import character_service
+from services.user_service import user_service
+from services.character_service import character_service
 
 
 class SheetView:

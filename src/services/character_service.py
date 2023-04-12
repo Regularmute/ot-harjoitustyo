@@ -1,7 +1,7 @@
-from character_repository import (
+from repositories.character_repository import (
     character_repository as default_character_repository
 )
-from character import Character
+from entities.character import Character
 
 
 class CharacterService:

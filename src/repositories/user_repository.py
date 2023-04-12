@@ -1,5 +1,5 @@
 from database_connection import get_database_connection
-from user import User
+from entities.user import User
 
 
 class UserRepository:

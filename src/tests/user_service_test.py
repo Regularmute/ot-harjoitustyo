@@ -1,8 +1,8 @@
 import unittest
 import bcrypt
-from user_service import (UserService,
+from services.user_service import (UserService,
     InvalidCredentialsError, UsernameExistsError)
-from user import User
+from entities.user import User
 
 
 class FakeUserRepository:
