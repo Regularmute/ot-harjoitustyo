@@ -9,9 +9,9 @@ class UserRepository:
     def get_all(self):
         # fetch a list of all users
 
-        cursor = self._connection()
+        cursor = self._connection.cursor()
 
-        cursor.execute("SELECT * FROM users;")
+        cursor.execute("SELECT username, password FROM users;")
         rows = cursor.fetchall()
 
         return list(map(User(["username"], ["password"]), rows))
@@ -19,7 +19,7 @@ class UserRepository:
     def get_one_by_username(self, username):
         cursor = self._connection.cursor()
 
-        sql = "SELECT * FROM users WHERE username = :username"
+        sql = "SELECT username, password FROM users WHERE username = :username"
         cursor.execute(sql, {"username": username})
         row = cursor.fetchone()
 
