@@ -28,7 +28,7 @@ class UserRepository:
         return get_user_by_row(row)
 
     def create(self, user):
-        # store username and hashed password to the database
+        # Store newly registered user's credentials in the users table
 
         cursor = self._connection.cursor()
         sql = "INSERT INTO users (username, password) VALUES (:username, :password)"
