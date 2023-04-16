@@ -16,4 +16,5 @@
 |7.4|1h|Dokumentaatio|
 |12.4|1h|Dokumentaatio|
 |12.4|1h|Hahmotaulukon alustus ja implementaatio|
-|Yhteensä käytetty aika:|17h|
+|16.4|2h|Testaus ja dokumentaatio|
+|Yhteensä käytetty aika:|19h|

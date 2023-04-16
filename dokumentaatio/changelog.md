@@ -28,6 +28,9 @@
   * Creating an account successfully updates the user-property correctly (as when logging in).
   * Logging out clears the user property
   * get_current_user returns the currently logged user
+* Set up test database
+* Begin testing user_repository.py:
+  * create() stores an User object correctly to the database
 
 ### Code
 * user_service.py keeps track of the logged user
