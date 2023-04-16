@@ -12,13 +12,15 @@ The application will allow users to create characters according to the ruleset u
 
 ## Documentation
 ---
-  * [Sovelluksen vaatimusmäärittely: Pathfinder 2e Hahmolomake](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+Note: Some of the documentation has been written in Finnish. These are marked with [FI].
 
-  * [Sovelluksen tuntikirjanpito](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+  * [Application's requirement specifications: Pathfinder 2e Character Sheet [FI]](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+
+  * [Logged hours spent on the application [FI]](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
 
   * [Changelog](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 
-  * [Arkkitehtuurikuvaus](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+  * [Architecture description](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
 ## Installation
 ---
