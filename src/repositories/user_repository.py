@@ -40,5 +40,14 @@ class UserRepository:
 
         return user
 
+    def delete_all(self):
+        # Removes all users from the table. Used for testing.
+
+        cursor = self._connection.cursor()
+
+        cursor.execute("DELETE FROM users")
+
+        self._connection.commit()
+
 
 user_repository = UserRepository(get_database_connection())
