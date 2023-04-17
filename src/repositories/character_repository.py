@@ -34,6 +34,17 @@ class CharacterRepository:
 
         return Character(row["name"], 1, 0, 0, 0) if row else None
 
+    def get_one_by_creator_id(self, creator_id):
+        cursor = self._connection.cursor()
+
+        sql = """SELECT creator_id, name, level, experience, hit_points
+                FROM characters WHERE creator_id=:creator_id"""
+
+        cursor.execute(sql, {"creator_id": creator_id})
+        row = cursor.fetchone()
+
+        return get_character_by_row(row)
+
     def create(self, character):
         # store username and hashed password to the database
 
@@ -53,6 +64,15 @@ class CharacterRepository:
         self._connection.commit()
 
         return character
+
+    def delete_all(self):
+        # delete all characters from the table
+
+        cursor = self._connection.cursor()
+
+        cursor.execute("DELETE FROM characters")
+
+        self._connection.commit()
 
 
 character_repository = CharacterRepository(get_database_connection())
