@@ -29,22 +29,22 @@ class FakeCharacterRepository:
 
 class TestCharacterService(unittest.TestCase):
     def setUp(self):
-        self.char_bilbo = Character("Bob", "Bilbo Baggins", 1, 0, 0)
-        self.char_naruto = Character("sanna2", "Naruto Uzumaki", 1, 0, 0)
+        self.char_bilbo = Character(1, "Bilbo Baggins", 1, 0, 0)
+        self.char_naruto = Character(2, "Naruto Uzumaki", 1, 0, 0)
         self.character_service = CharacterService(FakeCharacterRepository())
         self.character_service.create_character(
-            self.char_bilbo.player, self.char_bilbo.name)
+            self.char_bilbo.creator_id, self.char_bilbo.name)
 
     def test_create_character_stores_character_correctly(self):
-        player = self.char_naruto.player
+        creator = self.char_naruto.creator_id
         name = self.char_naruto.name
 
-        self.character_service.create_character(player, name)
+        self.character_service.create_character(creator, name)
 
         characters = self.character_service.get_characters()
 
         self.assertEqual(len(characters), 2)
-        self.assertEqual(characters[1].player, self.char_naruto.player)
+        self.assertEqual(characters[1].creator_id, self.char_naruto.creator_id)
         self.assertEqual(characters[1].name, self.char_naruto.name)
         self.assertEqual(characters[1].level, 1)
         self.assertEqual(characters[1].experience, 0)
