@@ -21,10 +21,47 @@ class FakeCharacterRepository:
 
         return None
 
+    def get_one_by_character_id(self, character_id):
+        target_characters = filter(
+            lambda character: character.character_id == character_id, self.characters)
+
+        target_characters_list = list(target_characters)
+
+        if len(target_characters_list) > 0:
+            return target_characters_list[0]
+
+        return None
+
     def create(self, character):
+        character.character_id = len(self.characters)
         self.characters.append(character)
 
         return character
+
+    def update_character_name(self, character_id, new_name):
+        target_characters = filter(
+            lambda character: character.character_id == character_id, self.characters)
+
+        target_characters_list = list(target_characters)
+
+        if len(target_characters_list) > 0:
+            target_characters_list[0].name = new_name
+
+        return
+
+    def update_character_property(self, character_id, statistic, new_value):
+        target_characters = filter(
+            lambda character: character.character_id == character_id, self.characters)
+
+        target_characters_list = list(target_characters)
+
+        if len(target_characters_list) > 0:
+            target_character = target_characters_list[0]
+            stat_to_change = getattr(target_character, statistic)
+            if isinstance(stat_to_change, int):
+                setattr(target_character, statistic, new_value)
+
+        return
 
 
 class TestCharacterService(unittest.TestCase):
