@@ -23,7 +23,7 @@ def create_tables(connection):
         );
         CREATE TABLE characters (
             character_id INTEGER PRIMARY KEY,
-            player_id INTEGER REFERENCES users ON DELETE CASCADE,
+            creator_id INTEGER REFERENCES users ON DELETE CASCADE,
             name TEXT,
             level INTEGER,
             experience INTEGER,
