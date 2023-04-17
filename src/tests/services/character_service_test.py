@@ -71,6 +71,7 @@ class TestCharacterService(unittest.TestCase):
         self.character_service = CharacterService(FakeCharacterRepository())
         self.character_service.create_character(
             self.char_bilbo.creator_id, self.char_bilbo.name)
+        self.char_id_bilbo = 0
 
     def test_create_character_stores_character_correctly(self):
         creator = self.char_naruto.creator_id
@@ -81,6 +82,7 @@ class TestCharacterService(unittest.TestCase):
         characters = self.character_service.get_characters()
 
         self.assertEqual(len(characters), 2)
+        self.assertEqual(characters[1].character_id, 1)
         self.assertEqual(characters[1].creator_id, self.char_naruto.creator_id)
         self.assertEqual(characters[1].name, self.char_naruto.name)
         self.assertEqual(characters[1].level, 1)
@@ -91,6 +93,7 @@ class TestCharacterService(unittest.TestCase):
         characters = self.character_service.get_characters()
 
         self.assertEqual(len(characters), 1)
+        self.assertEqual(characters[0].character_id, 0)
         self.assertEqual(characters[0].creator_id, self.char_bilbo.creator_id)
         self.assertEqual(characters[0].name, self.char_bilbo.name)
         self.assertEqual(characters[0].level, self.char_bilbo.level)
@@ -100,6 +103,17 @@ class TestCharacterService(unittest.TestCase):
     def test_get_character_by_creator_id_returns_character_correctly(self):
         character = self.character_service.get_character_by_creator_id(1)
 
+        self.assertEqual(character.character_id, 0)
+        self.assertEqual(character.creator_id, 1)
+        self.assertEqual(character.name, self.char_bilbo.name)
+        self.assertEqual(character.level, 1)
+        self.assertEqual(character.experience, 0)
+        self.assertEqual(character.hit_points, 0)
+
+    def test_get_character_by_character_id_returns_correct_character(self):
+        character = self.character_service.get_character_by_character_id(0)
+
+        self.assertEqual(character.character_id, 0)
         self.assertEqual(character.creator_id, 1)
         self.assertEqual(character.name, self.char_bilbo.name)
         self.assertEqual(character.level, 1)
@@ -107,14 +121,20 @@ class TestCharacterService(unittest.TestCase):
         self.assertEqual(character.hit_points, 0)
 
     def test_set_character_name_updates_name_correctly(self):
-        id = self.char_bilbo.id
+        id = self.char_id_bilbo
         new_name = "Frodo Baggins"
         self.character_service.set_character_name(id, new_name)
 
-        self.assertEqual(self.char_bilbo.name, "Frodo Baggins")
+        updated_character = self.character_service.get_character_by_character_id(
+            0)
+
+        self.assertEqual(updated_character.name, "Frodo Baggins")
 
     def test_set_character_statistic_updates_level_correctly(self):
-        id = self.char_bilbo.id
+        id = self.char_id_bilbo
         self.character_service.set_character_statistic(id, "level", 2)
 
-        self.assertEqual(self.char_bilbo.level, 2)
+        updated_character = self.character_service.get_character_by_character_id(
+            0)
+
+        self.assertEqual(updated_character.level, 2)
