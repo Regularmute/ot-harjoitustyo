@@ -1,6 +1,14 @@
 from database_connection import get_database_connection
 from entities.character import Character
 
+def get_character_by_row(row):
+    return Character(
+            row["creator_id"],
+            row["name"],
+            row["level"],
+            row["experience"],
+            row["hit_points"]
+        ) if row else None
 
 class CharacterRepository:
     def __init__(self, connection):
@@ -9,12 +17,13 @@ class CharacterRepository:
     def get_all(self):
         # fetch a list of all characters
 
-        cursor = self._connection()
+        cursor = self._connection.cursor()
 
-        cursor.execute("SELECT name FROM characters;")
+        cursor.execute("""SELECT creator_id, name, level, experience,
+                        hit_points FROM characters;""")
         rows = cursor.fetchall()
 
-        return list(map(Character(["name"], 1, 0, 0, 0), rows))
+        return list(map(get_character_by_row, rows))
 
     def get_one_by_name(self, name):
         cursor = self._connection.cursor()
@@ -29,10 +38,17 @@ class CharacterRepository:
         # store username and hashed password to the database
 
         cursor = self._connection.cursor()
-        sql = "INSERT INTO characters (name) VALUES (:name)"
+        sql = """INSERT INTO characters (creator_id, name, level, experience, hit_points)
+                VALUES (:creator_id, :name, :level, :experience, :hit_points)"""
 
         cursor.execute(
-            sql, {"name": character.name})
+            sql, {
+                "creator_id": character.creator_id,
+                "name": character.name,
+                "level": character.level,
+                "experience": character.experience,
+                "hit_points": character.hit_points
+                })
 
         self._connection.commit()
 
