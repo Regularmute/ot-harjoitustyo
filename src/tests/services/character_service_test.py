@@ -42,7 +42,6 @@ class TestCharacterService(unittest.TestCase):
         self.character_service.create_character(player, name)
 
         characters = self.character_service.get_characters()
-        print(characters)
 
         self.assertEqual(len(characters), 2)
         self.assertEqual(characters[1].player, self.char_naruto.player)
