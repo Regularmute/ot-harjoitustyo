@@ -17,4 +17,5 @@
 |12.4|1h|Dokumentaatio|
 |12.4|1h|Hahmotaulukon alustus ja implementaatio|
 |16.4|2h|Testaus ja dokumentaatio|
-|Yhteensä käytetty aika:|19h|
+|17.4|5h|Testaus, hahmologiikan ohjelmointi|
+|Yhteensä käytetty aika:|24h|
