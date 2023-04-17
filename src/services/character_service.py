@@ -23,5 +23,15 @@ class CharacterService:
     def get_character_by_creator_id(self, creator_id):
         return self._character_repository.get_one_by_creator_id(creator_id)
 
+    def get_character_by_character_id(self, character_id):
+        return self._character_repository.get_one_by_character_id(character_id)
+
+    def set_character_name(self, character_id, new_name):
+        return self._character_repository.update_character_name(character_id, new_name)
+
+    def set_character_statistic(self, character_id, statistic, new_value):
+        return self._character_repository.update_character_property(
+            character_id, statistic, new_value)
+
 
 character_service = CharacterService()
