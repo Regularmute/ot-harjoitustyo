@@ -1,7 +1,7 @@
 import unittest
 import bcrypt
-from services.user_service import (UserService,
-    InvalidCredentialsError, UsernameExistsError)
+from services.user_service import (
+    UserService, InvalidCredentialsError, UsernameExistsError)
 from entities.user import User
 
 
