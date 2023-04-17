@@ -68,3 +68,16 @@ class TestCharacterService(unittest.TestCase):
         self.assertEqual(character.level, 1)
         self.assertEqual(character.experience, 0)
         self.assertEqual(character.hit_points, 0)
+
+    def test_set_character_name_updates_name_correctly(self):
+        id = self.char_bilbo.id
+        new_name = "Frodo Baggins"
+        self.character_service.set_character_name(id, new_name)
+
+        self.assertEqual(self.char_bilbo.name, "Frodo Baggins")
+
+    def test_set_character_statistic_updates_level_correctly(self):
+        id = self.char_bilbo.id
+        self.character_service.set_character_statistic(id, "level", 2)
+
+        self.assertEqual(self.char_bilbo.level, 2)
