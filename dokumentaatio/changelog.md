@@ -29,8 +29,17 @@
   * Logging out clears the user property
   * get_current_user returns the currently logged user
 * Set up test database
-* Begin testing user_repository.py:
+* Finish testing user_repository.py:
   * create() stores an User object correctly to the database
+  * get_all() retrieves Users correctly from the database
+  * get_one_by_username() retrieves correct User from the database
+  * delete_all() clears the contents of the Users database
+* Begin testing character_service.py:
+  * create_character() stores a Character object correctly
+  * get_characters() fetches Character objects correctly
+  * characters can be fetched by their creator_id or own id
+  * characters' names can be edited
+  * characters' other properties can be edited
 
 ### Code
 * user_service.py keeps track of the logged user
@@ -41,3 +50,4 @@
 * Separated application logic to user_service from user_repository (password hashing)
 * Create and initialize a table for characters
 * Set up files to interact with the character table
+* Begin working on application logic for characters
