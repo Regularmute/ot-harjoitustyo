@@ -12,8 +12,8 @@ class CharacterService:
 
         self._character_repository = character_repository
 
-    def create_character(self, name):
-        character = self._character_repository.create(Character(name, 1, 0, 0, 0))
+    def create_character(self, name, player):
+        character = self._character_repository.create(Character(player, name, 1, 0, 0))
 
         return character
 
