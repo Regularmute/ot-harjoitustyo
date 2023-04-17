@@ -49,3 +49,22 @@ class TestCharacterService(unittest.TestCase):
         self.assertEqual(characters[1].level, 1)
         self.assertEqual(characters[1].experience, 0)
         self.assertEqual(characters[1].hit_points, 0)
+
+    def test_get_characters_retrieves_characters_correctly(self):
+        characters = self.character_service.get_characters()
+
+        self.assertEqual(len(characters), 1)
+        self.assertEqual(characters[0].creator_id, self.char_bilbo.creator_id)
+        self.assertEqual(characters[0].name, self.char_bilbo.name)
+        self.assertEqual(characters[0].level, self.char_bilbo.level)
+        self.assertEqual(characters[0].experience, self.char_bilbo.experience)
+        self.assertEqual(characters[0].hit_points, self.char_bilbo.hit_points)
+
+    def test_get_character_by_creator_id_returns_character_correctly(self):
+        character = self.character_service.get_character_by_creator_id(1)
+
+        self.assertEqual(character.creator_id, 1)
+        self.assertEqual(character.name, self.char_bilbo.name)
+        self.assertEqual(character.level, 1)
+        self.assertEqual(character.experience, 0)
+        self.assertEqual(character.hit_points, 0)
