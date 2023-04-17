@@ -20,8 +20,8 @@ class CharacterService:
     def get_characters(self):
         return self._character_repository.get_all()
 
-    def get_character_by_name(self, name):
-        return self._character_repository.get_one_by_name(name)
+    def get_character_by_creator_id(self, creator_id):
+        return self._character_repository.get_one_by_creator_id(creator_id)
 
 
 character_service = CharacterService()

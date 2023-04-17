@@ -10,9 +10,9 @@ class FakeCharacterRepository:
     def get_all(self):
         return self.characters
 
-    def get_one_by_name(self, name):
+    def get_one_by_creator_id(self, creator_id):
         target_characters = filter(
-            lambda character: character.name == name, self.characters)
+            lambda character: character.creator_id == creator_id, self.characters)
 
         target_characters_list = list(target_characters)
 
