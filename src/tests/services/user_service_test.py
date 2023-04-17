@@ -37,7 +37,6 @@ class TestUserService(unittest.TestCase):
         self.user_service.create_user(
             self.user_kyle.username, self.user_kyle.password, False)
 
-
     def test_create_user_stores_username_correctly(self):
         username = self.user_steve.username
         password = self.user_steve.password
@@ -92,12 +91,12 @@ class TestUserService(unittest.TestCase):
             self.user_service._user, self.user_service.get_current_user())
 
     def test_logout_sets_current_user_property_to_None(self):
-        #Log in to check that the user property is set before logging out
+        # Log in to check that the user property is set before logging out
         user = self.user_service.login(
             self.user_kyle.username, self.user_kyle.password)
         self.assertEqual(self.user_service._user, user)
 
-        #Log out to make sure that the user property is cleared correctly
+        # Log out to make sure that the user property is cleared correctly
         self.user_service.logout()
         self.assertIsNone(self.user_service._user)
 

@@ -10,7 +10,7 @@ class SheetView:
         self._show_login_view = show_login_view
         self._user = user_service.get_current_user()
 
-        #Hahmon tiedot
+        # Hahmon tiedot
         self._character = character_service.get_character_by_name("gamerGUY")
         self._name_entry = None
 
@@ -52,7 +52,6 @@ class SheetView:
             row=3, column=0, sticky=constants.W, padx=5, pady=5)
         self._edit_name_btn.grid(
             row=3, column=1, padx=5, pady=5)
-
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
