@@ -36,10 +36,10 @@ class TestCharacterService(unittest.TestCase):
             self.char_bilbo.player, self.char_bilbo.name)
 
     def test_create_character_stores_character_correctly(self):
-        name = self.char_naruto.name
         player = self.char_naruto.player
+        name = self.char_naruto.name
 
-        self.character_service.create_character(name, player)
+        self.character_service.create_character(player, name)
 
         characters = self.character_service.get_characters()
         print(characters)
