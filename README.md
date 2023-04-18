@@ -7,8 +7,9 @@ The application will allow users to create characters according to the ruleset u
   * The user can see the login and registration pages.
   * The user can create an account and store it into the database.
   * A registered user can login and logout.
-  * A registered user is logged in automatically
-  * A logged user is greeted with a personalized message
+  * A registered user is logged in automatically.
+  * A logged user either sees their character's name or is prompted to create a new character.
+  * The created character is stored in a sqlite database.
 
 ## Documentation
 ---

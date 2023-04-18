@@ -19,6 +19,10 @@
   * Doing so will display an error message
 * Logging in with invalid credentials displays an error message
 
+* A logged user without an existing character is prompted to create one
+* Created character is stored into a database, and its name is displayed to its creator.
+* A user can currently have one character at a time.
+
 ### Testing
 * More tests for user_service.py:
   * Registered accounts' passwords are hashed before storing
@@ -34,12 +38,15 @@
   * get_all() retrieves Users correctly from the database
   * get_one_by_username() retrieves correct User from the database
   * delete_all() clears the contents of the Users database
-* Begin testing character_service.py:
+* Add tests to character_service.py:
   * create_character() stores a Character object correctly
   * get_characters() fetches Character objects correctly
   * characters can be fetched by their creator_id or own id
   * characters' names can be edited
   * characters' other properties can be edited
+* Add tests to character_repository.py:
+  * characters can be created and fetched correctly
+  * characters' names and properties can be edited correctly
 
 ### Code
 * user_service.py keeps track of the logged user

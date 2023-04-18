@@ -24,8 +24,8 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli _pelaaja_. Sovel
 
 * Käyttäjä näkee oman hahmolomakkeensa
   * Hahmolomake säilyttää monen tyyppistä tietoa:
-    * Merkkijonoja: esim. hahmon nimi, pelaajan nimi, kykyjen (featien) nimet ja selitykset, kosmeettiset tiedot
-    * Kokonaislukuja: esim. hahmon attribuuttipisteet, hahmon taso
+    * Merkkijonoja: esim. hahmon nimi, pelaajan nimi, kykyjen (featien) nimet ja selitykset, kosmeettiset tiedot (in progress)
+    * Kokonaislukuja: esim. hahmon attribuuttipisteet, hahmon taso (in progress)
 * Käyttäjä voi muokata hahmolomakettaan ja tallentaa muutokset
 * Käyttäjä voi kirjautua ulos järjestelmästä (tehty)
 

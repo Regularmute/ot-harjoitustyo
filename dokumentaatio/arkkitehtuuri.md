@@ -4,15 +4,16 @@
     Character "1" <-- "6" Attribute
     Attribute "1" <-- "*" Skill
     class User{
+      user_id
       username
       password
     }
     class Character{
+      character_id
       name
       level
       xp
       hit points
-      proficiency bonus
     }
     class Attribute{
       name
