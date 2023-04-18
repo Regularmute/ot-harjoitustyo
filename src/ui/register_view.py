@@ -34,6 +34,7 @@ class RegisterView:
             return
         try:
             user_service.create_user(username, password)
+            user_service.login(username, password)
             self._on_registration()
         except UsernameExistsError:
             self._show_error(f"Username {username} is already taken")
