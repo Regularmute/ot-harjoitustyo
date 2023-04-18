@@ -9,16 +9,22 @@ class TestCharacterRepository(unittest.TestCase):
         self.character_drago = Character(333, "Drago Mastermind", 5, 500, 60)
         self.character_griselda = Character(8241, "Earth Mage Griselda", 7, 200, 58)
 
+    def characters_are_the_same(self, character1, character2):
+        return (character1.creator_id == character2.creator_id
+                and character1.name == character2.name
+                and character1.level == character2.level
+                and character1.experience == character2.experience
+                and character1.hit_points == character2.hit_points)
+
+
     def test_create_stores_character_object_correctly(self):
         character_repository.create(self.character_drago)
         characters = character_repository.get_all()
 
         self.assertEqual(len(characters), 1)
-        self.assertEqual(characters[0].creator_id, self.character_drago.creator_id)
-        self.assertEqual(characters[0].name, self.character_drago.name)
-        self.assertEqual(characters[0].level, self.character_drago.level)
-        self.assertEqual(characters[0].experience, self.character_drago.experience)
-        self.assertEqual(characters[0].hit_points, self.character_drago.hit_points)
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.character_drago)
+        )
 
     def test_get_all_returns_character_objects_correctly(self):
         character_repository.create(self.character_drago)
@@ -27,18 +33,13 @@ class TestCharacterRepository(unittest.TestCase):
 
         self.assertEqual(len(characters), 2)
 
-        self.assertEqual(characters[0].creator_id, self.character_drago.creator_id)
-        self.assertEqual(characters[0].name, self.character_drago.name)
-        self.assertEqual(characters[0].level, self.character_drago.level)
-        self.assertEqual(characters[0].experience, self.character_drago.experience)
-        self.assertEqual(characters[0].hit_points, self.character_drago.hit_points)
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.character_drago)
+        )
 
-        self.assertEqual(characters[1].creator_id, self.character_griselda.creator_id)
-        self.assertEqual(characters[1].name, self.character_griselda.name)
-        self.assertEqual(characters[1].level, self.character_griselda.level)
-        self.assertEqual(characters[1].experience, self.character_griselda.experience)
-        self.assertEqual(characters[1].hit_points, self.character_griselda.hit_points)
-
+        self.assertTrue(
+            self.characters_are_the_same(characters[1], self.character_griselda)
+        )
 
     def test_get_one_by_creator_id_gets_correct_character(self):
         character_repository.create(self.character_drago)
@@ -47,11 +48,9 @@ class TestCharacterRepository(unittest.TestCase):
         user_id = self.character_drago.creator_id
         fetched_character = character_repository.get_one_by_creator_id(user_id)
 
-        self.assertEqual(fetched_character.creator_id, self.character_drago.creator_id)
-        self.assertEqual(fetched_character.name, self.character_drago.name)
-        self.assertEqual(fetched_character.level, self.character_drago.level)
-        self.assertEqual(fetched_character.experience, self.character_drago.experience)
-        self.assertEqual(fetched_character.hit_points, self.character_drago.hit_points)
+        self.assertTrue(
+            self.characters_are_the_same(fetched_character, self.character_drago)
+        )
 
     def test_delete_all_empties_table_correctly(self):
         character_repository.create(self.character_drago)
