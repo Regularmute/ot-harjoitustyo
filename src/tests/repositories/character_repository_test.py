@@ -3,7 +3,7 @@ from repositories.character_repository import character_repository
 from entities.character import Character
 
 
-class TestUserRepository(unittest.TestCase):
+class TestCharacterRepository(unittest.TestCase):
     def setUp(self):
         character_repository.delete_all()
         self.character_drago = Character(333, "Drago Mastermind", 5, 500, 60)
