@@ -6,8 +6,8 @@ from entities.user import User
 class TestUserRepository(unittest.TestCase):
     def setUp(self):
         user_repository.delete_all()
-        self.user_jaana = User("Jaana", "hashattu2")
-        self.user_keijo = User("keijokoo", "hashBROWN1")
+        self.user_jaana = User("Jaana", "hashattu2", "1")
+        self.user_keijo = User("keijokoo", "hashBROWN1", "2")
 
     def test_create_stores_user_object_correctly(self):
         user_repository.create(self.user_jaana)

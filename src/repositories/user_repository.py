@@ -3,7 +3,7 @@ from entities.user import User
 
 
 def get_user_by_row(row):
-    return User(row["username"], row["password"]) if row else None
+    return User(row["username"], row["password"], row["user_id"]) if row else None
 
 
 class UserRepository:
@@ -15,7 +15,7 @@ class UserRepository:
 
         cursor = self._connection.cursor()
 
-        cursor.execute("SELECT username, password FROM users;")
+        cursor.execute("SELECT user_id, username, password FROM users;")
         rows = cursor.fetchall()
 
         return list(map(get_user_by_row, rows))
@@ -23,7 +23,7 @@ class UserRepository:
     def get_one_by_username(self, username):
         cursor = self._connection.cursor()
 
-        sql = "SELECT username, password FROM users WHERE username = :username"
+        sql = "SELECT user_id, username, password FROM users WHERE username = :username"
         cursor.execute(sql, {"username": username})
         row = cursor.fetchone()
 
