@@ -9,9 +9,10 @@ class SheetView:
         self._frame = None
         self._show_login_view = show_login_view
         self._user = user_service.get_current_user()
+        character_service.create_character(self._user.user_id, self._user.username)
 
         # Hahmon tiedot
-        self._character = character_service.get_character_by_name("gamerGUY")
+        self._character = character_service.get_character_by_creator_id(self._user.user_id)
         self._name_entry = None
 
         self._initialize()
