@@ -25,6 +25,7 @@ class TestCharacterRepository(unittest.TestCase):
         self.assertTrue(
             self.characters_are_the_same(characters[0], self.character_drago)
         )
+        self.assertEqual(characters[0].character_id, 1)
 
     def test_get_all_returns_character_objects_correctly(self):
         character_repository.create(self.character_drago)
@@ -36,10 +37,12 @@ class TestCharacterRepository(unittest.TestCase):
         self.assertTrue(
             self.characters_are_the_same(characters[0], self.character_drago)
         )
+        self.assertEqual(characters[0].character_id, 1)
 
         self.assertTrue(
             self.characters_are_the_same(characters[1], self.character_griselda)
         )
+        self.assertEqual(characters[1].character_id, 2)
 
     def test_get_one_by_creator_id_gets_correct_character(self):
         character_repository.create(self.character_drago)
@@ -51,6 +54,7 @@ class TestCharacterRepository(unittest.TestCase):
         self.assertTrue(
             self.characters_are_the_same(fetched_character, self.character_drago)
         )
+        self.assertEqual(fetched_character.character_id, 1)
 
     def test_delete_all_empties_table_correctly(self):
         character_repository.create(self.character_drago)
