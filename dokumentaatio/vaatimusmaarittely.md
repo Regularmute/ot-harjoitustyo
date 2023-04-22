@@ -22,18 +22,18 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli _pelaaja_. Sovel
 
 ### Kirjautumisen jälkeen
 
-* Käyttäjä näkee oman hahmolomakkeensa
+* Käyttäjä näkee oman hahmolomakkeensa (tehty)
   * Hahmolomake säilyttää monen tyyppistä tietoa:
     * Merkkijonoja: esim. hahmon nimi, pelaajan nimi, kykyjen (featien) nimet ja selitykset, kosmeettiset tiedot (in progress)
     * Kokonaislukuja: esim. hahmon attribuuttipisteet, hahmon taso (in progress)
-* Käyttäjä voi muokata hahmolomakettaan ja tallentaa muutokset
+* Käyttäjä voi muokata hahmolomakettaan ja tallentaa muutokset (wip)
 * Käyttäjä voi kirjautua ulos järjestelmästä (tehty)
 
 ### Jatkokehitysmahdollisuuksia
 
 Sovelluksen alkuversion valmistuttua on mahdollista laajentaa sovelluksen toimintaa mm. seuraavilla ominaisuuksilla:
 
-* Käyttäjä voi ylläpitää ja luoda useita hahmolomakkeita.
+* Käyttäjä voi ylläpitää ja luoda useita hahmolomakkeita. (tehty)
 * Sovellukseen voidaan lisätä käyttäjärooli _Pelinjohtaja_, jolla on enemmän oikeuksia kuin normaalilla käyttäjällä.
 * Osat hahmolomakkeesta voidaan täyttää automaattisesti, esimerkiksi kentät jotka pystytään laskemaan matemaattisesti muista kentistä.
 * Käyttäjäjoukot, joiden jäsenet näkevät toistensa hahmolomakkeet.

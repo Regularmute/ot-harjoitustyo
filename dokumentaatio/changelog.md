@@ -58,3 +58,18 @@
 * Create and initialize a table for characters
 * Set up files to interact with the character table
 * Begin working on application logic for characters
+
+## Viikko 5
+
+### User experience
+* User can now create multiple characters
+* User can now edit characters' names
+* User can now switch between viewing characters and a specific sheet
+* Ui has been adjusted for clarity
+* Character creation has been assigned to character-list view
+
+### Testing
+* Tests have been added and modified to character_repository and character_service
+
+### Code
+* Characters are tracked by a unique id set in SQLite

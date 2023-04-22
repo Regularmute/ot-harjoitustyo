@@ -19,4 +19,7 @@
 |16.4|2h|Testaus ja dokumentaatio|
 |17.4|5h|Testaus, hahmologiikan ohjelmointi|
 |18.4|2h|Testaus, hahmolomakkeiden ohjelmointi, UI:n muokkausta|
-|Yhteensä käytetty aika:|26h|
+|22.4|1h|Testaus, hahmologiikan laajentaminen|
+|22.4|1h|Projektin alustaminen ohjelmointikelpoiseksi Windows:illa|
+|22.4|2h|Graafisen käyttöliittymän jaottelu ja ohjelmointi|
+|Yhteensä käytetty aika:|30h|
