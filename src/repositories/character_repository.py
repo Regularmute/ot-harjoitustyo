@@ -7,7 +7,8 @@ def get_character_by_row(row):
             row["name"],
             row["level"],
             row["experience"],
-            row["hit_points"]
+            row["hit_points"],
+            row["character_id"]
         ) if row else None
 
 class CharacterRepository:
@@ -19,7 +20,7 @@ class CharacterRepository:
 
         cursor = self._connection.cursor()
 
-        cursor.execute("""SELECT creator_id, name, level, experience,
+        cursor.execute("""SELECT character_id, creator_id, name, level, experience,
                         hit_points FROM characters;""")
         rows = cursor.fetchall()
 
@@ -37,7 +38,7 @@ class CharacterRepository:
     def get_one_by_creator_id(self, creator_id):
         cursor = self._connection.cursor()
 
-        sql = """SELECT creator_id, name, level, experience, hit_points
+        sql = """SELECT character_id, creator_id, name, level, experience, hit_points
                 FROM characters WHERE creator_id=:creator_id"""
 
         cursor.execute(sql, {"creator_id": creator_id})
