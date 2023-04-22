@@ -24,6 +24,9 @@ class CharacterService:
     def get_character_by_creator_id(self, creator_id):
         return self._character_repository.get_one_by_creator_id(creator_id)
 
+    def get_all_by_creator_id(self, creator_id):
+        return self._character_repository.get_all_by_creator_id(creator_id)
+
     def get_character_by_character_id(self, character_id):
         return self._character_repository.get_one_by_character_id(character_id)
 

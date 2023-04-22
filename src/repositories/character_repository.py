@@ -46,6 +46,17 @@ class CharacterRepository:
 
         return get_character_by_row(row)
 
+    def get_all_by_creator_id(self, creator_id):
+        cursor = self._connection.cursor()
+
+        sql = """SELECT character_id, creator_id, name, level, experience, hit_points
+                FROM characters WHERE creator_id=:creator_id"""
+
+        cursor.execute(sql, {"creator_id": creator_id})
+        rows = cursor.fetchall()
+
+        return list(map(get_character_by_row, rows))
+
     def get_one_by_character_id(self, character_id):
         cursor = self._connection.cursor()
 
