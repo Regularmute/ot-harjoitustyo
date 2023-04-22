@@ -28,9 +28,9 @@ class SheetView:
     def _edit_name_handler(self):
         self._edit_name_btn.grid_remove()
         self._name_entry.grid(
-            row=3, column=0, padx=5, pady=5)
-        self._confirm_name_btn.grid(
             row=3, column=1, padx=5, pady=5)
+        self._confirm_name_btn.grid(
+            row=3, column=2, padx=5, pady=5)
 
     def _edit_name_confirm_handler(self):
         new_name = self._name_entry.get()
@@ -58,7 +58,10 @@ class SheetView:
 
     def _initialize_name_field(self):
         self._name_label = ttk.Label(
-            master=self._frame, text=f"Name: {self._character.name}")
+            master=self._frame, text="Name:")
+        self._character_name_label = ttk.Label(
+            master=self._frame, text=f"{self._character.name}"
+        )
         self._name_entry = ttk.Entry(master=self._frame)
         self._edit_name_btn = ttk.Button(
             master=self._frame, text="Edit", command=self._edit_name_handler)
@@ -67,8 +70,10 @@ class SheetView:
 
         self._name_label.grid(
             row=3, column=0, sticky=constants.W, padx=5, pady=5)
+        self._character_name_label.grid(
+            row=3, column=1, sticky=constants.W, padx=5, pady=5)
         self._edit_name_btn.grid(
-            row=3, column=1, padx=5, pady=5)
+            row=3, column=2, padx=5, pady=5)
 
     def _initialize_create_button(self):
         self._creation_label = ttk.Label(
@@ -105,7 +110,7 @@ class SheetView:
 
         heading_label.grid(row=0, column=0, columnspan=2,
                            sticky=constants.W, padx=5, pady=5)
-        username_label.grid(row=1, column=0, padx=5, pady=5)
+        username_label.grid(row=1, column=0, columnspan=3, padx=5, pady=5)
         logout_button.grid(row=4, column=0, columnspan=2,
                            sticky=(constants.EW), padx=5, pady=5)
 
