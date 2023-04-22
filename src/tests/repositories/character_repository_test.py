@@ -63,3 +63,57 @@ class TestCharacterRepository(unittest.TestCase):
         character_repository.delete_all()
         characters = character_repository.get_all()
         self.assertEqual(len(characters), 0)
+
+    def test_get_one_by_character_id_gets_correct_character(self):
+        character_repository.create(self.character_drago)
+        character_repository.create(self.character_griselda)
+
+        character_id_drago = 1
+        fetched_character = character_repository.get_one_by_character_id(character_id_drago)
+
+        self.assertTrue(
+            self.characters_are_the_same(fetched_character, self.character_drago)
+        )
+        self.assertEqual(fetched_character.character_id, 1)
+
+    def test_update_character_name_changes_name_correctly(self):
+        character_repository.create(self.character_drago)
+        character_repository.create(self.character_griselda)
+
+        character_repository.update_character_name(1, "Khal Drogo")
+        characters = character_repository.get_all()
+
+        self.assertEqual(characters[0].name, "Khal Drogo")
+
+        # check other properties are unaffected
+        self.assertEqual(characters[0].character_id, 1)
+        self.assertEqual(characters[0].creator_id, self.character_drago.creator_id)
+        self.assertEqual(characters[0].level, self.character_drago.level)
+        self.assertEqual(characters[0].experience, self.character_drago.experience)
+        self.assertEqual(characters[0].hit_points, self.character_drago.hit_points)
+
+        # check other characters are unaffected
+        self.assertTrue(
+            self.characters_are_the_same(characters[1], self.character_griselda)
+        )
+
+    def test_update_character_property_updates_level_correctly(self):
+        character_repository.create(self.character_drago)
+        character_repository.create(self.character_griselda)
+
+        character_repository.update_character_property(2, "level", 4)
+        characters = character_repository.get_all()
+
+        self.assertEqual(characters[1].level, 4)
+
+        # check other properties are unaffected
+        self.assertEqual(characters[1].character_id, 2)
+        self.assertEqual(characters[1].creator_id, self.character_griselda.creator_id)
+        self.assertEqual(characters[1].name, self.character_griselda.name)
+        self.assertEqual(characters[1].experience, self.character_griselda.experience)
+        self.assertEqual(characters[1].hit_points, self.character_griselda.hit_points)
+
+        # check other characters are unaffected
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.character_drago)
+        )
