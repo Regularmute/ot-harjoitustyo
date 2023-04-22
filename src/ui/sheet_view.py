@@ -12,7 +12,6 @@ class SheetView:
 
         # Hahmon tiedot
         self._character = character_service.get_character_by_creator_id(self._user.user_id) or None
-        self._name_entry = None
 
         self._initialize()
 
@@ -34,10 +33,16 @@ class SheetView:
             row=3, column=1, padx=5, pady=5)
 
     def _edit_name_confirm_handler(self):
+        new_name = self._name_entry.get()
+        character_service.set_character_name(
+            self._character.character_id, new_name)
+        self._character = character_service.get_character_by_creator_id(self._user.user_id)
+
+        self._name_label.grid_remove()
         self._name_entry.grid_remove()
         self._confirm_name_btn.grid_remove()
 
-        self._edit_name_btn.grid()
+        self._initialize_name_field()
 
     def _create_character_handler(self):
         character_name = self._new_character_entry.get()
@@ -52,7 +57,7 @@ class SheetView:
         self._initialize_name_field()
 
     def _initialize_name_field(self):
-        name_label = ttk.Label(
+        self._name_label = ttk.Label(
             master=self._frame, text=f"Name: {self._character.name}")
         self._name_entry = ttk.Entry(master=self._frame)
         self._edit_name_btn = ttk.Button(
@@ -60,7 +65,7 @@ class SheetView:
         self._confirm_name_btn = ttk.Button(
             master=self._frame, text="Confirm", command=self._edit_name_confirm_handler)
 
-        name_label.grid(
+        self._name_label.grid(
             row=3, column=0, sticky=constants.W, padx=5, pady=5)
         self._edit_name_btn.grid(
             row=3, column=1, padx=5, pady=5)
