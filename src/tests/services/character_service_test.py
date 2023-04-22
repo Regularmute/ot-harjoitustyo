@@ -10,6 +10,17 @@ class FakeCharacterRepository:
     def get_all(self):
         return self.characters
 
+    def get_all_by_creator_id(self, creator_id):
+        target_characters = target_characters = filter(
+            lambda character: character.creator_id == creator_id, self.characters)
+
+        target_characters_list = list(target_characters)
+
+        if len(target_characters_list) > 0:
+            return target_characters_list
+
+        return None
+
     def get_one_by_creator_id(self, creator_id):
         target_characters = filter(
             lambda character: character.creator_id == creator_id, self.characters)
@@ -68,6 +79,7 @@ class TestCharacterService(unittest.TestCase):
     def setUp(self):
         self.char_bilbo = Character(1, "Bilbo Baggins", 1, 0, 0)
         self.char_naruto = Character(2, "Naruto Uzumaki", 1, 0, 0)
+        self.char_pikachu = Character(1, "Pikachu", 0, 0, 0)
         self.character_service = CharacterService(FakeCharacterRepository())
         self.character_service.create_character(
             self.char_bilbo.creator_id, self.char_bilbo.name)
@@ -101,6 +113,16 @@ class TestCharacterService(unittest.TestCase):
         self.assertEqual(characters[0].character_id, 0)
         self.assertTrue(
             self.characters_are_the_same(characters[0], self.char_bilbo)
+        )
+
+    def test_get_all_by_creator_id_returns_correct_characters(self):
+        self.character_service.create_character(self.char_bilbo.creator_id, "Pikachu")
+        characters = self.character_service.get_all_by_creator_id(1)
+
+        self.assertEqual(len(characters), 2)
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.char_bilbo),
+            self.characters_are_the_same(characters[1], self.char_pikachu)
         )
 
     def test_get_character_by_creator_id_returns_character_correctly(self):

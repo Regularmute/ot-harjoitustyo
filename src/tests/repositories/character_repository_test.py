@@ -8,6 +8,7 @@ class TestCharacterRepository(unittest.TestCase):
         character_repository.delete_all()
         self.character_drago = Character(333, "Drago Mastermind", 5, 500, 60)
         self.character_griselda = Character(8241, "Earth Mage Griselda", 7, 200, 58)
+        self.character_blossom = Character(8241, "Blossom", 2, 300, 17)
 
     def characters_are_the_same(self, character1, character2):
         return (character1.creator_id == character2.creator_id
@@ -55,6 +56,21 @@ class TestCharacterRepository(unittest.TestCase):
             self.characters_are_the_same(fetched_character, self.character_drago)
         )
         self.assertEqual(fetched_character.character_id, 1)
+
+    def test_get_all_by_creator_id_gets_correct_characters(self):
+        character_repository.create(self.character_drago)
+        character_repository.create(self.character_griselda)
+        character_repository.create(self.character_blossom)
+
+        user_id = self.character_griselda.creator_id
+        characters = character_repository.get_all_by_creator_id(user_id)
+
+        self.assertEqual(len(characters), 2)
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.character_griselda),
+            self.characters_are_the_same(characters[1], self.character_blossom)
+        )
+
 
     def test_delete_all_empties_table_correctly(self):
         character_repository.create(self.character_drago)
