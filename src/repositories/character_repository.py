@@ -47,7 +47,8 @@ class CharacterRepository:
         return get_character_by_row(row)
 
     def create(self, character):
-        # store username and hashed password to the database
+        # store username and hashed password to the database.
+        # sqlite adds an autoincrementing Integer for character_id.
 
         cursor = self._connection.cursor()
         sql = """INSERT INTO characters (creator_id, name, level, experience, hit_points)
