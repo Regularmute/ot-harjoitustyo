@@ -44,18 +44,6 @@ class SheetView:
 
         self._initialize_name_field()
 
-    def _create_character_handler(self):
-        character_name = self._new_character_entry.get()
-        character_service.create_character(self._user.user_id, character_name)
-
-        self._creation_label.grid_remove()
-        self._new_character_entry.grid_remove()
-        self._create_character_btn.grid_remove()
-
-        self._character = character_service.get_character_by_creator_id(self._user.user_id)
-
-        self._initialize_name_field()
-
     def _initialize_name_field(self):
         self._name_label = ttk.Label(
             master=self._frame, text="Name:")
@@ -75,24 +63,6 @@ class SheetView:
         self._edit_name_btn.grid(
             row=3, column=2, padx=5, pady=5)
 
-    def _initialize_create_button(self):
-        self._creation_label = ttk.Label(
-            master=self._frame, text="Create a new character:"
-        )
-        self._new_character_entry = ttk.Entry(master=self._frame)
-        self._create_character_btn = ttk.Button(
-            master=self._frame, text="Create", command=self._create_character_handler)
-
-        self._creation_label.grid(
-            row=3, column=0, sticky=constants.W, padx=5, pady=5)
-        self._new_character_entry.grid(
-            row=3, column=1, padx=5, pady=5
-        )
-        self._create_character_btn.grid(
-            row=3, column=2, padx=5, pady=5
-        )
-
-
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         heading_label = ttk.Label(
@@ -105,8 +75,7 @@ class SheetView:
         if self._character:
             self._initialize_name_field()
 
-        else:
-            self._initialize_create_button()
+        self._initialize_name_field()
 
         heading_label.grid(row=0, column=0, columnspan=2,
                            sticky=constants.W, padx=5, pady=5)
