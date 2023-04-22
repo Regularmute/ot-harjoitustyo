@@ -46,6 +46,17 @@ class CharacterRepository:
 
         return get_character_by_row(row)
 
+    def get_one_by_character_id(self, character_id):
+        cursor = self._connection.cursor()
+
+        sql = """SELECT character_id, creator_id, name, level, experience, hit_points
+                FROM characters WHERE character_id=:character_id"""
+
+        cursor.execute(sql, {"character_id": character_id})
+        row = cursor.fetchone()
+
+        return get_character_by_row(row)
+
     def create(self, character):
         # store username and hashed password to the database.
         # sqlite adds an autoincrementing Integer for character_id.
@@ -76,5 +87,26 @@ class CharacterRepository:
 
         self._connection.commit()
 
+    def update_character_name(self, character_id, new_name):
+        cursor = self._connection.cursor()
+        sql = """UPDATE characters SET name=:new_name WHERE character_id=:character_id"""
+
+        cursor.execute(sql, {"new_name": new_name, "character_id": character_id})
+        self._connection.commit()
+
+    def update_character_property(self, char_id, target_property, new_value):
+        cursor = self._connection.cursor()
+        # escape quotes to prevent SQL-injection.
+        # couldn't use parameters for column name in query.
+        target_property.replace("'", "\\'")
+        target_property.replace("\"", "\\\"")
+        sql = f"""UPDATE characters SET {target_property}=:new_value
+                WHERE character_id=:character_id"""
+
+        cursor.execute(sql, {
+            "new_value": new_value,
+            "character_id": char_id
+            })
+        self._connection.commit()
 
 character_repository = CharacterRepository(get_database_connection())
