@@ -47,9 +47,9 @@ Note: Some of the documentation has been written in Finnish. These are marked wi
 ### Initializing databases
 
 You can initialize the User and Character databases with the command:
-```console
- poetry run invoke create-database
-```
+  ```console
+    poetry run invoke create-database
+  ```
 
 ### Running the application
 
