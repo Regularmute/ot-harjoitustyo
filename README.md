@@ -2,6 +2,8 @@
 
 The application will allow users to create characters according to the ruleset used in the tabletop role-playing game, Pathfinder 2nd Edition.
 
+Latest release's download page can be accessed by clicking [HERE](https://github.com/Regularmute/ot-harjoitustyo/releases/tag/viikko5).
+
 ## Current Features
 ---
   * The user can see the login and registration pages.
