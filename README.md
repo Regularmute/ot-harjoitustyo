@@ -32,7 +32,7 @@ Note: Some of the documentation has been written in Finnish. These are marked wi
     poetry install
   ```
 
-2. Initialize the user database with the command:
+2. Initialize the user and character databases with the command:
   ```console
     poetry run invoke create-database
   ```
@@ -44,6 +44,13 @@ Note: Some of the documentation has been written in Finnish. These are marked wi
 
 ## Console commands
 ---
+### Initializing databases
+
+You can initialize the User and Character databases with the command:
+```
+ poetry run invoke create-database
+```
+
 ### Running the application
 
 You can run the application with the command:
