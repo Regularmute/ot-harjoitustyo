@@ -22,4 +22,5 @@
 |22.4|1h|Testaus, hahmologiikan laajentaminen|
 |22.4|1h|Projektin alustaminen ohjelmointikelpoiseksi Windows:illa|
 |22.4|2h|Graafisen käyttöliittymän jaottelu ja ohjelmointi|
-|Yhteensä käytetty aika:|30h|
+|25.4|1h|Dokumentaatio, 1. Release|
+|Yhteensä käytetty aika:|31h|
