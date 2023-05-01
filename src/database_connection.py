@@ -6,7 +6,8 @@ connection.row_factory = sqlite3.Row
 
 
 def get_database_connection():
-    """Palauta yllä luotu config.py:ssä sijaitsevan tietokantatiedoston ja SQLiten välillä oleva yhteys.
+    """Palauta yllä luotu config.py:ssä sijaitsevan tietokantatiedoston ja
+    SQLiten välillä oleva yhteys.
 
     Returns:
         yhteys SQLite-tietokantaan.
