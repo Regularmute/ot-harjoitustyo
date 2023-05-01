@@ -33,7 +33,7 @@ class CharacterRepository:
         cursor.execute(sql, {"name": name})
         row = cursor.fetchone()
 
-        return Character(row["name"], 1, 0, 0, 0) if row else None
+        return _get_character_by_row(row)
 
     def get_one_by_creator_id(self, creator_id):
         cursor = self._connection.cursor()
