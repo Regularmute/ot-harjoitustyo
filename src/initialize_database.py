@@ -19,11 +19,7 @@ def create_tables(connection):
     Käyttäjätaulukko pitää kirjaa käyttäjätunnuksista sekä salasanoista (jotka
     hashataan sovelluslogiikan puolella). Lisäksi jokaiselle käyttäjälle asetetaan
     oma ID. Hahmotaulukko ylläpitää hahmon nimen, luoneen käyttäjän ID:n, tason,
-    kokemuspisteet ja vahinkopisteet. Ns. Proficiency-bonus on turha ja tullaan
-    poistamaan, sillä sen voi laskea suoraan hahmon tasosta. Lisäksi jokaiselle
-    hahmolle asetetaan oma ID. Tällä hetkellä taulukko myös luo puutteellisen hahmon
-    "Gamerguy", joka auttoi tarkistamaan näytettävien hahmojen nimiä sovelluksen ai-
-    kaisemmassa vaiheessa.
+    kokemuspisteet ja vahinkopisteet. Lisäksi jokaiselle hahmolle asetetaan oma ID.
     """
     cursor = connection.cursor()
 
@@ -39,11 +35,8 @@ def create_tables(connection):
             name TEXT,
             level INTEGER,
             experience INTEGER,
-            hit_points INTEGER,
-            proficiency bonus INTEGER
+            hit_points INTEGER
         );
-        INSERT INTO characters (name)
-        VALUES ("gamerGUY");
     ''')
 
     connection.commit()
