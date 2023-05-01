@@ -2,6 +2,7 @@ from database_connection import get_database_connection
 
 
 def drop_tables(connection):
+    """Poista mahdollisesti olemassaolevat taulukot parametrin tietokannassa."""
     cursor = connection.cursor()
 
     cursor.executescript('''
@@ -13,6 +14,17 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """Luo uudet, tyhjät käyttäjä- ja hahmotaulukot parametrin tietokantaan.
+
+    Käyttäjätaulukko pitää kirjaa käyttäjätunnuksista sekä salasanoista (jotka
+    hashataan sovelluslogiikan puolella). Lisäksi jokaiselle käyttäjälle asetetaan
+    oma ID. Hahmotaulukko ylläpitää hahmon nimen, luoneen käyttäjän ID:n, tason,
+    kokemuspisteet ja vahinkopisteet. Ns. Proficiency-bonus on turha ja tullaan
+    poistamaan, sillä sen voi laskea suoraan hahmon tasosta. Lisäksi jokaiselle
+    hahmolle asetetaan oma ID. Tällä hetkellä taulukko myös luo puutteellisen hahmon
+    "Gamerguy", joka auttoi tarkistamaan näytettävien hahmojen nimiä sovelluksen ai-
+    kaisemmassa vaiheessa.
+    """
     cursor = connection.cursor()
 
     cursor.executescript('''
@@ -38,6 +50,11 @@ def create_tables(connection):
 
 
 def initialize_database():
+    """Alusta sovelluksen käyttämä tietokanta käyttäjä- ja hahmotaulukoilla.
+
+    Attributes:
+        connection: Yhteys käsiteltävään tietokantaan.
+    """
     connection = get_database_connection()
 
     drop_tables(connection)

@@ -1,3 +1,16 @@
+"""Moduuli joka lukee ympäristömuuttujien arvot sovellukselle.
+
+Tämä moduuli lukee dotenv-kirjaston avulla tiedoston src/.env sisältämät
+ympäristömuuttujat, ja asettavat ne omiin muuttujiinsa, joita muut moduulit
+voivat kutsua.
+
+Attributes:
+    DATABASE_FILENAME (str): Sovelluksen tietokantatiedoston nimi. Jos
+        ympäristömuuttujaa ei ole, aseta nimeksi "database.sqlite".
+    DATABASE_FILE_PATH (str): Tietokantatiedoston sijainti; polku
+        src/data/(DATABASE_FILENAME).
+"""
+
 import os
 from dotenv import load_dotenv
 
