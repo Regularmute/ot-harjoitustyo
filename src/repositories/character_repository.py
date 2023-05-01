@@ -1,7 +1,7 @@
 from database_connection import get_database_connection
 from entities.character import Character
 
-def get_character_by_row(row):
+def _get_character_by_row(row):
     return Character(
             row["creator_id"],
             row["name"],
@@ -24,7 +24,7 @@ class CharacterRepository:
                         hit_points FROM characters;""")
         rows = cursor.fetchall()
 
-        return list(map(get_character_by_row, rows))
+        return list(map(_get_character_by_row, rows))
 
     def get_one_by_name(self, name):
         cursor = self._connection.cursor()
@@ -44,7 +44,7 @@ class CharacterRepository:
         cursor.execute(sql, {"creator_id": creator_id})
         row = cursor.fetchone()
 
-        return get_character_by_row(row)
+        return _get_character_by_row(row)
 
     def get_all_by_creator_id(self, creator_id):
         cursor = self._connection.cursor()
@@ -55,7 +55,7 @@ class CharacterRepository:
         cursor.execute(sql, {"creator_id": creator_id})
         rows = cursor.fetchall()
 
-        return list(map(get_character_by_row, rows))
+        return list(map(_get_character_by_row, rows))
 
     def get_one_by_character_id(self, character_id):
         cursor = self._connection.cursor()
@@ -66,7 +66,7 @@ class CharacterRepository:
         cursor.execute(sql, {"character_id": character_id})
         row = cursor.fetchone()
 
-        return get_character_by_row(row)
+        return _get_character_by_row(row)
 
     def create(self, character):
         # store username and hashed password to the database.
