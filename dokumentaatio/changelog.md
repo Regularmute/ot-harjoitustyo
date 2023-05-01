@@ -73,3 +73,13 @@
 
 ### Code
 * Characters are tracked by a unique id set in SQLite
+
+## Viikko 6
+
+### Code
+* Some lines have been split into under 79 long lines to follow PEP8.
+* Docstring has been written for all non-UI related code.
+
+### Documentation
+* Architecture document has been expanded to cover the basic information of the app.
+* User guide has been written for the app.

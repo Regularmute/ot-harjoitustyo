@@ -23,4 +23,6 @@
 |22.4|1h|Projektin alustaminen ohjelmointikelpoiseksi Windows:illa|
 |22.4|2h|Graafisen käyttöliittymän jaottelu ja ohjelmointi|
 |25.4|1h|Dokumentaatio, 1. Release|
-|Yhteensä käytetty aika:|31h|
+|1.5.|3h|Docstring ja refaktorointi|
+|1.5.|2h|Dokumentaatio: arkkitehtuuri ja käyttöohjeet|
+|Yhteensä käytetty aika:|36h|
