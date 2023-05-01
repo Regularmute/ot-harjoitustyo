@@ -1,3 +1,10 @@
+"""Käyttäjä-olioiden sovelluslogiikka.
+
+Käyttää ulkopuolista kirjastoa bcrypt, jonka avulla salataan salasanat ennen tietokantaan
+tallentamista, ja verrataan salasanaa taulukon salattua versioon. Kutsuu user_repository.py:tä
+tietokannan käsittelemistä varten.
+"""
+
 import bcrypt
 from repositories.user_repository import (
     user_repository as default_user_repository
@@ -6,10 +13,12 @@ from entities.user import User
 
 
 class InvalidCredentialsError(Exception):
+    """Väärä käyttäjätunnus tai salasana."""
     pass
 
 
 class UsernameExistsError(Exception):
+    """Käyttäjätunnus on jo toisen käyttämä."""
     pass
 
 
@@ -23,6 +32,20 @@ class UserService:
         self._user = None
 
     def create_user(self, username, password, login=True):
+        """Rekisteröi uuden käyttäjän tietokantaan.
+
+        Args:
+            username (str): uuden käyttäjän käyttäjätunnus. Jos tietokannasta
+                löytyy saman tunnuksen omistava käyttäjä, heitetään virhe.
+            password (str): uuden käyttäjän salasana. Salataan ennen
+                tietokannalle lähettämistä.
+            login (bool): arvo, joka määrittää kirjataanko rekisteröity
+                käyttäjä sisään. Pääasiassa testausta varten.
+
+        Returns:
+            Rekisteröity käyttäjäolio ilman sen tunnistelukua.
+        """
+
         duplicate_username = self._user_repository.get_one_by_username(
             username)
 
@@ -41,12 +64,38 @@ class UserService:
         return user
 
     def get_users(self):
+        """Hakee tietokannasta kaikki käyttäjät.
+
+        Returns:
+            Lista jokaisen tietokannan rivin tiedoista muodostetuista
+            käyttäjäolioista.
+        """
+
         return self._user_repository.get_all()
 
     def get_current_user(self):
+        """Palauttaa kirjautuneen käyttäjäolion."""
+
         return self._user
 
     def login(self, username, password):
+        """Kirjaa käyttäjän sisään.
+
+        Kirjautumiseen käytettyä tunnusta ja salasanaan verrataan tietokantaan
+        ja heitetään virhe jos tunnusta ei löydy, tai salasana ei vastaa
+        tunnukseen talletettua salattua salasanaa.
+
+        Args:
+            username (str): Kirjautumisnäkymään kirjoitettu käyttäjätunnus,
+                jota verrataan tietokannassa oleviin käyttäjiin.
+            password (str): Kirjautumiseen käytetty salasana, joka enkoodataan
+                utf-8 muotoon, ja verrataan bcryptin avulla tietokantaan
+                talletetun käyttäjän hashattuun salasanaan.
+
+        Returns:
+            Kirjautunut käyttäjäolio, mukaan lukien käyttäjän tunnisteluku.
+        """
+
         byte_password = password.encode('utf-8')
         user = self._user_repository.get_one_by_username(username)
 
@@ -58,6 +107,7 @@ class UserService:
         return user
 
     def logout(self):
+        """Kirjaa käyttäjän ulos."""
         self._user = None
 
 
