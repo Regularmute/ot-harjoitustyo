@@ -23,7 +23,7 @@ Note: Some of the documentation has been written in Finnish. These are marked wi
 
   * [Changelog](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 
-  * [Architecture description](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+  * [Architecture description [FI]](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
 ## Installation
 ---
