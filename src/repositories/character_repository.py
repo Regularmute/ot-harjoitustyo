@@ -107,10 +107,14 @@ class CharacterRepository:
 
     def update_character_property(self, char_id, target_property, new_value):
         cursor = self._connection.cursor()
-        # escape quotes to prevent SQL-injection.
-        # couldn't use parameters for column name in query.
-        target_property.replace("'", "\\'")
-        target_property.replace("\"", "\\\"")
+        if isinstance(target_property, str):
+            target_property.replace("'", "\\'")
+            target_property.replace("\"", "\\\"")
+
+        if isinstance(new_value, str):
+            new_value.replace("'", "\\'")
+            new_value.replace("\"", "\\\"")
+
         sql = f"""UPDATE characters SET {target_property}=:new_value
                 WHERE character_id=:character_id"""
 
