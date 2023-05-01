@@ -1,3 +1,5 @@
+"""Tietokannan hahmotaulukon käsittelylogiikka."""
+
 from database_connection import get_database_connection
 from entities.character import Character
 
@@ -13,10 +15,21 @@ def _get_character_by_row(row):
 
 class CharacterRepository:
     def __init__(self, connection):
+        """Alustaa logiikan ja yhdistää sen parametrin tietokantaan.
+
+        Attributes:
+            _connection = yhteys käsiteltävään SQLite-tietokantaan.
+        """
         self._connection = connection
 
     def get_all(self):
-        # fetch a list of all characters
+        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka palauttaa
+        listan kaikista hahmoista.
+
+        Returns:
+            Lista hahmo-olioista, jotka on luotu suorittamalla
+                _get_character_by_row jokaiseen kyselyn palauttamaan riviin.
+        """
 
         cursor = self._connection.cursor()
 
@@ -27,6 +40,16 @@ class CharacterRepository:
         return list(map(_get_character_by_row, rows))
 
     def get_one_by_name(self, name):
+        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka palauttaa
+            hahmon, jolla on tietty nimi.
+
+        Args:
+            name (str): Haetun hahmon nimi.
+
+        Returns:
+            Hahmo-olio, joka on luotu suorittamalla _get_character_by_row
+            kyselyn palauttamaan riviin.
+        """
         cursor = self._connection.cursor()
 
         sql = "SELECT name FROM characters WHERE name = :name"
@@ -36,6 +59,17 @@ class CharacterRepository:
         return _get_character_by_row(row)
 
     def get_one_by_creator_id(self, creator_id):
+        """VANHENTUNUT: Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka
+            palauttaa hahmon, joka on tietyn käyttäjän luoma. Vanhentunut
+            kysely, sillä yhdellä käyttäjällä voi nykyään olla usea hahmo.
+
+        Args:
+            creator_id (int): Haetun käyttäjän tunnisteluku.
+
+        Returns:
+            Hahmo-olio, joka on luotu suorittamalla _get_character_by_row
+            kyselyn palauttamaan riviin.
+        """
         cursor = self._connection.cursor()
 
         sql = """SELECT character_id, creator_id, name, level, experience, hit_points
@@ -47,6 +81,16 @@ class CharacterRepository:
         return _get_character_by_row(row)
 
     def get_all_by_creator_id(self, creator_id):
+        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka palauttaa
+            kaikki tietyn käyttäjän luomat hahmot.
+
+        Args:
+            creator_id (int): Haetun käyttäjän tunnisteluku.
+
+        Returns:
+            Lista hahmo-olioista, joka on luotu suorittamalla
+            _get_character_by_row jokaiseen kyselyn palauttamaan riviin.
+        """
         cursor = self._connection.cursor()
 
         sql = """SELECT character_id, creator_id, name, level, experience, hit_points
@@ -58,6 +102,16 @@ class CharacterRepository:
         return list(map(_get_character_by_row, rows))
 
     def get_one_by_character_id(self, character_id):
+        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka palauttaa
+            hahmon, jolla on tietty tunnisteluku.
+
+        Args:
+            character_id (int): Haetun hahmon tunnisteluku.
+
+        Returns:
+            Hahmo-olio, joka on luotu suorittamalla _get_character_by_row
+            kyselyn palauttamaan riviin.
+        """
         cursor = self._connection.cursor()
 
         sql = """SELECT character_id, creator_id, name, level, experience, hit_points
@@ -69,8 +123,17 @@ class CharacterRepository:
         return _get_character_by_row(row)
 
     def create(self, character):
-        # store username and hashed password to the database.
-        # sqlite adds an autoincrementing Integer for character_id.
+        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka tallettaa
+            hahmon taulukkoon.
+
+        Args:
+            character (Character): Hahmo-olio, joka talletetaan SQLite-
+            tietokantaan.
+
+        Returns:
+            Talletettu Hahmo-olio. Oliolta puuttuu SQLitessä sille asetettu
+            tunnisteluku.
+        """
 
         cursor = self._connection.cursor()
         sql = """INSERT INTO characters (creator_id, name, level, experience, hit_points)
@@ -90,7 +153,8 @@ class CharacterRepository:
         return character
 
     def delete_all(self):
-        # delete all characters from the table
+        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka poistaa
+            kaikki hahmotaulukon hahmot."""
 
         cursor = self._connection.cursor()
 
@@ -99,6 +163,14 @@ class CharacterRepository:
         self._connection.commit()
 
     def update_character_name(self, character_id, new_name):
+        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka muokkaa
+            tietyn hahmon nimisaraketta.
+
+        Args:
+            character_id (int): Muokattavan hahmon tunnisteluku.
+            new_name (str): Muokattavalle hahmolle asetettava nimi.
+        """
+
         cursor = self._connection.cursor()
         sql = """UPDATE characters SET name=:new_name WHERE character_id=:character_id"""
 
@@ -106,6 +178,19 @@ class CharacterRepository:
         self._connection.commit()
 
     def update_character_property(self, char_id, target_property, new_value):
+        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka muokkaa
+            yhtä tietyn hahmon sarakkeista.
+
+        Ennen kyselyn suorittamista funktio lisää parametrin merkkijonoissa
+        mahdollisesti olevien lainausmerkkien eteen kenoviivan, jotta ne
+        eivät mahdollistaisi SQL-injektiota.
+
+        Args:
+            char_id (int): Muokattavan hahmon tunnisteluku.
+            target_property (str): Muokattavan sarakkeen nimi.
+            new_value (int): Muokattavan sarakkeen uusi arvo.
+        """
+
         cursor = self._connection.cursor()
         if isinstance(target_property, str):
             target_property.replace("'", "\\'")
