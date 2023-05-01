@@ -14,12 +14,10 @@ from entities.user import User
 
 class InvalidCredentialsError(Exception):
     """Väärä käyttäjätunnus tai salasana."""
-    pass
 
 
 class UsernameExistsError(Exception):
     """Käyttäjätunnus on jo toisen käyttämä."""
-    pass
 
 
 class UserService:
