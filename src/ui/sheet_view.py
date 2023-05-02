@@ -50,6 +50,27 @@ class SheetView:
 
         self._initialize_name_field()
 
+    def _edit_level_handler(self):
+        self._edit_level_btn.grid_remove()
+        self._level_entry.grid(
+            row=3, column=4, padx=5, pady=5)
+        self._confirm_level_btn.grid(
+            row=3, column=5, padx=5, pady=5)
+
+    def _edit_level_confirm_handler(self):
+        new_level = self._level_entry.get()
+        character_service.set_character_statistic(
+            self._character.character_id, "level", new_level)
+        self._character = character_service.get_character_by_character_id(
+            self._character.character_id)
+
+        self._level_label.grid_remove()
+        self._character_level_label.grid_remove()
+        self._level_entry.grid_remove()
+        self._confirm_level_btn.grid_remove()
+
+        self._initialize_level_field()
+
     def _initialize_name_field(self):
         self._name_label = ttk.Label(
             master=self._frame, text="Name:")
@@ -69,6 +90,25 @@ class SheetView:
         self._edit_name_btn.grid(
             row=3, column=2, padx=5, pady=5)
 
+    def _initialize_level_field(self):
+        self._level_label = ttk.Label(
+            master=self._frame, text="Level:")
+        self._character_level_label = ttk.Label(
+            master=self._frame, text=f"{self._character.level}"
+        )
+        self._level_entry = ttk.Entry(master=self._frame)
+        self._edit_level_btn = ttk.Button(
+            master=self._frame, text="Edit", command=self._edit_level_handler)
+        self._confirm_level_btn = ttk.Button(
+            master=self._frame, text="Confirm", command=self._edit_level_confirm_handler)
+
+        self._level_label.grid(
+            row=3, column=3, sticky=constants.W, padx=5, pady=5)
+        self._character_level_label.grid(
+            row=3, column=4, sticky=constants.W, padx=5, pady=5)
+        self._edit_level_btn.grid(
+            row=3, column=5, padx=5, pady=5)
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         heading_label = ttk.Label(
@@ -79,6 +119,7 @@ class SheetView:
             master=self._frame, text="Back to Characters", command=self._handle_return)
 
         self._initialize_name_field()
+        self._initialize_level_field()
 
         heading_label.grid(row=0, column=0, columnspan=2,
                            sticky=constants.W, padx=5, pady=5)
