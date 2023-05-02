@@ -10,8 +10,9 @@ Latest release's download page can be accessed by clicking [HERE](https://github
   * The user can create an account and store it into the database.
   * A registered user can login and logout.
   * A registered user is logged in automatically.
-  * A logged user either sees their character's name or is prompted to create a new character.
+  * A logged user either sees a list of their characters and can create new ones.
   * The created character is stored in a sqlite database.
+  * A logged user can view their characters' details and edit them.
 
 ## Documentation
 ---
