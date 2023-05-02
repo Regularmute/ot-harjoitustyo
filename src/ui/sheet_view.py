@@ -50,6 +50,25 @@ class SheetView:
 
         self._initialize_name_field()
 
+    def _initialize_name_field(self):
+        self._name_label = ttk.Label(
+            master=self._frame, text="Name:")
+        self._character_name_label = ttk.Label(
+            master=self._frame, text=f"{self._character.name}"
+        )
+        self._name_entry = ttk.Entry(master=self._frame)
+        self._edit_name_btn = ttk.Button(
+            master=self._frame, text="Edit", command=self._edit_name_handler)
+        self._confirm_name_btn = ttk.Button(
+            master=self._frame, text="Confirm", command=self._edit_name_confirm_handler)
+
+        self._name_label.grid(
+            row=3, column=0, sticky=constants.W, padx=5, pady=5)
+        self._character_name_label.grid(
+            row=3, column=1, sticky=constants.W, padx=5, pady=5)
+        self._edit_name_btn.grid(
+            row=3, column=2, padx=5, pady=5)
+
     def _edit_level_handler(self):
         self._edit_level_btn.grid_remove()
         self._level_entry.grid(
@@ -70,25 +89,6 @@ class SheetView:
         self._confirm_level_btn.grid_remove()
 
         self._initialize_level_field()
-
-    def _initialize_name_field(self):
-        self._name_label = ttk.Label(
-            master=self._frame, text="Name:")
-        self._character_name_label = ttk.Label(
-            master=self._frame, text=f"{self._character.name}"
-        )
-        self._name_entry = ttk.Entry(master=self._frame)
-        self._edit_name_btn = ttk.Button(
-            master=self._frame, text="Edit", command=self._edit_name_handler)
-        self._confirm_name_btn = ttk.Button(
-            master=self._frame, text="Confirm", command=self._edit_name_confirm_handler)
-
-        self._name_label.grid(
-            row=3, column=0, sticky=constants.W, padx=5, pady=5)
-        self._character_name_label.grid(
-            row=3, column=1, sticky=constants.W, padx=5, pady=5)
-        self._edit_name_btn.grid(
-            row=3, column=2, padx=5, pady=5)
 
     def _initialize_level_field(self):
         self._level_label = ttk.Label(
