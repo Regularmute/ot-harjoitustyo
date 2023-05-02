@@ -141,8 +141,10 @@ class CharacterRepository:
         """
 
         cursor = self._connection.cursor()
-        sql = """INSERT INTO characters (creator_id, name, ancestry, heritage, level, experience, hit_points)
-                VALUES (:creator_id, :name, :ancestry, :heritage, :level, :experience, :hit_points)"""
+        sql = """INSERT INTO characters (creator_id, name, ancestry, heritage,
+                level, experience, hit_points)
+                VALUES (:creator_id, :name, :ancestry, :heritage, :level,
+                :experience, :hit_points)"""
 
         cursor.execute(
             sql, {
