@@ -4,7 +4,7 @@ Etsi projektin [releaseista](https://github.com/Regularmute/ot-harjoitustyo/rele
 ## Kirjautuminen
 Sovellus aukeaa kirjautumisnäkymässä:
 
-![](./kuvat/loginview.png)
+![](./kuvat/loginview.PNG)
 
 Voit kirjautua sisään kirjoittamalla olemassaolevan käyttäjätunnuksen ja sitä vastaavan salasanan syötekenttiin ja painamalla "Login"-painiketta. Jos sinulla ei ole tunnusta, voit luoda uuden tunnuksen painamalla "Register"-painiketta.
 
