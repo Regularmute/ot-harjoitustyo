@@ -22,6 +22,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli _pelaaja_. Sovel
 
 ### Kirjautumisen jälkeen
 
+* Käyttäjä näkee listan hahmoistaan (tehty)
 * Käyttäjä näkee oman hahmolomakkeensa (tehty)
   * Hahmolomake säilyttää monen tyyppistä tietoa:
     * Nimi (tehty)
