@@ -26,6 +26,8 @@ Note: Some of the documentation has been written in Finnish. These are marked wi
 
   * [Architecture description [FI]](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
+  * [User instructions [FI]](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
+
 ## Installation
 ---
 1. Install the dependencies with the command:
