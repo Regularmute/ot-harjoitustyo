@@ -1,8 +1,8 @@
 """Käyttäjä-olioiden sovelluslogiikka.
 
-Käyttää ulkopuolista kirjastoa bcrypt, jonka avulla salataan salasanat ennen tietokantaan
-tallentamista, ja verrataan salasanaa taulukon salattua versioon. Kutsuu user_repository.py:tä
-tietokannan käsittelemistä varten.
+Käyttää ulkopuolista kirjastoa bcrypt, jonka avulla salataan salasanat ennen
+tietokantaan tallentamista, ja verrataan salasanaa taulukon salattua versioon.
+Kutsuu user_repository.py:tä tietokannan käsittelemistä varten.
 """
 
 import bcrypt
