@@ -33,6 +33,8 @@ def create_tables(connection):
             character_id INTEGER PRIMARY KEY,
             creator_id INTEGER REFERENCES users ON DELETE CASCADE,
             name TEXT,
+            ancestry TEXT,
+            heritage TEXT,
             level INTEGER,
             experience INTEGER,
             hit_points INTEGER

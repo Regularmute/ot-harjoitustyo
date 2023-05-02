@@ -19,7 +19,7 @@ class CharacterService:
 
     def create_character(self, creator_id, name):
         character = self._character_repository.create(
-            Character(creator_id, name, 1, 0, 0))
+            Character(creator_id, name, "Human", "Skilled", 1, 0, 1))
 
         return character
 

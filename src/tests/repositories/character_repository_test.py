@@ -6,13 +6,18 @@ from entities.character import Character
 class TestCharacterRepository(unittest.TestCase):
     def setUp(self):
         character_repository.delete_all()
-        self.character_drago = Character(333, "Drago Mastermind", 5, 500, 60)
-        self.character_griselda = Character(8241, "Earth Mage Griselda", 7, 200, 58)
-        self.character_blossom = Character(8241, "Blossom", 2, 300, 17)
+        self.character_drago = Character(
+            333,"Drago Mastermind", "human", "skilled", 5, 500, 60)
+        self.character_griselda = Character(
+            8241, "Earth Mage Griselda", "Elf", "Cavern Elf", 7, 200, 58)
+        self.character_blossom = Character(
+            8241, "Blossom", "Sylph", "-", 2, 300, 17)
 
     def characters_are_the_same(self, character1, character2):
         return (character1.creator_id == character2.creator_id
                 and character1.name == character2.name
+                and character1.ancestry == character2.ancestry
+                and character1.heritage == character2.heritage
                 and character1.level == character2.level
                 and character1.experience == character2.experience
                 and character1.hit_points == character2.hit_points)

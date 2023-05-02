@@ -7,6 +7,8 @@ def _get_character_by_row(row):
     return Character(
             row["creator_id"],
             row["name"],
+            row["ancestry"],
+            row["heritage"],
             row["level"],
             row["experience"],
             row["hit_points"],
@@ -33,8 +35,8 @@ class CharacterRepository:
 
         cursor = self._connection.cursor()
 
-        cursor.execute("""SELECT character_id, creator_id, name, level, experience,
-                        hit_points FROM characters;""")
+        cursor.execute("""SELECT character_id, creator_id, name, ancestry,
+                heritage, level, experience, hit_points FROM characters;""")
         rows = cursor.fetchall()
 
         return list(map(_get_character_by_row, rows))
@@ -72,8 +74,9 @@ class CharacterRepository:
         """
         cursor = self._connection.cursor()
 
-        sql = """SELECT character_id, creator_id, name, level, experience, hit_points
-                FROM characters WHERE creator_id=:creator_id"""
+        sql = """SELECT character_id, creator_id, name, ancestry, heritage,
+                level, experience, hit_points FROM characters
+                WHERE creator_id=:creator_id"""
 
         cursor.execute(sql, {"creator_id": creator_id})
         row = cursor.fetchone()
@@ -93,8 +96,9 @@ class CharacterRepository:
         """
         cursor = self._connection.cursor()
 
-        sql = """SELECT character_id, creator_id, name, level, experience, hit_points
-                FROM characters WHERE creator_id=:creator_id"""
+        sql = """SELECT character_id, creator_id, name, ancestry, heritage,
+                level, experience, hit_points FROM characters
+                WHERE creator_id=:creator_id"""
 
         cursor.execute(sql, {"creator_id": creator_id})
         rows = cursor.fetchall()
@@ -114,8 +118,9 @@ class CharacterRepository:
         """
         cursor = self._connection.cursor()
 
-        sql = """SELECT character_id, creator_id, name, level, experience, hit_points
-                FROM characters WHERE character_id=:character_id"""
+        sql = """SELECT character_id, creator_id, name, ancestry, heritage,
+                level, experience, hit_points FROM characters
+                WHERE character_id=:character_id"""
 
         cursor.execute(sql, {"character_id": character_id})
         row = cursor.fetchone()
@@ -136,13 +141,15 @@ class CharacterRepository:
         """
 
         cursor = self._connection.cursor()
-        sql = """INSERT INTO characters (creator_id, name, level, experience, hit_points)
-                VALUES (:creator_id, :name, :level, :experience, :hit_points)"""
+        sql = """INSERT INTO characters (creator_id, name, ancestry, heritage, level, experience, hit_points)
+                VALUES (:creator_id, :name, :ancestry, :heritage, :level, :experience, :hit_points)"""
 
         cursor.execute(
             sql, {
                 "creator_id": character.creator_id,
                 "name": character.name,
+                "ancestry": character.ancestry,
+                "heritage": character.heritage,
                 "level": character.level,
                 "experience": character.experience,
                 "hit_points": character.hit_points

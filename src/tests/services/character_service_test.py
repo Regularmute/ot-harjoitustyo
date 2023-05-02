@@ -77,9 +77,12 @@ class FakeCharacterRepository:
 
 class TestCharacterService(unittest.TestCase):
     def setUp(self):
-        self.char_bilbo = Character(1, "Bilbo Baggins", 1, 0, 0)
-        self.char_naruto = Character(2, "Naruto Uzumaki", 1, 0, 0)
-        self.char_pikachu = Character(1, "Pikachu", 0, 0, 0)
+        self.char_bilbo = Character(
+            1, "Bilbo Baggins", "Human", "Skilled", 1, 0, 1)
+        self.char_naruto = Character(
+            2, "Naruto Uzumaki", "Human", "Skilled", 1, 0, 1)
+        self.char_pikachu = Character(
+            1, "Pikachu", "Human", "Skilled", 0, 0, 1)
         self.character_service = CharacterService(FakeCharacterRepository())
         self.character_service.create_character(
             self.char_bilbo.creator_id, self.char_bilbo.name)
@@ -88,6 +91,8 @@ class TestCharacterService(unittest.TestCase):
     def characters_are_the_same(self, character1, character2):
         return (character1.creator_id == character2.creator_id
                 and character1.name == character2.name
+                and character1.ancestry == character2.ancestry
+                and character1.heritage == character2.heritage
                 and character1.level == character2.level
                 and character1.experience == character2.experience
                 and character1.hit_points == character2.hit_points)
