@@ -25,4 +25,6 @@
 |25.4|1h|Dokumentaatio, 1. Release|
 |1.5.|3h|Docstring ja refaktorointi|
 |1.5.|2h|Dokumentaatio: arkkitehtuuri ja käyttöohjeet|
-|Yhteensä käytetty aika:|36h|
+|2.5.|1h|Docstring, Graafisen käyttöliittymän laajentaminen|
+|2.5.|1h|Hahmoentiteetin muokkaus, refaktorointi, dokumentaatio|
+|Yhteensä käytetty aika:|38h|

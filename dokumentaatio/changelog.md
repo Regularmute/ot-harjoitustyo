@@ -76,10 +76,18 @@
 
 ## Viikko 6
 
+### User Experience
+* User can now edit characters' level, experience and hit points.
+
 ### Code
 * Some lines have been split into under 79 long lines to follow PEP8.
 * Docstring has been written for all non-UI related code.
+* Added ancestry and heritage attributes to character entity and refactored code to adapt.
 
 ### Documentation
 * Architecture document has been expanded to cover the basic information of the app.
 * User guide has been written for the app.
+
+### Tests
+* More tests for character service and repository.
+* Tests adjusted for the change in character entity.

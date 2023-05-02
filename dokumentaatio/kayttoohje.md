@@ -33,7 +33,7 @@ Painamalla tietyn hahmon kohdalla olevaa "View"-painiketta, pääset hahmolomake
 
 ![](./kuvat//sheetview1.PNG)
 
-Täällä näet hahmosi tiedot, ja voit muokata niitä painamalla "Edit"-painiketta. Tallenna muutoksesi painamalla muokatessa näkyvää "Confirm"-painiketta.
+Täällä näet hahmosi tiedot, ja voit muokata niitä painamalla vastaavaa "Edit"-painiketta. Tallenna muutoksesi painamalla muokatessa näkyvää "Confirm"-painiketta.
 
 Pääset takaisin hahmolistanäkymään painamalla "Back to Characters"-painiketta.
 

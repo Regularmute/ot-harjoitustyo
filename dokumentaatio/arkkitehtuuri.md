@@ -26,8 +26,10 @@ Koodi on jaettu niin, että _ui_ sisältää käyttöliittymää, _services_ sov
     class Character{
       character_id
       name
+      ancestry
+      heritage
       level
-      xp
+      experience
       hit points
     }
     class Attribute{
@@ -43,7 +45,7 @@ Koodi on jaettu niin, että _ui_ sisältää käyttöliittymää, _services_ sov
     }
 ```
 
-Sovelluslogiikka koostuu luokista [User]https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/entities/user.py, [Character](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/entities/character.py), Attribute sekä Skill. Tällä hetkellä vain ensimmäiset kaksi luokkaa on toteutettu, ja molemmilla on lisätty oma taulu SQLite3-tietokantaan.
+Sovelluslogiikka koostuu luokista [User](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/entities/user.py), [Character](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/entities/character.py), Attribute sekä Skill. Tällä hetkellä vain ensimmäiset kaksi luokkaa on toteutettu, ja molemmilla on lisätty oma taulu SQLite3-tietokantaan.
 
 Molemmilla luokilla on oma _service_-luokka pakkauksessa _services_, joka vastaa niiden toiminnallisista kokonaisuuksista.
 
