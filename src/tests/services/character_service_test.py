@@ -159,3 +159,21 @@ class TestCharacterService(unittest.TestCase):
             0)
 
         self.assertEqual(updated_character.level, 2)
+
+    def test_set_character_statistic_updates_experience_correctly(self):
+        id = self.char_id_bilbo
+        self.character_service.set_character_statistic(id, "experience", 200)
+
+        updated_character = self.character_service.get_character_by_character_id(
+            0)
+
+        self.assertEqual(updated_character.experience, 200)
+
+    def test_set_character_statistic_updates_hp_correctly(self):
+        id = self.char_id_bilbo
+        self.character_service.set_character_statistic(id, "hit_points", 20)
+
+        updated_character = self.character_service.get_character_by_character_id(
+            0)
+
+        self.assertEqual(updated_character.hit_points, 20)

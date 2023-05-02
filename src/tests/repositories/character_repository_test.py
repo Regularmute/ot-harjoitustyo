@@ -133,3 +133,45 @@ class TestCharacterRepository(unittest.TestCase):
         self.assertTrue(
             self.characters_are_the_same(characters[0], self.character_drago)
         )
+
+    def test_update_character_property_updates_experience_correctly(self):
+        character_repository.create(self.character_drago)
+        character_repository.create(self.character_griselda)
+
+        character_repository.update_character_property(2, "experience", 350)
+        characters = character_repository.get_all()
+
+        self.assertEqual(characters[1].experience, 350)
+
+        # check other properties are unaffected
+        self.assertEqual(characters[1].character_id, 2)
+        self.assertEqual(characters[1].creator_id, self.character_griselda.creator_id)
+        self.assertEqual(characters[1].name, self.character_griselda.name)
+        self.assertEqual(characters[1].level, self.character_griselda.level)
+        self.assertEqual(characters[1].hit_points, self.character_griselda.hit_points)
+
+        # check other characters are unaffected
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.character_drago)
+        )
+
+    def test_update_character_property_updates_hp_correctly(self):
+        character_repository.create(self.character_drago)
+        character_repository.create(self.character_griselda)
+
+        character_repository.update_character_property(2, "hit_points", 61)
+        characters = character_repository.get_all()
+
+        self.assertEqual(characters[1].hit_points, 61)
+
+        # check other properties are unaffected
+        self.assertEqual(characters[1].character_id, 2)
+        self.assertEqual(characters[1].creator_id, self.character_griselda.creator_id)
+        self.assertEqual(characters[1].name, self.character_griselda.name)
+        self.assertEqual(characters[1].level, self.character_griselda.level)
+        self.assertEqual(characters[1].experience, self.character_griselda.experience)
+
+        # check other characters are unaffected
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.character_drago)
+        )
