@@ -44,6 +44,7 @@ class SheetView:
 
     def _edit_name_handler(self):
         self._edit_name_btn.grid_remove()
+        self._name_entry.insert(0, self._character.name)
         self._name_entry.grid(
             row=3, column=1, padx=5, pady=5)
         self._confirm_name_btn.grid(
@@ -84,6 +85,7 @@ class SheetView:
 
     def _edit_level_handler(self):
         self._edit_level_btn.grid_remove()
+        self._level_entry.insert(0,self._character.level)
         self._level_entry.grid(
             row=3, column=4, padx=5, pady=5)
         self._confirm_level_btn.grid(
@@ -129,6 +131,7 @@ class SheetView:
 
     def _edit_experience_handler(self):
         self._edit_experience_btn.grid_remove()
+        self._experience_entry.insert(0,self._character.experience)
         self._experience_entry.grid(
             row=4, column=1, padx=5, pady=5)
         self._confirm_experience_btn.grid(
@@ -169,6 +172,7 @@ class SheetView:
 
     def _edit_hit_points_handler(self):
         self._edit_hit_points_btn.grid_remove()
+        self._hit_points_entry.insert(0, self._character.hit_points)
         self._hit_points_entry.grid(
             row=4, column=4, padx=5, pady=5)
         self._confirm_hit_points_btn.grid(
