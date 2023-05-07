@@ -158,7 +158,7 @@ class TestCharacterService(unittest.TestCase):
 
     def test_set_character_statistic_float_updates_level_correctly(self):
         id = self.char_id_bilbo
-        self.character_service.set_character_statistic_float(id, "level", 2)
+        self.character_service.set_character_statistic_float(id, "level", "2")
 
         updated_character = self.character_service.get_character_by_character_id(
             0)
@@ -167,7 +167,7 @@ class TestCharacterService(unittest.TestCase):
 
     def test_set_character_statistic_float_updates_experience_correctly(self):
         id = self.char_id_bilbo
-        self.character_service.set_character_statistic_float(id, "experience", 200)
+        self.character_service.set_character_statistic_float(id, "experience", "200")
 
         updated_character = self.character_service.get_character_by_character_id(
             0)
@@ -176,7 +176,7 @@ class TestCharacterService(unittest.TestCase):
 
     def test_set_character_statistic_float_updates_hp_correctly(self):
         id = self.char_id_bilbo
-        self.character_service.set_character_statistic_float(id, "hit_points", 20)
+        self.character_service.set_character_statistic_float(id, "hit_points", "20")
 
         updated_character = self.character_service.get_character_by_character_id(
             0)
