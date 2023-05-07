@@ -96,7 +96,7 @@
 
 ### User Experience
 * User now sees the previous value of a field when editing.
-* User can only entre positive numbers to certain fields.
+* User can only enter positive numbers to certain fields.
 
 ### Documentation
 * Docstring added to UI files.
