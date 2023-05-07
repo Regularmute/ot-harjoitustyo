@@ -91,3 +91,12 @@
 ### Tests
 * More tests for character service and repository.
 * Tests adjusted for the change in character entity.
+
+## Viikko 7
+
+### User Experience
+* User now sees the previous value of a field when editing.
+* User can only entre positive numbers to certain fields.
+
+### Documentation
+* Docstring added to UI files.
