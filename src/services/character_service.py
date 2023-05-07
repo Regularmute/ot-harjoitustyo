@@ -8,6 +8,12 @@ from repositories.character_repository import (
 )
 from entities.character import Character
 
+class ValueTypeError(Exception):
+    """Muuttujan arvo on väärää tyyppiä."""
+
+class NegativeValueError(Exception):
+    """Muuttujan täytyy olla positiivinen."""
+
 
 class CharacterService:
     def __init__(
