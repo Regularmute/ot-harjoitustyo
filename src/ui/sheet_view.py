@@ -115,7 +115,7 @@ class SheetView:
         """
         new_level = self._level_entry.get()
         try:
-            character_service.set_character_statistic_float(
+            character_service.set_character_property_float(
                 self._character.character_id, "level", new_level)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
@@ -167,7 +167,7 @@ class SheetView:
         ei ole nolla tai positiivinen numero.
         """
         new_experience = self._experience_entry.get()
-        character_service.set_character_statistic_float(
+        character_service.set_character_property_float(
             self._character.character_id, "experience", new_experience)
         self._character = character_service.get_character_by_character_id(
             self._character.character_id)
@@ -215,7 +215,7 @@ class SheetView:
         ei ole nolla tai positiivinen numero.
         """
         new_hit_points = self._hit_points_entry.get()
-        character_service.set_character_statistic_float(
+        character_service.set_character_property_float(
             self._character.character_id, "hit_points", new_hit_points)
         self._character = character_service.get_character_by_character_id(
             self._character.character_id)
