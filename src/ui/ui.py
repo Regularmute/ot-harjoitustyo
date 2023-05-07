@@ -9,11 +9,6 @@ class UI:
         self._root = root
         self._current_view = None
 
-        # Set window size
-        self._root.geometry("600x600")
-        self._root.minsize(600, 600)
-        self._root.maxsize(600, 600)
-
     def start(self):
         self._show_login_view()
 
