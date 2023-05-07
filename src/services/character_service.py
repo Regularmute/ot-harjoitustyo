@@ -78,14 +78,20 @@ class CharacterService:
         self._character_repository.update_character_name(
             character_id, new_name)
 
-    def set_character_statistic(self, character_id, statistic, new_value):
-        """Muokkaa jotakin hahmon ominaisuutta tietokannassa.
+    def set_character_statistic_float(self, character_id, statistic, new_value):
+        """Muokkaa jotakin hahmon numeraalista ominaisuutta tietokannassa.
 
         Args:
             character_id(int): Muokattavan hahmon tunnisteluku.
             statistic(str): Ominaisuus, jota halutaan muokata.
-            new_value(int): Uusi arvo muokattavalle ominaisuudelle.
+            new_value(float): Uusi arvo muokattavalle ominaisuudelle.
         """
+
+        if not new_value.isdigit():
+            raise ValueTypeError("New value must be a number")
+
+        if float(new_value) < 0:
+            raise NegativeValueError("Value must be positive")
 
         self._character_repository.update_character_property(
             character_id, statistic, new_value)
