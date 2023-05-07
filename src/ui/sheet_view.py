@@ -1,6 +1,9 @@
-from tkinter import ttk, constants
+from tkinter import ttk, constants, StringVar
 from services.user_service import user_service
-from services.character_service import character_service
+from services.character_service import (
+    character_service,
+    ValueTypeError,
+    NegativeValueError)
 
 
 class SheetView:
@@ -10,6 +13,9 @@ class SheetView:
         self._show_login_view = show_login_view
         self._on_return = show_char_list_view
         self._user = user_service.get_current_user()
+
+        self._error_label = None
+        self._error_message = None
 
         # Hahmon tiedot
         self._character = character_service.get_character_by_character_id(character_id)
@@ -21,6 +27,13 @@ class SheetView:
 
     def destroy(self):
         self._frame.destroy()
+
+    def _show_error(self, message):
+        self._error_message.set(message)
+        self._error_label.grid()
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
 
     def _logout_handler(self):
         user_service.logout
@@ -78,10 +91,15 @@ class SheetView:
 
     def _edit_level_confirm_handler(self):
         new_level = self._level_entry.get()
-        character_service.set_character_statistic(
-            self._character.character_id, "level", new_level)
-        self._character = character_service.get_character_by_character_id(
-            self._character.character_id)
+        try:
+            character_service.set_character_statistic_float(
+                self._character.character_id, "level", new_level)
+            self._character = character_service.get_character_by_character_id(
+                self._character.character_id)
+        except NegativeValueError:
+            self._show_error("New value must be positive.")
+        except ValueTypeError:
+            self._show_error("New value must be a number.")
 
         self._level_label.grid_remove()
         self._character_level_label.grid_remove()
@@ -118,7 +136,7 @@ class SheetView:
 
     def _edit_experience_confirm_handler(self):
         new_experience = self._experience_entry.get()
-        character_service.set_character_statistic(
+        character_service.set_character_statistic_float(
             self._character.character_id, "experience", new_experience)
         self._character = character_service.get_character_by_character_id(
             self._character.character_id)
@@ -158,7 +176,7 @@ class SheetView:
 
     def _edit_hit_points_confirm_handler(self):
         new_hit_points = self._hit_points_entry.get()
-        character_service.set_character_statistic(
+        character_service.set_character_statistic_float(
             self._character.character_id, "hit_points", new_hit_points)
         self._character = character_service.get_character_by_character_id(
             self._character.character_id)
@@ -197,6 +215,10 @@ class SheetView:
             master=self._frame, text=f"You're logged in as {self._user.username}!")
         return_button = ttk.Button(
             master=self._frame, text="Back to Characters", command=self._handle_return)
+        self._error_message = StringVar(self._frame)
+        self._error_label = ttk.Label(master=self._frame,
+                                      textvariable=self._error_message,
+                                      foreground="red")
 
         self._initialize_name_field()
         self._initialize_level_field()
