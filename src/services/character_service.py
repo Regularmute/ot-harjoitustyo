@@ -90,17 +90,19 @@ class CharacterService:
         Args:
             character_id(int): Muokattavan hahmon tunnisteluku.
             property(str): Ominaisuus, jota halutaan muokata.
-            new_value(int): Uusi arvo muokattavalle ominaisuudelle.
+            new_value(float): Uusi arvo muokattavalle ominaisuudelle.
         """
 
-        if not new_value.isdigit():
-            raise ValueTypeError("New value must be a number")
+        try:
+            float(new_value)
+        except ValueTypeError as exc:
+            raise ValueTypeError("New value must be a number") from exc
 
         if float(new_value) < 0:
             raise NegativeValueError("Value must be positive")
 
         self._character_repository.update_character_property(
-            character_id, property, int(new_value))
+            character_id, property, float(new_value))
 
 
 character_service = CharacterService()
