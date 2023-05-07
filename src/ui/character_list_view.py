@@ -1,8 +1,20 @@
+"""Moduuli joka vastaa käyttäjän hahmojen listanäkymästä.
+
+Sisältää kaksi luokkaa.
+"""
+
 from tkinter import ttk, constants, StringVar
 from services.user_service import user_service
 from services.character_service import character_service
 
 class CharacterListView:
+    """Alustaa näkymän sisältämän listan hahmoista.
+
+    Args:
+        - root: tkinter.Tk, tämän näkymän juurikomponentti.
+        - characters: lista käyttäjälle näytettävistä hahmoista.
+        - show_character_view: funktio, joka näyttää tietyn hahmon lomakenäkymän.
+    """
     def __init__(self, root, characters, show_character_view):
         self._root = root
         self._characters = characters
@@ -47,6 +59,13 @@ class CharacterListView:
 
 class CharactersView:
     def __init__(self, root, show_login_view, show_character):
+        """Alustaa hahmolistanäkymän.
+
+        Args:
+            - root: tkinter.Tk, tämän näkymän juurikomponentti.
+            - show_login_view: funktio, joka näyttää kirjautumisnäkymän.
+            - show_character: funktio, joka näyttää tietyn hahmon lomakenäkymän.
+        """
         self._root = root
         self._frame = None
         self._show_login_view = show_login_view
@@ -64,10 +83,16 @@ class CharactersView:
         self._frame.destroy()
 
     def _logout_handler(self):
+        """Kirjaa käyttäjän ulos ja ohjaa hänet kirjautumisnäkymään."""
         user_service.logout
         self._show_login_view()
 
     def _create_character_handler(self):
+        """Kutsuu sovelluslogiikkaa uuden hahmon luomiselle.
+
+        Jos hahmon nimessä ei ole yhtään merkkejä (lukuunottamatta
+        välilyöntejä), logiikkaa ei kutsuta ja näkymä näyttää virheviestin.
+        """
         character_name = self._new_character_entry.get().strip()
 
         if len(character_name) < 1:

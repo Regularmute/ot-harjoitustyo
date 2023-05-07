@@ -6,6 +6,11 @@ from ui.character_list_view import CharactersView
 
 class UI:
     def __init__(self, root):
+        """Alustaa UI-olion.
+
+        Args:
+            root: Tk-olio joka vastaa sovelluksen yleisikkunaa.
+        """
         self._root = root
         self._current_view = None
 
@@ -30,6 +35,11 @@ class UI:
         self._current_view.pack()
 
     def _show_sheet(self, character_id):
+        """Näyttää tietyn hahmon tunnistelukua vastaavan lomakenäkymän.
+
+        Args:
+        character_id: Tunnisteluku näytettävälle hahmolle.
+        """
         self._hide_current_view()
         self._current_view = SheetView(
             self._root,

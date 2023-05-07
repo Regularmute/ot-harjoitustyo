@@ -4,6 +4,13 @@ from services.user_service import user_service, UsernameExistsError
 
 class RegisterView:
     def __init__(self, root, show_login_view, on_registration):
+        """Alusta rekisteröintinäkymä-olio.
+
+        Args:
+            - root: tkinter.Tk, tämän näkymän juurikomponentti.
+            - show_login_view: funktio, joka näyttää kirjautumisnäkymän.
+            - on_registration: funktio jota kutsutaan kun käyttäjä luo tunnuksen.
+        """
         self._root = root
         self._frame = None
         self._show_login_view = show_login_view
@@ -16,12 +23,21 @@ class RegisterView:
         self._initialize()
 
     def pack(self):
+        """Pakkaa tämän näkymän kehyksen."""
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """Tuhoaa tämän näkymän kehyksen."""
         self._frame.destroy()
 
     def _create_user_handler(self):
+        """Kutsuu sovelluslogiikkaa tunnuksen rekisteröinnille.
+
+        Jos käyttäjänimi tai salasana on liian lyhyt, sovelluslogiikkaa ei
+        kutsuta ja käyttäjälle näytetään virheviesti. Jos rekisteröitävä
+        käyttäjätunnus on jo tietokannassa, sovelluslogiikka heittää virheen
+        ja näkymä ilmoittaa virheestä käyttäjälle.
+        """
         username = self._username_entry.get()
         password = self._password_entry.get()
 
@@ -40,13 +56,20 @@ class RegisterView:
             self._show_error(f"Username {username} is already taken")
 
     def _show_error(self, message):
+        """Näyttää virheviestin käyttäjälle.
+
+        Args:
+            message(string): Käyttäjälle näytettävä virheviesti.
+        """
         self._error_message.set(message)
         self._error_label.grid()
 
     def _hide_error(self):
+        """Piilottaa virheviestin."""
         self._error_label.grid_remove()
 
     def _initialize_username_field(self):
+        """Alustaa käyttäjänimikentän."""
         username_label = ttk.Label(master=self._frame, text="Username")
         self._username_entry = ttk.Entry(master=self._frame)
         username_label.grid(row=1, column=0, padx=5, pady=5)
@@ -54,6 +77,7 @@ class RegisterView:
             row=1, column=1, sticky=(constants.EW), padx=5, pady=5)
 
     def _initialize_password_field(self):
+        """Alustaa salasanakentän."""
         password_label = ttk.Label(master=self._frame, text="Password")
         self._password_entry = ttk.Entry(master=self._frame)
         password_label.grid(row=2, column=0, padx=5, pady=5)
@@ -61,6 +85,7 @@ class RegisterView:
             row=2, column=1, sticky=(constants.EW), padx=5, pady=5)
 
     def _initialize(self):
+        """Alustaa käyttäjälle näytettävän rekisteröintinäkymän."""
         self._frame = ttk.Frame(master=self._root)
         self._error_message = StringVar(self._frame)
         self._error_label = ttk.Label(master=self._frame,

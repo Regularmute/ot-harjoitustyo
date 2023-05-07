@@ -4,6 +4,13 @@ from services.user_service import user_service, InvalidCredentialsError
 
 class LoginView:
     def __init__(self, root, show_register_view, on_login):
+        """Alustaa kirjautumisnäkymä-olion.
+
+        Args:
+            - root: tkinter.Tk, tämän näkymän juurikomponentti.
+            - show_register_view: funktio, joka näyttää rekisteröintinäkymän.
+            - on_login: funktio jota kutsutaan kun käyttäjä kirjautuu sisään.
+        """
         self._root = root
         self._frame = None
         self._show_register_view = show_register_view
@@ -22,6 +29,7 @@ class LoginView:
         self._frame.destroy()
 
     def _login_handler(self):
+        """Kutsuu sovelluslogiikkaa käyttäjän kirjautumiselle."""
         username = self._username_entry.get()
         password = self._password_entry.get()
 

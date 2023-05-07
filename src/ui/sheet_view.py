@@ -8,6 +8,14 @@ from services.character_service import (
 
 class SheetView:
     def __init__(self, root, show_login_view, show_char_list_view, character_id):
+        """Alustaa lomakenäkymä-olion.
+
+        Args:
+            - root: tkinter.Tk, tämän näkymän juurikomponentti.
+            - show_login_view: funktio, joka näyttää kirjautumisnäkymän.
+            - show_char_list_view: funktio, joka näyttää hahmolistanäkymän.
+            - character_id(int): näytettävän lomakkeen hahmon tunnisteluku.
+        """
         self._root = root
         self._frame = None
         self._show_login_view = show_login_view
@@ -43,6 +51,7 @@ class SheetView:
         self._on_return()
 
     def _edit_name_handler(self):
+        """Piilottaa hahmon nimen ja näyttää käyttäjälle muokkauskentän."""
         self._edit_name_btn.grid_remove()
         self._name_entry.insert(0, self._character.name)
         self._name_entry.grid(
@@ -51,6 +60,11 @@ class SheetView:
             row=3, column=2, padx=5, pady=5)
 
     def _edit_name_confirm_handler(self):
+        """Kutsuu sovelluslogiikkaa tallentamaan hahmon nimen muutoksen.
+
+        Muutoksen jälkeen funktio piilottaa muokkauskentän ja palauttaa
+        normaalinäkymän.
+        """
         new_name = self._name_entry.get()
         character_service.set_character_name(
             self._character.character_id, new_name)
@@ -84,6 +98,7 @@ class SheetView:
             row=3, column=2, padx=5, pady=5)
 
     def _edit_level_handler(self):
+        """Piilottaa hahmon tason ja näyttää käyttäjälle muokkauskentän."""
         self._edit_level_btn.grid_remove()
         self._level_entry.insert(0,self._character.level)
         self._level_entry.grid(
@@ -92,6 +107,12 @@ class SheetView:
             row=3, column=5, padx=5, pady=5)
 
     def _edit_level_confirm_handler(self):
+        """Kutsuu sovelluslogiikkaa tallentamaan hahmon tason muutoksen.
+
+        Muutoksen jälkeen funktio piilottaa muokkauskentän ja palauttaa
+        normaalinäkymän. Funktio heittää virheen, jos tallennettava arvo
+        ei ole nolla tai positiivinen numero.
+        """
         new_level = self._level_entry.get()
         try:
             character_service.set_character_statistic_float(
@@ -130,6 +151,7 @@ class SheetView:
             row=3, column=5, padx=5, pady=5)
 
     def _edit_experience_handler(self):
+        """Piilottaa hahmon XP:n ja näyttää käyttäjälle muokkauskentän."""
         self._edit_experience_btn.grid_remove()
         self._experience_entry.insert(0,self._character.experience)
         self._experience_entry.grid(
@@ -138,6 +160,12 @@ class SheetView:
             row=4, column=2, padx=5, pady=5)
 
     def _edit_experience_confirm_handler(self):
+        """Kutsuu sovelluslogiikkaa tallentamaan hahmon XP:n muutoksen.
+
+        Muutoksen jälkeen funktio piilottaa muokkauskentän ja palauttaa
+        normaalinäkymän. Funktio heittää virheen, jos tallennettava arvo
+        ei ole nolla tai positiivinen numero.
+        """
         new_experience = self._experience_entry.get()
         character_service.set_character_statistic_float(
             self._character.character_id, "experience", new_experience)
@@ -171,6 +199,7 @@ class SheetView:
             row=4, column=2, padx=5, pady=5)
 
     def _edit_hit_points_handler(self):
+        """Piilottaa hahmon HP:n ja näyttää käyttäjälle muokkauskentän."""
         self._edit_hit_points_btn.grid_remove()
         self._hit_points_entry.insert(0, self._character.hit_points)
         self._hit_points_entry.grid(
@@ -179,6 +208,12 @@ class SheetView:
             row=4, column=5, padx=5, pady=5)
 
     def _edit_hit_points_confirm_handler(self):
+        """Kutsuu sovelluslogiikkaa tallentamaan hahmon HP:n muutoksen.
+
+        Muutoksen jälkeen funktio piilottaa muokkauskentän ja palauttaa
+        normaalinäkymän. Funktio heittää virheen, jos tallennettava arvo
+        ei ole nolla tai positiivinen numero.
+        """
         new_hit_points = self._hit_points_entry.get()
         character_service.set_character_statistic_float(
             self._character.character_id, "hit_points", new_hit_points)
