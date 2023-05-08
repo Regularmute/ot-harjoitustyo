@@ -84,7 +84,7 @@ class CharacterService:
         self._character_repository.update_character_name(
             character_id, new_name)
 
-    def set_character_property_float(self, character_id, property, new_value):
+    def set_character_attribute_float(self, character_id, property, new_value):
         """Muokkaa jotakin hahmon numeraalista ominaisuutta tietokannassa.
 
         Args:

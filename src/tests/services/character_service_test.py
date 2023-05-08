@@ -156,27 +156,27 @@ class TestCharacterService(unittest.TestCase):
 
         self.assertEqual(updated_character.name, "Frodo Baggins")
 
-    def test_set_character_property_float_updates_level_correctly(self):
+    def test_set_character_attribute_float_updates_level_correctly(self):
         id = self.char_id_bilbo
-        self.character_service.set_character_property_float(id, "level", "2")
+        self.character_service.set_character_attribute_float(id, "level", "2")
 
         updated_character = self.character_service.get_character_by_character_id(
             0)
 
         self.assertEqual(updated_character.level, 2)
 
-    def test_set_character_property_float_updates_experience_correctly(self):
+    def test_set_character_attribute_float_updates_experience_correctly(self):
         id = self.char_id_bilbo
-        self.character_service.set_character_property_float(id, "experience", "200")
+        self.character_service.set_character_attribute_float(id, "experience", "200")
 
         updated_character = self.character_service.get_character_by_character_id(
             0)
 
         self.assertEqual(updated_character.experience, 200)
 
-    def test_set_character_property_float_updates_hp_correctly(self):
+    def test_set_character_attribute_float_updates_hp_correctly(self):
         id = self.char_id_bilbo
-        self.character_service.set_character_property_float(id, "hit_points", "20")
+        self.character_service.set_character_attribute_float(id, "hit_points", "20")
 
         updated_character = self.character_service.get_character_by_character_id(
             0)
