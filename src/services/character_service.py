@@ -14,6 +14,9 @@ class ValueTypeError(Exception):
 class NegativeValueError(Exception):
     """Muuttujan täytyy olla positiivinen."""
 
+class MissingParamError(Exception):
+    """Tarvittava muuttuja puuttuu."""
+
 
 class CharacterService:
     def __init__(
@@ -82,6 +85,10 @@ class CharacterService:
             attribute(str): Ominaisuus, jota halutaan muokata.
             new_string(str): Uusi merkkijono muokattavalle ominaisuudelle.
         """
+
+        if not new_value:
+            raise MissingParamError("new_value cannot be empty.")
+
         new_string = str(new_value)
         self._character_repository.update_character_column(
             character_id, attribute, new_string)
