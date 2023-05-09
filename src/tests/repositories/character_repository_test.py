@@ -97,11 +97,11 @@ class TestCharacterRepository(unittest.TestCase):
         )
         self.assertEqual(fetched_character.character_id, 1)
 
-    def test_update_character_name_changes_name_correctly(self):
+    def test_update_character_attribute_string_changes_name_correctly(self):
         character_repository.create(self.character_drago)
         character_repository.create(self.character_griselda)
 
-        character_repository.update_character_name(1, "Khal Drogo")
+        character_repository.update_character_attribute_string(1, "name", "Khal Drogo")
         characters = character_repository.get_all()
 
         self.assertEqual(characters[0].name, "Khal Drogo")
