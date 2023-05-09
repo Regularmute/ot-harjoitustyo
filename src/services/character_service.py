@@ -74,15 +74,17 @@ class CharacterService:
 
         return self._character_repository.get_one_by_character_id(char_id)
 
-    def set_character_name(self, character_id, new_name):
-        """Muokkaa hahmon nimeä tietokannassa.
+    def set_character_attribute_string(self, character_id, attribute, new_value):
+        """Muokkaa jotakin hahmon merkkijono-ominaisuutta tietokannassa.
 
         Args:
             character_id(int): Muokattavan hahmon tunnisteluku.
-            new_name(str): Uusi nimi joka annetaan hahmolle.
+            attribute(str): Ominaisuus, jota halutaan muokata.
+            new_string(str): Uusi merkkijono muokattavalle ominaisuudelle.
         """
-        self._character_repository.update_character_name(
-            character_id, new_name)
+        new_string = str(new_value)
+        self._character_repository.update_character_column(
+            character_id, attribute, new_string)
 
     def set_character_attribute_float(self, character_id, attribute, new_value):
         """Muokkaa jotakin hahmon numeraalista ominaisuutta tietokannassa.
@@ -106,7 +108,7 @@ class CharacterService:
         if float(new_value) < 0:
             raise NegativeValueError("Value must be positive")
 
-        self._character_repository.update_character_property(
+        self._character_repository.update_character_column(
             character_id, attribute, float(new_value))
 
     def delete_character_by_id(self, character_id):
