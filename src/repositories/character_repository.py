@@ -186,33 +186,7 @@ class CharacterRepository:
 
         self._connection.commit()
 
-    def update_character_attribute_string(self, character_id, attribute, new_string):
-        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka muokkaa
-            tietyn hahmon nimisaraketta.
-
-        Args:
-            character_id (int): Muokattavan hahmon tunnisteluku.
-            attribute (string): Muokattava ominaisuus.
-            new_string (str): Muokattavan ominaisuuden uusi merkkijono.
-        """
-
-        cursor = self._connection.cursor()
-        if isinstance(attribute, str):
-            attribute.replace("'", "\\'")
-            attribute.replace("\"", "\\\"")
-
-        if isinstance(attribute, str):
-            attribute.replace("'", "\\'")
-            attribute.replace("\"", "\\\"")
-
-        cursor = self._connection.cursor()
-        sql = f"""UPDATE characters SET {attribute}=:new_string
-            WHERE character_id=:character_id"""
-
-        cursor.execute(sql, {"new_string": new_string, "character_id": character_id})
-        self._connection.commit()
-
-    def update_character_property(self, char_id, target_property, new_value):
+    def update_character_column(self, char_id, target_column, new_value):
         """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka muokkaa
             yhtä tietyn hahmon sarakkeista.
 
@@ -222,20 +196,20 @@ class CharacterRepository:
 
         Args:
             char_id (int): Muokattavan hahmon tunnisteluku.
-            target_property (str): Muokattavan sarakkeen nimi.
-            new_value (int): Muokattavan sarakkeen uusi arvo.
+            target_column (str): Muokattavan sarakkeen nimi.
+            new_value: Muokattavan sarakkeen uusi arvo.
         """
 
         cursor = self._connection.cursor()
-        if isinstance(target_property, str):
-            target_property.replace("'", "\\'")
-            target_property.replace("\"", "\\\"")
+        if isinstance(target_column, str):
+            target_column.replace("'", "\\'")
+            target_column.replace("\"", "\\\"")
 
         if isinstance(new_value, str):
             new_value.replace("'", "\\'")
             new_value.replace("\"", "\\\"")
 
-        sql = f"""UPDATE characters SET {target_property}=:new_value
+        sql = f"""UPDATE characters SET {target_column}=:new_value
                 WHERE character_id=:character_id"""
 
         cursor.execute(sql, {
