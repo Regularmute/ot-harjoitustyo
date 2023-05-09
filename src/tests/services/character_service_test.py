@@ -74,6 +74,22 @@ class FakeCharacterRepository:
 
         return
 
+    def delete_character_by_id(self, character_id):
+        target_character = filter(
+            lambda character: character.character_id == character_id,
+            self.characters
+        )
+
+        target_character_list = list(target_character)
+
+        if len(target_character_list) > 0:
+            self.characters = [
+                char for char in self.characters
+                if char.character_id!=character_id
+            ]
+
+        return None
+
 
 class TestCharacterService(unittest.TestCase):
     def setUp(self):
@@ -182,3 +198,12 @@ class TestCharacterService(unittest.TestCase):
             0)
 
         self.assertEqual(updated_character.hit_points, 20)
+
+    def test_delete_character_by_id_works_correctly(self):
+        id = self.char_id_bilbo
+        characters = self.character_service.get_characters()
+        self.assertEqual(len(characters), 1)
+
+        self.character_service.delete_character_by_id(id)
+        characters = self.character_service.get_characters()
+        self.assertEqual(len(characters), 0)
