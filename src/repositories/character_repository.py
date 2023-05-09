@@ -172,6 +172,8 @@ class CharacterRepository:
 
         cursor.execute(sql, {"character_id": character_id})
 
+        self._connection.commit()
+
 
     def delete_all(self):
         """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka poistaa
