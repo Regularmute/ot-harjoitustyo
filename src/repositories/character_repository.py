@@ -175,7 +175,8 @@ class CharacterRepository:
 
     def delete_all(self):
         """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka poistaa
-            kaikki hahmotaulukon hahmot."""
+            kaikki hahmotaulukon hahmot.
+        """
 
         cursor = self._connection.cursor()
 
