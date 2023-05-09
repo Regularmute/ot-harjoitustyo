@@ -161,6 +161,18 @@ class CharacterRepository:
 
         return character
 
+    def delete_character_by_id(self, character_id):
+        """Toteuttaa SQL-kyselyn tietokantaan, joka poistaa hahmon jolla on
+            annettu tunnisteluku.
+        """
+
+        cursor = self._connection.cursor()
+
+        sql = "DELETE FROM characters WHERE character_id=:character_id"
+
+        cursor.execute(sql, {"character_id": character_id})
+
+
     def delete_all(self):
         """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka poistaa
             kaikki hahmotaulukon hahmot."""
