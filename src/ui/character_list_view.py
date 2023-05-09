@@ -4,6 +4,7 @@ Sisältää kaksi luokkaa.
 """
 
 from tkinter import ttk, constants, StringVar
+from tkinter.messagebox import askyesno
 from services.user_service import user_service
 from services.character_service import character_service
 
@@ -15,10 +16,11 @@ class CharacterListView:
         - characters: lista käyttäjälle näytettävistä hahmoista.
         - show_character_view: funktio, joka näyttää tietyn hahmon lomakenäkymän.
     """
-    def __init__(self, root, characters, show_character_view):
+    def __init__(self, root, characters, show_character_view, delete_character):
         self._root = root
         self._characters = characters
         self._show_character = show_character_view
+        self._delete_character = delete_character
         self._frame = None
 
         self._initialize()
@@ -39,12 +41,20 @@ class CharacterListView:
             text="View",
             command=lambda: self._show_character(character.character_id)
         )
+        character_delete_btn = ttk.Button(
+            master=character_frame,
+            text="Delete",
+            command=lambda: self._delete_character(character)
+        )
 
         character_name_label.grid(
             row=0, column=0, sticky=constants.W, padx=5, pady=5
         )
         character_view_btn.grid(
             row=0, column=1, sticky=constants.W, padx=5, pady=5
+        )
+        character_delete_btn.grid(
+            row=0, column=2, sticky=constants.W, padx=5, pady=5
         )
 
 
@@ -102,6 +112,15 @@ class CharactersView:
         character_service.create_character(self._user.user_id, character_name)
         self._initialize_character_list()
 
+    def _delete_character_handler(self, character):
+        confirm = askyesno(title='deletion confirmation',
+            message=f"""Are you sure you want to delete {character.name}?
+                Character cannot be recovered after deletion.""")
+
+        if confirm:
+            character_service.delete_character_by_id(character.character_id)
+            self._initialize_character_list()
+
     def _view_character_handler(self, character_id):
         self._show_character_view(character_id)
 
@@ -121,7 +140,8 @@ class CharactersView:
         self._character_list_view = CharacterListView(
             self._character_list_frame,
             characters,
-            self._view_character_handler
+            self._view_character_handler,
+            self._delete_character_handler
         )
 
         self._character_list_view.pack()
