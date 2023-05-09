@@ -66,8 +66,8 @@ class SheetView:
         normaalinäkymän.
         """
         new_name = self._name_entry.get()
-        character_service.set_character_name(
-            self._character.character_id, new_name)
+        character_service.set_character_attribute_string(
+            self._character.character_id, "name", new_name)
         self._character = character_service.get_character_by_character_id(
             self._character.character_id)
 
