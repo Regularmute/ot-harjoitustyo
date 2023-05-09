@@ -104,5 +104,14 @@ class CharacterService:
         self._character_repository.update_character_property(
             character_id, attribute, float(new_value))
 
+    def delete_character_by_id(self, character_id):
+        """Poistaa tiettyä tunnistelukua vastaavan hahmon tietokannasta.
+
+        Args:
+            character_id(str): Poistettavan hahmon tunnisteluku.
+        """
+
+        self._character_repository.delete_character_by_id(character_id)
+
 
 character_service = CharacterService()
