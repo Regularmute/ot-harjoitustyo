@@ -95,7 +95,7 @@ class CharacterService:
 
         try:
             float(new_value)
-        except ValueTypeError as exc:
+        except ValueError as exc:
             raise ValueTypeError("New value must be a number") from exc
 
         if float(new_value) < 0:
