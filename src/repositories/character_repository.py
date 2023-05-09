@@ -186,19 +186,30 @@ class CharacterRepository:
 
         self._connection.commit()
 
-    def update_character_name(self, character_id, new_name):
+    def update_character_attribute_string(self, character_id, attribute, new_string):
         """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka muokkaa
             tietyn hahmon nimisaraketta.
 
         Args:
             character_id (int): Muokattavan hahmon tunnisteluku.
-            new_name (str): Muokattavalle hahmolle asetettava nimi.
+            attribute (string): Muokattava ominaisuus.
+            new_string (str): Muokattavan ominaisuuden uusi merkkijono.
         """
 
         cursor = self._connection.cursor()
-        sql = """UPDATE characters SET name=:new_name WHERE character_id=:character_id"""
+        if isinstance(attribute, str):
+            attribute.replace("'", "\\'")
+            attribute.replace("\"", "\\\"")
 
-        cursor.execute(sql, {"new_name": new_name, "character_id": character_id})
+        if isinstance(attribute, str):
+            attribute.replace("'", "\\'")
+            attribute.replace("\"", "\\\"")
+
+        cursor = self._connection.cursor()
+        sql = f"""UPDATE characters SET {attribute}=:new_string
+            WHERE character_id=:character_id"""
+
+        cursor.execute(sql, {"new_string": new_string, "character_id": character_id})
         self._connection.commit()
 
     def update_character_property(self, char_id, target_property, new_value):
