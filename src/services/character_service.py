@@ -87,6 +87,11 @@ class CharacterService:
     def set_character_attribute_float(self, character_id, attribute, new_value):
         """Muokkaa jotakin hahmon numeraalista ominaisuutta tietokannassa.
 
+        Funktio kokeilee muokata syötetyn arvon merkkijonosta liukuluvuksi.
+        Jos merkkijonosta ei voi tehdä liukulukua, syntyvä virhe napataan
+        ja käyttöjärjestelmälle ilmoitetaan virhe, jonka se ilmoittaa
+        käyttäjälle.
+
         Args:
             character_id(int): Muokattavan hahmon tunnisteluku.
             attribute(str): Ominaisuus, jota halutaan muokata.
