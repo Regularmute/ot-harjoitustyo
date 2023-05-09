@@ -97,6 +97,9 @@
 ### User Experience
 * User now sees the previous value of a field when editing.
 * User can only enter positive numbers to certain fields.
+* User can now delete characters.
+* User receives an error when trying to submit an empty field.
 
 ### Documentation
 * Docstring added to UI files.
+* Testing document has been created.

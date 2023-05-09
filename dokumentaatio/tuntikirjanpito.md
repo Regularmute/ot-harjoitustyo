@@ -28,4 +28,6 @@
 |2.5.|1h|Docstring, Graafisen käyttöliittymän laajentaminen|
 |2.5.|1h|Hahmoentiteetin muokkaus, refaktorointi, dokumentaatio|
 |7.5.|2h|Docstringinlisäys, syötekenttien validointi|
-|Yhteensä käytetty aika:|40h|
+|8.5.|1h|Dokumentaatio|
+|9.5|2h|Testaus, toimintojen laajennus|
+|Yhteensä käytetty aika:|43h|
