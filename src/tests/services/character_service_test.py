@@ -49,18 +49,7 @@ class FakeCharacterRepository:
 
         return character
 
-    def update_character_name(self, character_id, new_name):
-        target_characters = filter(
-            lambda character: character.character_id == character_id, self.characters)
-
-        target_characters_list = list(target_characters)
-
-        if len(target_characters_list) > 0:
-            target_characters_list[0].name = new_name
-
-        return
-
-    def update_character_property(self, character_id, statistic, new_value):
+    def update_character_column(self, character_id, statistic, new_value):
         target_characters = filter(
             lambda character: character.character_id == character_id, self.characters)
 
@@ -68,9 +57,7 @@ class FakeCharacterRepository:
 
         if len(target_characters_list) > 0:
             target_character = target_characters_list[0]
-            stat_to_change = getattr(target_character, statistic)
-            if isinstance(stat_to_change, int):
-                setattr(target_character, statistic, new_value)
+            setattr(target_character, statistic, new_value)
 
         return
 
@@ -162,10 +149,10 @@ class TestCharacterService(unittest.TestCase):
             self.characters_are_the_same(character, self.char_bilbo)
         )
 
-    def test_set_character_name_updates_name_correctly(self):
+    def test_set_character_attribute_string_updates_name_correctly(self):
         id = self.char_id_bilbo
         new_name = "Frodo Baggins"
-        self.character_service.set_character_name(id, new_name)
+        self.character_service.set_character_attribute_string(id, "name", new_name)
 
         updated_character = self.character_service.get_character_by_character_id(
             0)
