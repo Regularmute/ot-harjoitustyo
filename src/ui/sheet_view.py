@@ -3,7 +3,8 @@ from services.user_service import user_service
 from services.character_service import (
     character_service,
     ValueTypeError,
-    NegativeValueError)
+    NegativeValueError,
+    MissingParamError)
 
 
 class SheetView:
@@ -66,10 +67,13 @@ class SheetView:
         normaalinäkymän.
         """
         new_name = self._name_entry.get()
-        character_service.set_character_attribute_string(
-            self._character.character_id, "name", new_name)
-        self._character = character_service.get_character_by_character_id(
-            self._character.character_id)
+        try:
+            character_service.set_character_attribute_string(
+                self._character.character_id, "name", new_name)
+            self._character = character_service.get_character_by_character_id(
+                self._character.character_id)
+        except MissingParamError:
+            self._show_error("Field cannot be empty.")
 
         self._name_label.grid_remove()
         self._character_name_label.grid_remove()
