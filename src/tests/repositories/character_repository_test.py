@@ -97,11 +97,11 @@ class TestCharacterRepository(unittest.TestCase):
         )
         self.assertEqual(fetched_character.character_id, 1)
 
-    def test_update_character_attribute_string_changes_name_correctly(self):
+    def test_update_character_column_changes_name_correctly(self):
         character_repository.create(self.character_drago)
         character_repository.create(self.character_griselda)
 
-        character_repository.update_character_attribute_string(1, "name", "Khal Drogo")
+        character_repository.update_character_column(1, "name", "Khal Drogo")
         characters = character_repository.get_all()
 
         self.assertEqual(characters[0].name, "Khal Drogo")
@@ -118,11 +118,11 @@ class TestCharacterRepository(unittest.TestCase):
             self.characters_are_the_same(characters[1], self.character_griselda)
         )
 
-    def test_update_character_property_updates_level_correctly(self):
+    def test_update_character_column_updates_level_correctly(self):
         character_repository.create(self.character_drago)
         character_repository.create(self.character_griselda)
 
-        character_repository.update_character_property(2, "level", 4)
+        character_repository.update_character_column(2, "level", 4)
         characters = character_repository.get_all()
 
         self.assertEqual(characters[1].level, 4)
@@ -139,11 +139,11 @@ class TestCharacterRepository(unittest.TestCase):
             self.characters_are_the_same(characters[0], self.character_drago)
         )
 
-    def test_update_character_property_updates_experience_correctly(self):
+    def test_update_character_column_updates_experience_correctly(self):
         character_repository.create(self.character_drago)
         character_repository.create(self.character_griselda)
 
-        character_repository.update_character_property(2, "experience", 350)
+        character_repository.update_character_column(2, "experience", 350)
         characters = character_repository.get_all()
 
         self.assertEqual(characters[1].experience, 350)
@@ -160,11 +160,11 @@ class TestCharacterRepository(unittest.TestCase):
             self.characters_are_the_same(characters[0], self.character_drago)
         )
 
-    def test_update_character_property_updates_hp_correctly(self):
+    def test_update_character_column_updates_hp_correctly(self):
         character_repository.create(self.character_drago)
         character_repository.create(self.character_griselda)
 
-        character_repository.update_character_property(2, "hit_points", 61)
+        character_repository.update_character_column(2, "hit_points", 61)
         characters = character_repository.get_all()
 
         self.assertEqual(characters[1].hit_points, 61)
