@@ -167,10 +167,15 @@ class SheetView:
         ei ole nolla tai positiivinen numero.
         """
         new_experience = self._experience_entry.get()
-        character_service.set_character_attribute_float(
-            self._character.character_id, "experience", new_experience)
-        self._character = character_service.get_character_by_character_id(
-            self._character.character_id)
+        try:
+            character_service.set_character_attribute_float(
+                self._character.character_id, "experience", new_experience)
+            self._character = character_service.get_character_by_character_id(
+                self._character.character_id)
+        except NegativeValueError:
+            self._show_error("New value must be positive.")
+        except ValueTypeError:
+            self._show_error("New value must be a number.")
 
         self._experience_label.grid_remove()
         self._character_experience_label.grid_remove()
@@ -215,10 +220,15 @@ class SheetView:
         ei ole nolla tai positiivinen numero.
         """
         new_hit_points = self._hit_points_entry.get()
-        character_service.set_character_attribute_float(
-            self._character.character_id, "hit_points", new_hit_points)
-        self._character = character_service.get_character_by_character_id(
-            self._character.character_id)
+        try:
+            character_service.set_character_attribute_float(
+                self._character.character_id, "hit_points", new_hit_points)
+            self._character = character_service.get_character_by_character_id(
+                self._character.character_id)
+        except NegativeValueError:
+            self._show_error("New value must be positive.")
+        except ValueTypeError:
+            self._show_error("New value must be a number.")
 
         self._hit_points_label.grid_remove()
         self._character_hit_points_label.grid_remove()
