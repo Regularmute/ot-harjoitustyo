@@ -180,3 +180,21 @@ class TestCharacterRepository(unittest.TestCase):
         self.assertTrue(
             self.characters_are_the_same(characters[0], self.character_drago)
         )
+
+    def test_delete_character_by_id_works_correctly(self):
+        character_repository.create(self.character_drago)
+        character_repository.create(self.character_griselda)
+
+        characters = character_repository.get_all()
+        self.assertEqual(len(characters), 2)
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.character_drago)
+        )
+
+        character_repository.delete_character_by_id(1)
+        characters = character_repository.get_all()
+
+        self.assertEqual(len(characters), 1)
+        self.assertTrue(
+            self.characters_are_the_same(characters[0], self.character_griselda)
+        )
