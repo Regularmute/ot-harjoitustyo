@@ -92,14 +92,21 @@
 * More tests for character service and repository.
 * Tests adjusted for the change in character entity.
 
-## Viikko 7
+## Viikot 7+8
 
 ### User Experience
 * User now sees the previous value of a field when editing.
 * User can only enter positive numbers to certain fields.
 * User can now delete characters.
 * User receives an error when trying to submit an empty field.
+* User can now view and edit the ancestry and heritage of the character.
 
 ### Documentation
 * Docstring added to UI files.
 * Testing document has been created.
+* User guide has been updated to fit current build.
+
+### Testing
+* Integration between character_service and character_repository.
+* Integration between user_service and user_repository.
+* Service tests have been refactored for clarity and to streamline future modifications.

@@ -30,4 +30,6 @@
 |7.5.|2h|Docstringinlisäys, syötekenttien validointi|
 |8.5.|1h|Dokumentaatio|
 |9.5|2h|Testaus, toimintojen laajennus|
-|Yhteensä käytetty aika:|43h|
+|10.5|1h|Integraatiotestaus|
+|10.5|1h|Dokumentaatio|
+|Yhteensä käytetty aika:|45h|

@@ -12,9 +12,10 @@ List of all releases can be found [HERE](https://github.com/Regularmute/ot-harjo
   * The user can create an account and store it into the database.
   * A registered user can login and logout.
   * A registered user is logged in automatically.
-  * A logged user either sees a list of their characters and can create new ones.
+  * A logged user sees a list of their characters and can create new ones.
   * The created character is stored in a sqlite database.
   * A logged user can view their characters' details and edit them.
+  * A logged user can delete characters.
 
 ## Documentation
 ---
@@ -29,6 +30,8 @@ Note: Some of the documentation has been written in Finnish. These are marked wi
   * [Architecture description [FI]](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
   * [User instructions [FI]](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
+
+  * [Testing document [FI]](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/testausdokumentti.md)
 
 ## Installation
 ---
