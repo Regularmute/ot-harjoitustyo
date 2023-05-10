@@ -103,7 +103,7 @@ class SheetView:
             row=3, column=2, padx=5, pady=5)
 
     def _edit_ancestry_handler(self):
-        """Piilottaa hahmon perimän ja näyttää käyttäjälle muokkauskentän."""
+        """Piilottaa hahmon syntyperän ja näyttää käyttäjälle muokkauskentän."""
         self._edit_ancestry_btn.grid_remove()
         self._ancestry_entry.insert(0, self._character.ancestry)
         self._ancestry_entry.grid(
@@ -112,7 +112,7 @@ class SheetView:
             row=4, column=2, padx=5, pady=5)
 
     def _edit_ancestry_confirm_handler(self):
-        """Kutsuu sovelluslogiikkaa tallentamaan hahmon perimän muutoksen.
+        """Kutsuu sovelluslogiikkaa tallentamaan hahmon syntyperän muutoksen.
 
         Muutoksen jälkeen funktio piilottaa muokkauskentän ja palauttaa
         normaalinäkymän.
@@ -152,6 +152,57 @@ class SheetView:
             row=4, column=1, sticky=constants.W, padx=5, pady=5)
         self._edit_ancestry_btn.grid(
             row=4, column=2, padx=5, pady=5)
+
+    def _edit_heritage_handler(self):
+        """Piilottaa hahmon perimän ja näyttää käyttäjälle muokkauskentän."""
+        self._edit_heritage_btn.grid_remove()
+        self._heritage_entry.insert(0, self._character.heritage)
+        self._heritage_entry.grid(
+            row=4, column=4, padx=5, pady=5)
+        self._confirm_heritage_btn.grid(
+            row=4, column=5, padx=5, pady=5)
+
+    def _edit_heritage_confirm_handler(self):
+        """Kutsuu sovelluslogiikkaa tallentamaan hahmon perimän muutoksen.
+
+        Muutoksen jälkeen funktio piilottaa muokkauskentän ja palauttaa
+        normaalinäkymän.
+        """
+        new_heritage = self._heritage_entry.get()
+        try:
+            character_service.set_character_attribute_string(
+                self._character.character_id, "heritage", new_heritage)
+            self._character = character_service.get_character_by_character_id(
+                self._character.character_id)
+            self._hide_error()
+        except MissingParamError as e:
+            self._show_error(e.args[0])
+
+        self._heritage_label.grid_remove()
+        self._character_heritage_label.grid_remove()
+        self._heritage_entry.grid_remove()
+        self._confirm_heritage_btn.grid_remove()
+
+        self._initialize_heritage_field()
+
+    def _initialize_heritage_field(self):
+        self._heritage_label = ttk.Label(
+            master=self._frame, text="Heritage:")
+        self._character_heritage_label = ttk.Label(
+            master=self._frame, text=f"{self._character.heritage}"
+        )
+        self._heritage_entry = ttk.Entry(master=self._frame)
+        self._edit_heritage_btn = ttk.Button(
+            master=self._frame, text="Edit", command=self._edit_heritage_handler)
+        self._confirm_heritage_btn = ttk.Button(
+            master=self._frame, text="Confirm", command=self._edit_heritage_confirm_handler)
+
+        self._heritage_label.grid(
+            row=4, column=3, sticky=constants.W, padx=5, pady=5)
+        self._character_heritage_label.grid(
+            row=4, column=4, sticky=constants.W, padx=5, pady=5)
+        self._edit_heritage_btn.grid(
+            row=4, column=5, padx=5, pady=5)
 
     def _edit_level_handler(self):
         """Piilottaa hahmon tason ja näyttää käyttäjälle muokkauskentän."""
@@ -331,6 +382,7 @@ class SheetView:
         self._initialize_name_field()
         self._initialize_level_field()
         self._initialize_ancestry_field()
+        self._initialize_heritage_field()
         self._initialize_experience_field()
         self._initialize_hit_points_field()
 
