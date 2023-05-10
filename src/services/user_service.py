@@ -108,5 +108,13 @@ class UserService:
         """Kirjaa käyttäjän ulos."""
         self._user = None
 
+    def delete_all(self):
+        """Kaikki käyttäjät tietokannasta.
+
+        Pääasiassa integraatiotestikäyttöön.
+        """
+
+        self._user_repository.delete_all()
+
 
 user_service = UserService()
