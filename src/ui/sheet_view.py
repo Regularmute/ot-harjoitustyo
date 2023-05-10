@@ -101,6 +101,56 @@ class SheetView:
         self._edit_name_btn.grid(
             row=3, column=2, padx=5, pady=5)
 
+    def _edit_ancestry_handler(self):
+        """Piilottaa hahmon perimän ja näyttää käyttäjälle muokkauskentän."""
+        self._edit_ancestry_btn.grid_remove()
+        self._ancestry_entry.insert(0, self._character.ancestry)
+        self._ancestry_entry.grid(
+            row=4, column=1, padx=5, pady=5)
+        self._confirm_ancestry_btn.grid(
+            row=4, column=2, padx=5, pady=5)
+
+    def _edit_ancestry_confirm_handler(self):
+        """Kutsuu sovelluslogiikkaa tallentamaan hahmon perimän muutoksen.
+
+        Muutoksen jälkeen funktio piilottaa muokkauskentän ja palauttaa
+        normaalinäkymän.
+        """
+        new_ancestry = self._ancestry_entry.get()
+        try:
+            character_service.set_character_attribute_string(
+                self._character.character_id, "ancestry", new_ancestry)
+            self._character = character_service.get_character_by_character_id(
+                self._character.character_id)
+        except MissingParamError:
+            self._show_error("Field cannot be empty.")
+
+        self._ancestry_label.grid_remove()
+        self._character_ancestry_label.grid_remove()
+        self._ancestry_entry.grid_remove()
+        self._confirm_ancestry_btn.grid_remove()
+
+        self._initialize_ancestry_field()
+
+    def _initialize_ancestry_field(self):
+        self._ancestry_label = ttk.Label(
+            master=self._frame, text="Ancestry:")
+        self._character_ancestry_label = ttk.Label(
+            master=self._frame, text=f"{self._character.ancestry}"
+        )
+        self._ancestry_entry = ttk.Entry(master=self._frame)
+        self._edit_ancestry_btn = ttk.Button(
+            master=self._frame, text="Edit", command=self._edit_ancestry_handler)
+        self._confirm_ancestry_btn = ttk.Button(
+            master=self._frame, text="Confirm", command=self._edit_ancestry_confirm_handler)
+
+        self._ancestry_label.grid(
+            row=4, column=0, sticky=constants.W, padx=5, pady=5)
+        self._character_ancestry_label.grid(
+            row=4, column=1, sticky=constants.W, padx=5, pady=5)
+        self._edit_ancestry_btn.grid(
+            row=4, column=2, padx=5, pady=5)
+
     def _edit_level_handler(self):
         """Piilottaa hahmon tason ja näyttää käyttäjälle muokkauskentän."""
         self._edit_level_btn.grid_remove()
@@ -159,9 +209,9 @@ class SheetView:
         self._edit_experience_btn.grid_remove()
         self._experience_entry.insert(0,self._character.experience)
         self._experience_entry.grid(
-            row=4, column=1, padx=5, pady=5)
+            row=5, column=1, padx=5, pady=5)
         self._confirm_experience_btn.grid(
-            row=4, column=2, padx=5, pady=5)
+            row=5, column=2, padx=5, pady=5)
 
     def _edit_experience_confirm_handler(self):
         """Kutsuu sovelluslogiikkaa tallentamaan hahmon XP:n muutoksen.
@@ -201,20 +251,20 @@ class SheetView:
             master=self._frame, text="Confirm", command=self._edit_experience_confirm_handler)
 
         self._experience_label.grid(
-            row=4, column=0, sticky=constants.W, padx=5, pady=5)
+            row=5, column=0, sticky=constants.W, padx=5, pady=5)
         self._character_experience_label.grid(
-            row=4, column=1, sticky=constants.W, padx=5, pady=5)
+            row=5, column=1, sticky=constants.W, padx=5, pady=5)
         self._edit_experience_btn.grid(
-            row=4, column=2, padx=5, pady=5)
+            row=5, column=2, padx=5, pady=5)
 
     def _edit_hit_points_handler(self):
         """Piilottaa hahmon HP:n ja näyttää käyttäjälle muokkauskentän."""
         self._edit_hit_points_btn.grid_remove()
         self._hit_points_entry.insert(0, self._character.hit_points)
         self._hit_points_entry.grid(
-            row=4, column=4, padx=5, pady=5)
+            row=5, column=4, padx=5, pady=5)
         self._confirm_hit_points_btn.grid(
-            row=4, column=5, padx=5, pady=5)
+            row=5, column=5, padx=5, pady=5)
 
     def _edit_hit_points_confirm_handler(self):
         """Kutsuu sovelluslogiikkaa tallentamaan hahmon HP:n muutoksen.
@@ -254,11 +304,11 @@ class SheetView:
             master=self._frame, text="Confirm", command=self._edit_hit_points_confirm_handler)
 
         self._hit_points_label.grid(
-            row=4, column=3, sticky=constants.W, padx=5, pady=5)
+            row=5, column=3, sticky=constants.W, padx=5, pady=5)
         self._character_hit_points_label.grid(
-            row=4, column=4, sticky=constants.W, padx=5, pady=5)
+            row=5, column=4, sticky=constants.W, padx=5, pady=5)
         self._edit_hit_points_btn.grid(
-            row=4, column=5, padx=5, pady=5)
+            row=5, column=5, padx=5, pady=5)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -275,13 +325,14 @@ class SheetView:
 
         self._initialize_name_field()
         self._initialize_level_field()
+        self._initialize_ancestry_field()
         self._initialize_experience_field()
         self._initialize_hit_points_field()
 
         heading_label.grid(row=0, column=0, columnspan=2,
                            sticky=constants.W, padx=5, pady=5)
         username_label.grid(row=1, column=0, columnspan=3, padx=5, pady=5)
-        return_button.grid(row=5, column=0, columnspan=2,
+        return_button.grid(row=6, column=0, columnspan=2,
                            sticky=(constants.EW), padx=5, pady=5)
 
         self._root.grid_columnconfigure(1, weight=1, minsize=300)
