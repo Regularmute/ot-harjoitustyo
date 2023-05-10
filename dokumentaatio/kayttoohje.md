@@ -31,11 +31,34 @@ Jos tunnuksella on olemassa hahmoja, ne näkyvät hahmolistanäkymässä:
 
 Painamalla tietyn hahmon kohdalla olevaa "View"-painiketta, pääset hahmolomakesivulle:
 
-![](./kuvat//sheetview1.PNG)
+![](./kuvat/sheetview1.PNG)
 
 Täällä näet hahmosi tiedot, ja voit muokata niitä painamalla vastaavaa "Edit"-painiketta. Tallenna muutoksesi painamalla muokatessa näkyvää "Confirm"-painiketta.
 
 Pääset takaisin hahmolistanäkymään painamalla "Back to Characters"-painiketta.
 
+## Hahmon poistaminen
+**HUOM: Poistettua hahmoa ei pysty palauttamaan millään tavalla!**
+
+Hahmolistanäkymässä voit poistaa haluamasi hahmon painamalla "Delete"-painiketta hahmon kohdalta. Vahinkopoistojen ehkäisemiseksi sovellus pyytää sinulta vahvistuksen:
+
+![](./kuvat/deletionconfirm1.PNG)
+
+Painamalla "No"-painiketta poisto keskeytyy, ja painamalla "Yes"-painiketta hahmolomakkeesi poistuu tietokannasta.
+
 ## Uloskirjautuminen
 Paina hahmolistanäkymässä "Logout"-painiketta kirjautuaksesi ulos. Muista aina kirjautua ulos kun lopetat sovelluksen käytön!
+
+## Virheistä
+Jos syötät virheellisen syötteen, esimerkiksi kirjaimia numeraaliseen kenttään (level, experience, hit points), sovellus estää toiminnon ja näyttää sinulle virheviestin lomakkeen pohjalla punaisella. Virheviesti katoaa, kun suoritat onnistuneen muutostoiminnon, tai kun poistut lomakenäkymästä.
+
+![](./kuvat/sheetview(error)1.PNG)
+
+## Konfigurointi
+Halutessasi voit luoda sovelluksen juurihakemistoon .env tiedoston, johon voit määritellä haluamasi .sqlite-päätteisen tietokantatiedoston, jota sovellus käyttää. Sovellus tunnistaa oletusarvoisesti tiedoston nimeltä "database.sqlite", mutta voit muokata tunnistettavan tiedoston nimeä kirjoittamalla .env-tiedostoon seuraavan rivin (sijoita haluamasi tiedostonimi ilman aaltosulkuja):
+
+```
+DATABASE_FILENAME={sinun_tiedoston_nimi}
+```
+
+Muista sijoittaa käyttämäsi tietokantatiedosto hakemiston /data sisälle. Tällä tavalla voit käyttää samaa tietokantaa usealla koneella!
