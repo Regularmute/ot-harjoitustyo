@@ -4,7 +4,7 @@ from services.user_service import (
     UserService, InvalidCredentialsError, UsernameExistsError)
 from entities.user import User
 
-class TestUserService(unittest.TestCase):
+class TestUserIntegration(unittest.TestCase):
     def setUp(self):
         self.user_steve = User("Steve", "hunter2")
         self.user_kyle = User("Kyle", "password1")
