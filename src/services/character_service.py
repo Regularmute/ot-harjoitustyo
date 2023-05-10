@@ -127,5 +127,10 @@ class CharacterService:
 
         self._character_repository.delete_character_by_id(character_id)
 
+    def delete_all_characters(self):
+        """Poistaa kaikki hahmot tietokannasta."""
+
+        self._character_repository.delete_all()
+
 
 character_service = CharacterService()
