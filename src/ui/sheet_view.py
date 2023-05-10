@@ -26,7 +26,6 @@ class SheetView:
         self._error_label = None
         self._error_message = None
 
-        # Hahmon tiedot
         self._character = character_service.get_character_by_character_id(character_id)
 
         self._initialize()
