@@ -61,14 +61,6 @@ class TestCharacterIntegration(unittest.TestCase):
             self.characters_are_the_same(characters[1], self.char_pikachu)
         )
 
-    def test_get_character_by_creator_id_returns_character_correctly(self):
-        character = self.character_service.get_character_by_creator_id(1)
-
-        self.assertEqual(character.character_id, self.char_id_bilbo)
-        self.assertTrue(
-            self.characters_are_the_same(character, self.char_bilbo)
-        )
-
     def test_get_character_by_character_id_returns_correct_character(self):
         character = self.character_service.get_character_by_character_id(self.char_id_bilbo)
 

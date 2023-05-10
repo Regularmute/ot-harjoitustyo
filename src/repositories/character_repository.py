@@ -60,29 +60,6 @@ class CharacterRepository:
 
         return _get_character_by_row(row)
 
-    def get_one_by_creator_id(self, creator_id):
-        """VANHENTUNUT: Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka
-            palauttaa hahmon, joka on tietyn käyttäjän luoma. Vanhentunut
-            kysely, sillä yhdellä käyttäjällä voi nykyään olla usea hahmo.
-
-        Args:
-            creator_id (int): Haetun käyttäjän tunnisteluku.
-
-        Returns:
-            Hahmo-olio, joka on luotu suorittamalla _get_character_by_row
-            kyselyn palauttamaan riviin.
-        """
-        cursor = self._connection.cursor()
-
-        sql = """SELECT character_id, creator_id, name, ancestry, heritage,
-                level, experience, hit_points FROM characters
-                WHERE creator_id=:creator_id"""
-
-        cursor.execute(sql, {"creator_id": creator_id})
-        row = cursor.fetchone()
-
-        return _get_character_by_row(row)
-
     def get_all_by_creator_id(self, creator_id):
         """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka palauttaa
             kaikki tietyn käyttäjän luomat hahmot.

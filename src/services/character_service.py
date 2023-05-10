@@ -42,17 +42,6 @@ class CharacterService:
 
         return self._character_repository.get_all()
 
-    def get_character_by_creator_id(self, creator_id):
-        """VANHENTUNUT: Hakee tietokannasta tietyn käyttäjän ylimmän hahmon.
-
-        Args:
-            creator_id(int): Hahmon luoneen käyttäjän tunnisteluku.
-
-        Returns:
-            Käyttäjän luoma hahmo-olio joka on ylimpänä tietokannassa.
-        """
-        return self._character_repository.get_one_by_creator_id(creator_id)
-
     def get_all_by_creator_id(self, creator_id):
         """Hakee tietokannasta kaikki tietyn käyttäjän luomat hahmot.
 

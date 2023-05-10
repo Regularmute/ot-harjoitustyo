@@ -50,18 +50,6 @@ class TestCharacterRepository(unittest.TestCase):
         )
         self.assertEqual(characters[1].character_id, 2)
 
-    def test_get_one_by_creator_id_gets_correct_character(self):
-        character_repository.create(self.character_drago)
-        character_repository.create(self.character_griselda)
-
-        user_id = self.character_drago.creator_id
-        fetched_character = character_repository.get_one_by_creator_id(user_id)
-
-        self.assertTrue(
-            self.characters_are_the_same(fetched_character, self.character_drago)
-        )
-        self.assertEqual(fetched_character.character_id, 1)
-
     def test_get_all_by_creator_id_gets_correct_characters(self):
         character_repository.create(self.character_drago)
         character_repository.create(self.character_griselda)

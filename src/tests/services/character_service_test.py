@@ -21,17 +21,6 @@ class FakeCharacterRepository:
 
         return None
 
-    def get_one_by_creator_id(self, creator_id):
-        target_characters = filter(
-            lambda character: character.creator_id == creator_id, self.characters)
-
-        target_characters_list = list(target_characters)
-
-        if len(target_characters_list) > 0:
-            return target_characters_list[0]
-
-        return None
-
     def get_one_by_character_id(self, character_id):
         target_characters = filter(
             lambda character: character.character_id == character_id, self.characters)
@@ -129,14 +118,6 @@ class TestCharacterService(unittest.TestCase):
         self.assertTrue(
             self.characters_are_the_same(characters[0], self.char_bilbo),
             self.characters_are_the_same(characters[1], self.char_pikachu)
-        )
-
-    def test_get_character_by_creator_id_returns_character_correctly(self):
-        character = self.character_service.get_character_by_creator_id(1)
-
-        self.assertEqual(character.character_id, self.char_id_bilbo)
-        self.assertTrue(
-            self.characters_are_the_same(character, self.char_bilbo)
         )
 
     def test_get_character_by_character_id_returns_correct_character(self):
