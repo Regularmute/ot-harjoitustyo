@@ -72,6 +72,7 @@ class SheetView:
                 self._character.character_id, "name", new_name)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
+            self._hide_error()
         except MissingParamError as e:
             self._show_error(e.args[0])
 
@@ -122,6 +123,7 @@ class SheetView:
                 self._character.character_id, "ancestry", new_ancestry)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
+            self._hide_error()
         except MissingParamError as e:
             self._show_error(e.args[0])
 
@@ -173,6 +175,7 @@ class SheetView:
                 self._character.character_id, "level", new_level)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
+            self._hide_error()
         except NegativeValueError as e:
             self._show_error(e.args[0])
         except ValueTypeError as e:
@@ -226,6 +229,7 @@ class SheetView:
                 self._character.character_id, "experience", new_experience)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
+            self._hide_error()
         except NegativeValueError as e:
             self._show_error(e.args[0])
         except ValueTypeError as e:
@@ -279,6 +283,7 @@ class SheetView:
                 self._character.character_id, "hit_points", new_hit_points)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
+            self._hide_error()
         except NegativeValueError as e:
             self._show_error(e.args[0])
         except ValueTypeError as e:
