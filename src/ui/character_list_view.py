@@ -115,7 +115,7 @@ class CharactersView:
     def _delete_character_handler(self, character):
         confirm = askyesno(title='deletion confirmation',
             message=f"""Are you sure you want to delete {character.name}?
-                Character cannot be recovered after deletion.""")
+            \nCharacter cannot be recovered after deletion.""")
 
         if confirm:
             character_service.delete_character_by_id(character.character_id)
