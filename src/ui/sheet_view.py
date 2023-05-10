@@ -72,8 +72,8 @@ class SheetView:
                 self._character.character_id, "name", new_name)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
-        except MissingParamError:
-            self._show_error("Field cannot be empty.")
+        except MissingParamError as e:
+            self._show_error(e.args[0])
 
         self._name_label.grid_remove()
         self._character_name_label.grid_remove()
@@ -122,8 +122,8 @@ class SheetView:
                 self._character.character_id, "ancestry", new_ancestry)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
-        except MissingParamError:
-            self._show_error("Field cannot be empty.")
+        except MissingParamError as e:
+            self._show_error(e.args[0])
 
         self._ancestry_label.grid_remove()
         self._character_ancestry_label.grid_remove()
@@ -173,10 +173,10 @@ class SheetView:
                 self._character.character_id, "level", new_level)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
-        except NegativeValueError:
-            self._show_error("New value must be positive.")
-        except ValueTypeError:
-            self._show_error("New value must be a number.")
+        except NegativeValueError as e:
+            self._show_error(e.args[0])
+        except ValueTypeError as e:
+            self._show_error(e.args[0])
 
         self._level_label.grid_remove()
         self._character_level_label.grid_remove()
@@ -226,10 +226,10 @@ class SheetView:
                 self._character.character_id, "experience", new_experience)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
-        except NegativeValueError:
-            self._show_error("New value must be positive.")
-        except ValueTypeError:
-            self._show_error("New value must be a number.")
+        except NegativeValueError as e:
+            self._show_error(e.args[0])
+        except ValueTypeError as e:
+            self._show_error(e.args[0])
 
         self._experience_label.grid_remove()
         self._character_experience_label.grid_remove()
@@ -279,10 +279,10 @@ class SheetView:
                 self._character.character_id, "hit_points", new_hit_points)
             self._character = character_service.get_character_by_character_id(
                 self._character.character_id)
-        except NegativeValueError:
-            self._show_error("New value must be positive.")
-        except ValueTypeError:
-            self._show_error("New value must be a number.")
+        except NegativeValueError as e:
+            self._show_error(e.args[0])
+        except ValueTypeError as e:
+            self._show_error(e.args[0])
 
         self._hit_points_label.grid_remove()
         self._character_hit_points_label.grid_remove()
