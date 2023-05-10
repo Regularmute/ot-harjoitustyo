@@ -87,7 +87,7 @@ class CharacterService:
         """
 
         if not new_value:
-            raise MissingParamError("new_value cannot be empty.")
+            raise MissingParamError("New value cannot be empty.")
 
         new_string = str(new_value)
         self._character_repository.update_character_column(
@@ -113,7 +113,7 @@ class CharacterService:
             raise ValueTypeError("New value must be a number") from exc
 
         if float(new_value) < 0:
-            raise NegativeValueError("Value must be positive")
+            raise NegativeValueError("New value must be positive")
 
         self._character_repository.update_character_column(
             character_id, attribute, float(new_value))
