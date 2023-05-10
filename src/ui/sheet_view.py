@@ -39,7 +39,7 @@ class SheetView:
 
     def _show_error(self, message):
         self._error_message.set(message)
-        self._error_label.grid()
+        self._error_label.grid(columnspan=3)
 
     def _hide_error(self):
         self._error_label.grid_remove()
