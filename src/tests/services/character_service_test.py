@@ -116,7 +116,7 @@ class TestCharacterService(unittest.TestCase):
         characters = self.character_service.get_characters()
 
         self.assertEqual(len(characters), 1)
-        self.assertEqual(characters[0].character_id, 0)
+        self.assertEqual(characters[0].character_id, self.char_id_bilbo)
         self.assertTrue(
             self.characters_are_the_same(characters[0], self.char_bilbo)
         )
@@ -134,7 +134,7 @@ class TestCharacterService(unittest.TestCase):
     def test_get_character_by_creator_id_returns_character_correctly(self):
         character = self.character_service.get_character_by_creator_id(1)
 
-        self.assertEqual(character.character_id, 0)
+        self.assertEqual(character.character_id, self.char_id_bilbo)
         self.assertTrue(
             self.characters_are_the_same(character, self.char_bilbo)
         )
@@ -142,53 +142,49 @@ class TestCharacterService(unittest.TestCase):
     def test_get_character_by_character_id_returns_correct_character(self):
         character = self.character_service.get_character_by_character_id(0)
 
-        self.assertEqual(character.character_id, 0)
+        self.assertEqual(character.character_id, self.char_id_bilbo)
         self.assertTrue(
             self.characters_are_the_same(character, self.char_bilbo)
         )
 
     def test_set_character_attribute_string_updates_name_correctly(self):
-        id = self.char_id_bilbo
         new_name = "Frodo Baggins"
-        self.character_service.set_character_attribute_string(id, "name", new_name)
+        self.character_service.set_character_attribute_string(self.char_id_bilbo, "name", new_name)
 
         updated_character = self.character_service.get_character_by_character_id(
-            0)
+            self.char_id_bilbo)
 
         self.assertEqual(updated_character.name, "Frodo Baggins")
 
     def test_set_character_attribute_float_updates_level_correctly(self):
-        id = self.char_id_bilbo
-        self.character_service.set_character_attribute_float(id, "level", "2")
+        self.character_service.set_character_attribute_float(self.char_id_bilbo, "level", "2")
 
         updated_character = self.character_service.get_character_by_character_id(
-            0)
+            self.char_id_bilbo)
 
         self.assertEqual(updated_character.level, 2)
 
     def test_set_character_attribute_float_updates_experience_correctly(self):
-        id = self.char_id_bilbo
-        self.character_service.set_character_attribute_float(id, "experience", "200")
+        self.character_service.set_character_attribute_float(self.char_id_bilbo, "experience", "200")
 
         updated_character = self.character_service.get_character_by_character_id(
-            0)
+            self.char_id_bilbo)
 
         self.assertEqual(updated_character.experience, 200)
 
     def test_set_character_attribute_float_updates_hp_correctly(self):
-        id = self.char_id_bilbo
-        self.character_service.set_character_attribute_float(id, "hit_points", "20")
+        self.character_service.set_character_attribute_float(
+            self.char_id_bilbo, "hit_points", "20")
 
         updated_character = self.character_service.get_character_by_character_id(
-            0)
+            self.char_id_bilbo)
 
         self.assertEqual(updated_character.hit_points, 20)
 
     def test_delete_character_by_id_works_correctly(self):
-        id = self.char_id_bilbo
         characters = self.character_service.get_characters()
         self.assertEqual(len(characters), 1)
 
-        self.character_service.delete_character_by_id(id)
+        self.character_service.delete_character_by_id(self.char_id_bilbo)
         characters = self.character_service.get_characters()
         self.assertEqual(len(characters), 0)
