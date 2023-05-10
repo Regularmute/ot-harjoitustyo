@@ -32,7 +32,7 @@ Sovellusta on testattu sekä olemassaolevien tietokantatiedostojen kanssa että 
 
 ### Toiminnallisuudet
 
-Kaikki [määrittelydokumentissa](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md) ja [käyttöohjeen](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje) määrittelemät toiminnallisuudet on käyty läpi. Myös virhetilanteita on kokeiltu esimerkiksi täyttämällä hahmon muokkauskentät välilyönneillä, tyhjillä arvoilla tai numeraalisten kenttien tapauksessa kirjaimilla.
+Kaikki [määrittelydokumentissa](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md) ja [käyttöohjeen](https://github.com/Regularmute/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md) määrittelemät toiminnallisuudet on käyty läpi. Myös virhetilanteita on kokeiltu esimerkiksi täyttämällä hahmon muokkauskentät välilyönneillä, tyhjillä arvoilla tai numeraalisten kenttien tapauksessa kirjaimilla.
 
 ### Jäljelle jääneet puutteet
 
