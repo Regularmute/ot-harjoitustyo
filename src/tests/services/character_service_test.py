@@ -59,8 +59,6 @@ class FakeCharacterRepository:
             target_character = target_characters_list[0]
             setattr(target_character, statistic, new_value)
 
-        return
-
     def delete_character_by_id(self, character_id):
         target_character = filter(
             lambda character: character.character_id == character_id,
