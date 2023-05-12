@@ -98,15 +98,21 @@
 * User now sees the previous value of a field when editing.
 * User can only enter positive numbers to certain fields.
 * User can now delete characters.
+  * Confirmation is required before deletion.
 * User receives an error when trying to submit an empty field.
 * User can now view and edit the ancestry and heritage of the character.
+* Final release is ready.
 
 ### Documentation
 * Docstring added to UI files.
 * Testing document has been created.
 * User guide has been updated to fit current build.
+* All documents have been revised for final release.
 
 ### Testing
 * Integration between character_service and character_repository.
 * Integration between user_service and user_repository.
 * Service tests have been refactored for clarity and to streamline future modifications.
+
+### Code
+* Redundant or outdated code has been removed.

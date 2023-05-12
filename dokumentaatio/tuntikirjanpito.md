@@ -32,4 +32,5 @@
 |9.5|2h|Testaus, toimintojen laajennus|
 |10.5|1h|Integraatiotestaus|
 |10.5|2h|Dokumentaatio|
-|Yhteensä käytetty aika:|46h|
+|12.5.|2h|Dokumentaatio, lopputarkistus|
+|Yhteensä käytetty aika:|48h|
