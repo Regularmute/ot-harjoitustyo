@@ -16,9 +16,11 @@ Integraatiotestit muistuttavat sovelluslogiikan yksikkötestejä, mutta näissä
 
 ### Testauskattavuus
 
-Käyttöliittymäkerrosta lukuunottamatta sovelluksen testihaaraumakattavuus on 93%:
+Käyttöliittymäkerrosta lukuunottamatta sovelluksen testihaaraumakattavuus on 98%:
 
 ![](./kuvat/coveragereport1.PNG)
+
+Testauksen ulkopuolelle jää eri ympäristömuuttujien asetus sekä tietokannan alustus.
 
 ## Järjestelmätestaus
 
