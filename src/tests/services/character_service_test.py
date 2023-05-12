@@ -1,5 +1,6 @@
 import unittest
-from services.character_service import CharacterService
+from services.character_service import (
+    CharacterService, MissingParamError, NegativeValueError, ValueTypeError)
 from entities.character import Character
 
 
@@ -169,3 +170,24 @@ class TestCharacterService(unittest.TestCase):
         self.character_service.delete_character_by_id(self.char_id_bilbo)
         characters = self.character_service.get_characters()
         self.assertEqual(len(characters), 0)
+
+    def test_set_attribute_string_throws_error_with_empty_value(self):
+        self.assertRaises(
+            MissingParamError,
+            lambda: self.character_service.set_character_attribute_string(
+                self.char_id_bilbo, "name", "")
+        )
+
+    def test_set_attribute_float_throws_error_with_string_value(self):
+        self.assertRaises(
+            ValueTypeError,
+            lambda: self.character_service.set_character_attribute_float(
+                self.char_id_bilbo, "level", "two")
+        )
+
+    def test_set_attribute_float_throws_error_with_negative_value(self):
+        self.assertRaises(
+            NegativeValueError,
+            lambda: self.character_service.set_character_attribute_float(
+                self.char_id_bilbo, "level", "-1")
+        )
