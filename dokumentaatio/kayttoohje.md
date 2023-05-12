@@ -1,6 +1,15 @@
 # Käyttöohje
 Etsi projektin [releaseista](https://github.com/Regularmute/ot-harjoitustyo/releases) viimeisin versio, ja lataa sieltä _Assets_-osion alta _Source code_ koneellesi sopivassa muodossa.
 
+## Ohjelman käynnistäminen
+Varmista että suoritat seuraavat komennot ennen sovelluksen käynnistämistä:
+
+Asenna ohjelman riippuvuudet komennolla `poetry install`
+
+Alusta ohjelman käyttämä tietokanta komennolla `poetry run invoke create-database`
+
+Lopulta voit käynnistää itse ohjelman komennolla `poetry run invoke start`
+
 ## Kirjautuminen
 Sovellus aukeaa kirjautumisnäkymässä:
 
