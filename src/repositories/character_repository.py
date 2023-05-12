@@ -41,25 +41,6 @@ class CharacterRepository:
 
         return list(map(_get_character_by_row, rows))
 
-    def get_one_by_name(self, name):
-        """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka palauttaa
-            hahmon, jolla on tietty nimi.
-
-        Args:
-            name (str): Haetun hahmon nimi.
-
-        Returns:
-            Hahmo-olio, joka on luotu suorittamalla _get_character_by_row
-            kyselyn palauttamaan riviin.
-        """
-        cursor = self._connection.cursor()
-
-        sql = "SELECT name FROM characters WHERE name = :name"
-        cursor.execute(sql, {"name": name})
-        row = cursor.fetchone()
-
-        return _get_character_by_row(row)
-
     def get_all_by_creator_id(self, creator_id):
         """Toteuttaa SQL-kyselyn yhdistettyyn tietokantaan, joka palauttaa
             kaikki tietyn käyttäjän luomat hahmot.
