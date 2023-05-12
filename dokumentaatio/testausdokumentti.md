@@ -10,7 +10,7 @@ Tietokantoja käsittelevät `UserRepository` sekä `CharacterRepository`-luokat 
 
 ### Sovelluslogiikka
 
-Sovelluslogiikasta vastaavat `UserService` sekä `CharacterService`-luokat testataan `FakeUserRepository` ja `FakeCharacterRepository`-luokkien avulla, jotka simuloivat niitä vastaavien repositoriluokkien toimintaa käsitellessä tietokantaa. Näin yksikkötestit tarkistavat pelkästään sovelluslogiikan toimintaa. Sovelluslogiikka-luokkien testit löytyvät luokista [TestUserService](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/tests/services/user_service_test.py) sekä [TestCharacterService](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/tests/services/user_service_test.py).
+Sovelluslogiikasta vastaavat `UserService` sekä `CharacterService`-luokat testataan injektoimalla niiden olioihin repositorio-oliot `FakeUserRepository` ja `FakeCharacterRepository`-luokista, jotka simuloivat aitojen repositoriluokkien toimintaa muistissa tietokannan käsittelyn sijaan. Näin yksikkötestit tarkistavat pelkästään sovelluslogiikan toimintaa. Sovelluslogiikka-luokkien testit löytyvät luokista [TestUserService](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/tests/services/user_service_test.py) sekä [TestCharacterService](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/tests/services/user_service_test.py).
 
 Integraatiotestit muistuttavat sovelluslogiikan yksikkötestejä, mutta näissä testeissä sovelluslogiikka käyttää oikeita repositorioluokkia (ks. ylemmät linkit kohdassa Repositorioluokat), jolloin saamme tarkistettua sovelluslogiikan ja repositorio-luokkien yhteistoiminnan. Integraatiotestien luokat ovat [TestUserIntegration](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/tests/integration/user_integration_test.py) sekä [TestCharacterIntegration](https://github.com/Regularmute/ot-harjoitustyo/blob/main/src/tests/integration/character_integration_test.py).
 
@@ -20,7 +20,7 @@ Käyttöliittymäkerrosta lukuunottamatta sovelluksen testihaaraumakattavuus on 
 
 ![](./kuvat/coveragereport1.PNG)
 
-Testauksen ulkopuolelle jää eri ympäristömuuttujien asetus sekä tietokannan alustus.
+Testauksen ulkopuolelle jäi eri ympäristömuuttujien asetus sekä tietokannan alustus komentoriviltä.
 
 ## Järjestelmätestaus
 
