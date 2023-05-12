@@ -13,6 +13,19 @@
 
 Koodi on jaettu niin, että _ui_ sisältää käyttöliittymää, _services_ sovelluslogiikkaa ja _repositories_ pysyväistallennusta vastaavan koodin. Pakkaus _database_ kuvastaa tiedostoja, jotka luovat yhteyden SQLite3-tietokantaan jota _repositories_ käyttää komennoissaan. Pakkaus _entities_ sisältää luokkia, jotka vastaavat tietokannassa olevia rivejä.
 
+## Käyttöliittymä
+
+Käyttöliitymällä on seuraavat näkymät:
+
+* Kirjautuminen
+* Rekisteröityminen
+* Hahmolista
+* Yksittäisen hahmon tiedot
+
+Käyttöliittymä on eristetty sovelluslogiikasta, ja sen näkymien näyttäminen tapahtuu UI-luokassa. Jokainen näkymä on toteutettu omana luokkanaan, ja vain yksi niistä on samaan aikaan näkyvissä. Eri näkymät sisältävät painikkeita, joiden klikkaaminen kutsuu Service-luokan metodeja.
+
+Sekä hahmolistan että yksittäisen hahmon näkymät renderöivät näyttämäänsä tietoa sitä mukaa, kun käyttäjä luo tai poistaa uusia hahmoja tai muokkaa jonkun hahmon tietoja. Hahmolistanäkymästä kutsutaan sovelluksen metodia initialize_character_list, ja hahmon tietojen näkymästä kutsutaan muokattavasta kentästä riippuen esimerkiksi metodia initialize_name_field. Nämä metodit saavat sovelluslogiikalta päivittyneet tiedot, ja renderöivät näkymän uudelleen näiden tietojen perusteella.
+
 ## Sovelluslogiikka
 
 ```mermaid
@@ -96,3 +109,7 @@ Painikkeen painamiseen reagoiva tapahtumankäsittelijä kutsuu UserService-luoka
 UserService-olio kutsuu UserRepositoryltä funktiota "get_one_by_username", joka suorittaa Repositorio-olioon liitetylle tietokantayhteydelle SQL-kyselyn, mikä palauttaa käyttäjänimeä vastaavan User-entiteetin, joka sisältää myös salatun version käyttäjän salasanasta.
 
 Jos käyttäjänimeä vastaavaa riviä ei löydy tietokannasta, tai jos bcryptin checkpw-metodi toteaa että kirjautumiseen käytetty salasana ei vastaa palautetun entiteetin salattua salasanaa, nostetaan virhe. Kaaviossa kuitenkin oletamme kirjautumisen onnistuvan, jolloin palautettu käyttäjä asetetaan kirjautuneeksi käyttäjäksi, ja palautetaan käyttöliittymälle. Lopulta käyttöliittymä siirtyy hahmolistanäkymään, joka sisältää kirjautuneen käyttäjän hahmot.
+
+### Muut toiminnallisuudet
+
+Sovelluksen kaikki toiminnallisuudet noudattavat samaa periaatetta. Käyttöliittymä kutsuu tapahtumankäsittelijältä sovelluslogiikalta jotakin metodia, ja sovelluslogiikka päivittää kirjautuneen käyttäjän, hahmolistan tai yksittäisen hahmon tilaa. Tämän jälkeen käyttöliittymä päivittää aktiivisen näkymän vastaavan logiikan päivittämää tilaa.
