@@ -2,11 +2,11 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla käyttäjä voi luoda Pathfinder2E-pöytäroolipeliin sopivan pelihahmon lomakkeen, tallentaa sen ja muokata sitä myöhemmin. Usea rekisteröitynyt käyttäjä voi käyttää sovellusta, joista jokaisella on oma hahmolomakkeensa.
+Sovelluksen avulla käyttäjä voi luoda Pathfinder2E-pöytäroolipeliin sopivan pelihahmon lomakkeen, tallentaa sen ja muokata sitä myöhemmin. Usea rekisteröitynyt käyttäjä voi käyttää sovellusta, joista jokaisella on omat hahmolomakkeensa.
 
 ## Käyttäjät
 
-Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli _pelaaja_. Sovelluksen kehityksen edetessä saatetaan lisätä rooli _Pelinjohtaja_, jolla on suuremmat oikeudet (esimerkiksi mahdollisuus nähdä kaikkien pelaajien hahmot ja muokata niitä).
+Sovelluksella on tällä hetkellä ainoastaan yksi käyttäjärooli _pelaaja_. Sovelluksen kehityksen edetessä saatetaan lisätä rooli _Pelinjohtaja_, jolla on suuremmat oikeudet (esimerkiksi mahdollisuus nähdä kaikkien pelaajien hahmot ja muokata niitä).
 
 ## Sovelluksen perustoiminnallisuudet
 
@@ -34,6 +34,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli _pelaaja_. Sovel
     * Muuta mahdollista (mahdollisesti tulevaisuudessa)
 * Käyttäjä voi muokata hahmolomakettaan ja tallentaa muutokset (tehty)
 * Käyttäjä voi kirjautua ulos järjestelmästä (tehty)
+* Käyttäjä pystyy poistamaan hahmolomakkeita (tehty)
 
 ### Jatkokehitysmahdollisuuksia
 
